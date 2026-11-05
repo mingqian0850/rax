@@ -1,0 +1,310 @@
+[
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/bootstrap_sources.sh",
+    "sha256": "751aa0e6914949e493bc406db7ceaa9b84abf757cdd8824bbe53d786334fd0f0",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/dexjoco_env.sh",
+    "sha256": "779949cab8c3f75f06ec4c82cc9d5f3b9a9948d0535de79a5e65b885c76b1548",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/doctor.sh",
+    "sha256": "b2ba13c72b15a6e87afe01b621d56da859c63e1a07d0eaf8db7effeaef94078e",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/host_env.sh",
+    "sha256": "11eca76a90d27fdcbf0b0f24e8f21089ff9cc10ffb3b719d7c096c7d8cbf3cb2",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/move_session_gpus.sh",
+    "sha256": "8c0555635744164aff714b1fbf5e0a63831901181cb81acaa2318703062efc8d",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/run_operator_dashboard.sh",
+    "sha256": "4cf16dd11e9a1fb59c1e8b115da33bf4c2e5b02e963f8f039e4091ccbe5af801",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "aac3da8c20d044979b0cda57d4ec04dc91fd83f6e5b3709755108458ebf3ffed",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/setup_dexjoco_env.sh",
+    "sha256": "f83088909a4a7a13d87d1041a189dabc04375d969e5a4948daf82d3120c5dac7",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/setup_host_env.sh",
+    "sha256": "e313d714a11cda89600dff46362a999a0eb425a09a2a5289eddce55ce6ece0fb",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/start_auto_research_agent.sh",
+    "sha256": "c7615f9837850513036bc68efbab28568a48d8b20c5269b5166c3df4b1697e66",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/container",
+    "path": "scripts/stop_auto_research_agent.sh",
+    "sha256": "aecc1b061ded7328e4103ba2370f0fc8b6fafa7c6c42880589cc058b0893c03d",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/native",
+    "path": "scripts/doctor.sh",
+    "sha256": "f85edcc988a3fb20d3b2013072222f3588880c805ef17109e2956a0c8a8c7249",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/native",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "da695deee841e79e9c5d17b67f71c4c718fe35420438ddaec37c7ef0e8d017e8",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "dexjoco/native",
+    "path": "scripts/setup_host_env.sh",
+    "sha256": "7de7665b13e9d660d93b95b4c4325dbd798fa18087d38e2974a91b63a437024d",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "humanoid-arena/container",
+    "path": "scripts/bootstrap_sources.sh",
+    "sha256": "e5b756411c0eb042866132cc6f4dac87539dd2d79c59c17621233ba467225b17",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "humanoid-arena/container",
+    "path": "scripts/build_humanoid_image.sh",
+    "sha256": "aa628d8b7f5e20584bc42d2bd4b78dae4071673ddd98adb0b6b6f7fa3b45a0da",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "humanoid-arena/container",
+    "path": "scripts/humanoid_python.sh",
+    "sha256": "17c1d1daf67e1910ce65b228bbba8a6031ca9a3134b7194940f7eef7794a0044",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "humanoid-arena/container",
+    "path": "scripts/setup_host_env.sh",
+    "sha256": "331e38c3e8d0da6e7a9a4c03db59c8e76e03ef0430af759b50dbf516537f1744",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "humanoid-arena/container",
+    "path": "scripts/setup_humanoid_assets.sh",
+    "sha256": "75e22eca0cf105100fa3485180f1c3bcd52cfcb94dd901b7bb203ac4df6c5ac6",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "libero-pro/container",
+    "path": "scripts/bootstrap_sources.sh",
+    "sha256": "ad75d3f45e01aff67338e86173b0707df01e639043eb85122c9626416ad59d20",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "libero-pro/container",
+    "path": "scripts/libero_pro_env.sh",
+    "sha256": "11c4cb8ed1af0d0b436bee1437197553c21f7386b34a2c456ee95ab88aa21d3e",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "libero-pro/container",
+    "path": "scripts/setup_libero_pro_env.sh",
+    "sha256": "8fd6af4fb8de616ce3c880528be2e54b31cfedce1d8084517a0261b0dc4cd39f",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/franka",
+    "path": "scripts/run_dashboard.sh",
+    "sha256": "d2567538f53a50a25c0f2a008974535d8b41f9dcd9b31ca377cf973ec739bdc4",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/franka",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "4155d8ad68bdfb27a4901c7cea908d0f0f08be3f0f44cb6ac31d672fc61cae2d",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/franka",
+    "path": "scripts/start_agent.sh",
+    "sha256": "7492436b5745142f1c580012fa11e7170a9a8c699bae6999a8e83ed0dacb6d80",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/rainbow",
+    "path": "scripts/run_dashboard.sh",
+    "sha256": "b0a43185341b518a7017e8372d88f7bc662a34fd00c1ac3483dd3ba0bb847113",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/rainbow",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "7f42d624c9b51dcfa6a03ca21b79775ea9f4b776e26051611c20c82da1c61902",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "real/rainbow",
+    "path": "scripts/start_agent.sh",
+    "sha256": "caea21a654efbf7fc79be94b60f753280c406136a1e38a545a1d7a3ba9440288",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/behavior_env.sh",
+    "sha256": "1cecaaadc66b5cf23e0b218d0e997104f515cbaf53faa2076f8e3ad8036585ad",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/bootstrap_sources.sh",
+    "sha256": "c35d22c5bd4c0e0c8014b764755a0a21ce088e5c40b2caabddcf8ba6a36b7278",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/move_session_gpus.sh",
+    "sha256": "5fd160a11920ad5b690a0c6eb2662f23287ff2d4d9da552d93b3e2eb433b7b0a",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/robodojo_doctor.sh",
+    "sha256": "6391eb448bf1280e0b297c622851eefc25a476ce24569f27f57245c37a554857",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/robodojo_env.sh",
+    "sha256": "aeedd76ffb165ec296d977313c32432a4623b4daa193ed90f39f6791d18e9df0",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/run_operator_dashboard.sh",
+    "sha256": "83782175bb8300053687e882403e1c47dec0d573f4bed88b1d82fd847776a4aa",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_assets.sh",
+    "sha256": "8326a273b398d8a8f5b94d587c8d623e0d4b670e20b62009d68d2b30f4a585a0",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_behavior_assets.sh",
+    "sha256": "dc93d8426cb2129962634457e4a83bb45040bd22b0e68249db663fba00d75218",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_behavior_demos.sh",
+    "sha256": "e9b0b31879864b5188f0552357c63bd0fab92fff03cd19484874fbabb4f2025b",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_behavior_env.sh",
+    "sha256": "1e99dabfbc228e20fc8e2b38fc4903bcd9329c6ca478c7f8f50190c48214653a",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "6530939f75ec6c77646186a6156442427dfebfe851601ce4161ca4fa72a9961a",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/setup_robodojo_env.sh",
+    "sha256": "0ee7b51d233022d69d5f695996a2648b4ed7cb875f78a93ac43c4ee2d64fbeb4",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/start_auto_research_agent.sh",
+    "sha256": "35b06236bb39cc72aad4a49c6f925ec3aca9f77642b56863b27861963db72f9f",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/container",
+    "path": "scripts/stop_auto_research_agent.sh",
+    "sha256": "5f3e0ee8c50b3671e7a36de2824bdb45b442bbef361b1e9816f5bcd3d46fc249",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/native",
+    "path": "scripts/robodojo_doctor.sh",
+    "sha256": "c0dbe8203bf1a00d983dba5891736aeba42b9a95701cd252c071cbf727c3b24a",
+    "returncode": 0,
+    "stderr": ""
+  },
+  {
+    "branch": "robodojo-behavior/native",
+    "path": "scripts/setup_claude_experiment_login.sh",
+    "sha256": "23e305355c28daa429c9a7e7e2c09d48347a45769d58549448190fc6b26d1efc",
+    "returncode": 0,
+    "stderr": ""
+  }
+]

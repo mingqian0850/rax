@@ -1,0 +1,25 @@
+13 Summary Results of 1 The two simulation charts of 1 summarize RoboDojo, BEHAVIOR-1K, HumanoidArena,
+DexJoCo, and LIBERO-Pro, and compare RAX with the strongest prior model, that is, with
+learned policies such as VLAs and world action models rather than with other agents. For each
+benchmark, the right chart pairs the average success rate of RAX, with each task at its largest
+budget, with the average of the strongest prior model on the same tasks: VPP2 on RoboDojo, the
+highest-ranked challenge entry on BEHAVIOR-1K, WB-WAM on HumanoidArena, ME-Dex on DexJoCo, and
+VPP2 on LIBERO-Pro. On LIBERO-Pro, the chart therefore compares with VPP2 (42.3%), the strongest
+model under position perturbation, and not with the coding agent ASPIRE (63.2%), which we compare with in Section 5.2.5 . On DexJoCo,
+the chart includes only the five bimanual tasks, iPad, Hanoi, Assembly, Microwave, and Photo.
+The six single-arm tasks are too easy to show the effect of scaling, since RAX solves each of
+them within a few exploration episodes, and the bimanual tasks are the harder part of the
+benchmark: with 32 exploration episodes, RAX averages 94.3% on them, against 48.8% for ME-Dex.
+The average margin of 37.4 points stated in the abstract and the introduction is the mean of the
+five margins of this chart, 53.4 on RoboDojo, 38.3 on BEHAVIOR-1K, 7.9 on HumanoidArena, 45.5 on
+the bimanual tasks of DexJoCo, and 42.1 on LIBERO-Pro. The per-benchmark margins listed in the introduction instead compare with the strongest prior
+result of any kind on all tasks of each benchmark. On DexJoCo, this is the average of all eleven
+tasks at 32 exploration episodes, 96.7%, against ME-Dex at 65.3% (+31.4), and on LIBERO-Pro it
+is ASPIRE (+21.2). Section 5.2.4 further reports the best session of each task across
+budgets, which averages 99.5%. The left chart averages, at each budget, the success rates of the
+tasks within each benchmark and then the five benchmarks with equal weight. A task without a
+result at a budget shown counts with its result at the largest smaller budget. On LIBERO-Pro, 37
+of the 40 tasks have a budget of 15 exploration episodes and use 11 to 15, Goal 1, 5, and 9 have
+a budget of 20 and use 18, 20, and 19, and the 40 tasks use 14.2 on average (13.5 on Spatial,
+14.0 on Object, 15.1 on Goal, and 14.0 on Long), so their results are included at 16. The dashed line, 41.2%,
+is the mean of the strongest prior models of the right chart.

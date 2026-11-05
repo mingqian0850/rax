@@ -272,3 +272,7 @@ If you find RAX useful, please cite:
   year={2026}
 }
 ```
+
+## Fork research archive
+
+This fork keeps the [RAX adaptation study](research/rax-adaptation/README.md) and [agent handoff](research/rax-adaptation/HANDOFF.md) on `main`: reading notes, version pins, verification scripts, and local evidence. To save storage, upstream implementation branches, environment binaries, and simulation assets are not mirrored here; fetch only the pinned sources needed with the included restore script.

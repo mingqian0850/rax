@@ -1,0 +1,62 @@
+Channels:
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/rax/runtime/envs/libero_pro
+
+  added / updated specs:
+    - gcc_linux-64
+    - gxx_linux-64
+    - make
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    binutils_impl_linux-64-2.46.1|default_hfdba357_103         3.5 MB  conda-forge
+    binutils_linux-64-2.46.1   |default_h4852527_103          35 KB  conda-forge
+    gcc_impl_linux-64-16.2.0   |       h9891192_7        82.1 MB  conda-forge
+    gcc_linux-64-16.2.0        |       h0ab548f_2          30 KB  conda-forge
+    gxx_impl_linux-64-16.2.0   |       h0d273dc_7        16.2 MB  conda-forge
+    gxx_linux-64-16.2.0        |       h23aca61_2          28 KB  conda-forge
+    kernel-headers_linux-64-6.12.0|       he073ed8_6         1.5 MB  conda-forge
+    libgcc-devel_linux-64-16.2.0|     he3ce08f_107         3.0 MB  conda-forge
+    libsanitizer-16.2.0        |       h3048135_7         7.7 MB  conda-forge
+    libstdcxx-devel_linux-64-16.2.0|     h86e191b_107        22.2 MB  conda-forge
+    make-4.4.1                 |       h1114479_4         540 KB  conda-forge
+    sysroot_linux-64-2.39      |       hc4b9eeb_6        40.1 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:       177.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  binutils_impl_lin~ conda-forge/linux-64::binutils_impl_linux-64-2.46.1-default_hfdba357_103 
+  binutils_linux-64  conda-forge/linux-64::binutils_linux-64-2.46.1-default_h4852527_103 
+  gcc_impl_linux-64  conda-forge/linux-64::gcc_impl_linux-64-16.2.0-h9891192_7 
+  gcc_linux-64       conda-forge/linux-64::gcc_linux-64-16.2.0-h0ab548f_2 
+  gxx_impl_linux-64  conda-forge/linux-64::gxx_impl_linux-64-16.2.0-h0d273dc_7 
+  gxx_linux-64       conda-forge/linux-64::gxx_linux-64-16.2.0-h23aca61_2 
+  kernel-headers_li~ conda-forge/noarch::kernel-headers_linux-64-6.12.0-he073ed8_6 
+  libgcc-devel_linu~ conda-forge/noarch::libgcc-devel_linux-64-16.2.0-he3ce08f_107 
+  libsanitizer       conda-forge/linux-64::libsanitizer-16.2.0-h3048135_7 
+  libstdcxx-devel_l~ conda-forge/noarch::libstdcxx-devel_linux-64-16.2.0-h86e191b_107 
+  make               conda-forge/linux-64::make-4.4.1-h1114479_4 
+  sysroot_linux-64   conda-forge/noarch::sysroot_linux-64-2.39-hc4b9eeb_6 
+  tzdata             conda-forge/noarch::tzdata-2026e-h5d301ff_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+WARNING conda.conda_pypi.main:notify_externally_managed_future(156): 
+  Did you know? You can install many PyPI packages with conda
+  using the conda-pypi beta. Get started:
+    https://docs.conda.io/projects/conda/en/stable/new-features.html
+

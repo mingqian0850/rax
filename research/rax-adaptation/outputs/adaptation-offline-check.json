@@ -1,0 +1,17 @@
+{
+  "kind": "synthetic_offline_mechanism_check",
+  "benchmark_success_rate": null,
+  "model_calls": 0,
+  "gpu_used": false,
+  "checks": {
+    "uses_frozen_exploration_memory": true,
+    "carries_program": true,
+    "excludes_frame_history": true,
+    "excludes_formal_result_file": true,
+    "clear_context_has_no_session": true,
+    "writes_adaptation_note": true,
+    "source_live_memory_unchanged": true,
+    "rejects_different_task": true
+  },
+  "passed": true
+}

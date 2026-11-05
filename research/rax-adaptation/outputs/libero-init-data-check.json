@@ -1,0 +1,57 @@
+[
+  {
+    "task": "libero_goal_1",
+    "collection": 1,
+    "file": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/libero-pro/init_files/libero_goal/put_the_bowl_on_the_stove.pruned_init",
+    "shape": [
+      50,
+      79
+    ],
+    "finite": true,
+    "count": 50
+  },
+  {
+    "task": "libero_goal_1",
+    "collection": 2,
+    "file": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/libero-pro/init_files/libero_goal_swap/put_the_bowl_on_the_stove.pruned_init",
+    "shape": [
+      50,
+      79
+    ],
+    "finite": true,
+    "count": 50
+  },
+  {
+    "task": "libero_goal_1",
+    "collection": 3,
+    "file": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/libero-pro/init_files/libero_goal_object/put_the_bowl_on_the_stove.pruned_init",
+    "shape": [
+      50,
+      79
+    ],
+    "finite": true,
+    "count": 50
+  },
+  {
+    "task": "libero_goal_1",
+    "collection": 4,
+    "file": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/libero-pro/init_files/libero_goal_lan/put_the_bowl_on_the_stove.pruned_init",
+    "shape": [
+      50,
+      79
+    ],
+    "finite": true,
+    "count": 50
+  },
+  {
+    "task": "libero_goal_1",
+    "collection": 5,
+    "file": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/libero-pro/init_files/libero_goal_task/put_the_bowl_on_the_stove.pruned_init",
+    "shape": [
+      50,
+      79
+    ],
+    "finite": true,
+    "count": 50
+  }
+]

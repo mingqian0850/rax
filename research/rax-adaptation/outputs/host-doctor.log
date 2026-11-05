@@ -1,0 +1,8 @@
+PASS  host environment /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/rax/runtime/envs/host (Python 3.12.16)
+PASS  bubblewrap bubblewrap 0.11.1 (bundle sandbox)
+PASS  socat (Claude Code's sandbox)
+PASS  git-lfs
+PASS  codex codex-cli 0.166.0-alpha.6 (/usr/lib/chatgpt/resources/codex)
+NOTE  no OpenRouter key at /home/mingqian/.codex/secrets/openrouter_api_key or in OPENROUTER_API_KEY: the Gemini tool and OpenRouter models are unavailable
+FAIL  nvidia-smi failed
+1 check(s) failed.

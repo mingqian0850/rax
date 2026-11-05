@@ -1,0 +1,20 @@
+libEGL warning: pci id for fd 4: 10de:2860, driver (null)
+
+pci id for fd 5: 10de:2860, driver (null)
+pci id for fd 6: 10de:2860, driver (null)
+libEGL warning: egl: failed to create dri2 screen
+libEGL warning: pci id for fd 4: 10de:2860, driver (null)
+
+pci id for fd 5: 10de:2860, driver (null)
+pci id for fd 6: 10de:2860, driver (null)
+libEGL warning: egl: failed to create dri2 screen
+libEGL warning: pci id for fd 4: 10de:2860, driver (null)
+
+[robosuite WARNING] No private macro file found! (__init__.py:7)
+[robosuite WARNING] It is recommended to use a private macro file (__init__.py:8)
+[robosuite WARNING] To setup, run: python /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/rax/runtime/envs/libero_pro/lib/python3.8/site-packages/robosuite/scripts/setup_macros.py (__init__.py:9)
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+torch OK 1.11.0+cpu 3.0
+simulator imports OK

@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-05",
+  "default_restore": "passed: fresh shallow fetch from official upstream; exact pinned LIBERO commit",
+  "offline_adaptation": "8/8 checks passed against newly restored sources, no GPU/model calls",
+  "remote_strategy": "main only; implementation branches removed; local work and environments retained",
+  "original_deliverables": 40,
+  "unaltered_original_deliverables": 39
+}

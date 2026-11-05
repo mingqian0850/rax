@@ -1,0 +1,24 @@
+9 Agent Instructions and Skills Every session starts from the same workspace template: one instruction file and a folder of skills,
+written once and shared by all platforms ( auto_research_agent/ and agent_skills/ in our code). Robot-specific facts, such as tool names, cameras, and control rates, are filled in when
+the workspace is built, so the agent reads the same instructions on every robot. Instructions. The instruction file fixes the order of work rather than how to solve any
+task. The agent first reads the task text and its own notes from earlier sessions, then (1) solves the
+task by controlling the robot directly through tools until it confirms success, (2) turns what it did
+into a program whose steps check their preconditions, verify their results, and report states they
+were not built for, (3) runs that program on every further exploration episode, stepping in where it falls
+short and fixing the code, and (4) keeps its notes, code, and a hand-off note current, since only
+those carry over to later sessions. In benchmark sessions it then freezes the program, rehearses it
+once end to end without help, and submits it. The file also states the budget rules: new layouts
+in every episode, so scene geometry is measured again rather than assumed, and a blocker is
+reported rather than bypassed. Skills. Skills are short documents that the agent opens when it reaches the step they
+cover. They are grouped by axis, task strategy, coordination, perception, and robot control, and a
+session receives only the layers that match its robot and observation mode. The task and
+coordination skills are robot-agnostic ( Table 12 ); the perception and control layers give
+each robot’s interface under the same names, so a task skill can point to, for example, the
+robot’s interface or its free-space motion without knowing which robot it runs on. Table 12: Robot-agnostic skills given to every session. Skill What it asks of the agent Manual robot control Look first, explore with small moves, choose each action from the
+current observation, and confirm every condition of the task before handing off. In-context action learning When images of a completed task are supplied, infer the goal
+and useful strategy from them and adapt it to the current layout, without copying actions. Experience memory Record what worked right away, with the observable conditions under
+which it worked; retrieve it for similar situations and distill it as evidence grows. Autonomous control Start from a confirmed manual success, turn it into observation-driven
+code that can be supervised and resumed, and test it across layouts. Transfer hand-off Before exploration ends, write how each subtask and each object is
+handled, for a later session on new layouts. Multi-environment exploration Run parallel environments, track their scenes separately,
+and share one episode budget. Multi-agent exploration Decide whether to delegate; give each subagent its own
+environment and a complementary goal, and combine their findings and code.

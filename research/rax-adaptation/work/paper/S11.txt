@@ -1,0 +1,356 @@
+11 Simulation Case Studies This section follows single sessions on the simulation benchmarks in detail: what the agent
+explored, the program it wrote, and how that program behaves on unseen scenes. 11.1 Re-Perception Under Perturbation: Two Cans into a Basket The first task of the LIBERO-Long suite asks the robot to put both the alphabet soup and the
+tomato sauce in the basket, on a table that also holds a ketchup bottle, a carton of orange
+juice, milk, butter, and cream cheese. The agent explored the task for 15 episodes in about an
+hour, ten of them interactive and five rehearsals of its program, and wrote a program of 1,362
+lines that succeeds in all 50 official initial states and in 44 of the 50 perturbed states of
+LIBERO-Pro. The perturbation exchanges the soup with the ketchup and the tomato sauce with the
+orange juice, which moves the two cans by 15 and 32 cm ( Figure 14 a). This
+section shows what the program perceives, how it plans, and why its behavior transfers. Perception. The program perceives the scene anew in every round, and it divides the
+work between a vision-language model and depth ( Figure 13 ). Gemini only names
+the objects: it returns a pixel on each can and in the basket, together with a short description
+of each can’s state. Every geometric quantity comes from depth. The program lifts the agent-view
+depth into the world frame, takes the table as the mode of the point heights, and, starting from
+each Gemini pixel, segments the object by a flood fill over 3D-connected points; the top height
+is a high percentile of the segment, and the axis is the centroid of its top 1.2 cm. A segment
+counts as a can only if its top is 4.5 to 8 cm wide and 5 to 30 cm above the table, bounds
+that the agent set after measuring every object on the table and that reject the taller and
+narrower ketchup bottle. A second detector, which uses depth alone, finds flat, round plateaus
+of the size of a lid and adds any can that Gemini missed. Before grasping, the program hovers
+7 cm above the lid and refits the lid disk from the wrist camera; a top that is not can-shaped
+is blacklisted, and the grasp yaw is the first of four candidates whose finger zones are clear
+of other objects. Placing by footprint reach. The agent-view camera cannot see the floor of the basket,
+which its near wall hides, and the agent found during exploration that this flat floor is only about
+7 by 10 cm: drop spots chosen by clearance put the second can’s footprint over the sloped walls,
+where the can stalled. The program therefore maps the interior from the wrist camera while it
+holds the first can, as a height map with 4 mm cells, and computes for every cell the highest
+point under the footprint of a can, its footprint reach ( Figure 13 c,d).
+It chooses the pair of spots, at least 6.8 cm apart, that minimizes the larger of their two
+reaches, releases each can just above its reach, and remaps the basket after the first release.
+During exploration, the agent also arranged perturbed layouts of its own,
+stacking the tomato sauce on the soup, standing the soup on the cream-cheese box, placing the cans
+side by side, and pushing the basket by 8 cm and rotating it by 20 ∘ , and it ran its program
+on each of them. Figure 13 : Perception and planning on a LIBERO-Pro layout, re-run with the agent’s code
+on the stored frames of one evaluation episode. (a) The agent-view image with Gemini’s points
+(diamonds) and the geometry that the program derives from depth: the top and axis of each can
+and the basket rim. (b) The point cloud of the agent-view camera, completed over the basket by
+the wrist camera and coloured by height above the table on the scale of (c) and (d), with the
+fitted cans, the basket rim, and the two planned placements, numbered in the order of
+execution. (c) The basket measured by the wrist camera in 4 mm cells,
+with the interior outlined. (d) Footprint reach, the highest point under the footprint of a can,
+and the two spots that minimize it; the circles show the footprint. Figure 14 : Why the program transfers to LIBERO-Pro. (a) Mean object positions over the 50
+official and the 50 perturbed layouts, seen from above with the robot at the top; the
+perturbation exchanges the soup with the ketchup and the tomato sauce with the orange juice.
+Crosses mark the program’s first estimate of each can in every perturbed episode. (b) The
+distance between the program’s estimate of a can’s axis and the nearer can in the simulator,
+for the first agent-view estimate and for the wrist refit before each grasp, against the
+displacement of the two cans. The task takes the cans in either order, and in two perturbed
+episodes Gemini exchanged their labels; the rejected refits are those on the ketchup bottle. Why the program transfers. Nothing in the program refers to where the objects stood
+during exploration, so the perturbation changes its inputs but not its procedure. Under
+perturbation, its first estimate of each can’s axis lies within a median of 3.1 mm of the ground
+truth, against 2.9 mm on the official layouts, and the wrist refit within a median of 1.0 mm,
+while the cans themselves moved by 15 and 32 cm ( Figure 14 b); a policy that
+reproduced its official motions would miss each can by that displacement. The checks also absorb
+labelling errors. When Gemini placed the soup’s label on the ketchup bottle, which now stands
+where the soup stood in the official layouts, the wrist refit measured a top 3.7 cm across, and
+the program rejected it as not can-shaped, blacklisted its position, and found the soup in the
+next round. All six failures share one cause: the soup is not visible from the agent-view camera
+at the start, and the program, which re-perceives only from its home pose, stops with about 300
+steps left. The listings below condense the program’s main loop and give the agent’s code for
+the footprint reach and the choice of drop spots, without docstrings and one log line. {raxpseudo} run(), condensed from controller.py
+def run(robot):
+table_z = mode of the agent-view point heights
+repeat up to 3 rounds: # perceive anew in every round
+lids = flat, round plateaus in depth # depth alone
+labels = Gemini(agent view) # one pixel per can and the basket
+cans = [flood_fill(p) for p in labels if is_can(top width, height)]
+cans += lids that no label explains, minus blacklisted positions
+for can in order(cans): # stacked cans: the higher first
+hover 7 cm above the lid; refit the lid disk from wrist depth
+if not can_shaped(disk): blacklist(can); continue
+yaw = first of 0, 90, 45, -45 deg with clear finger zones
+descend to top - 3 cm; close; lift
+if not 3.5 cm < finger opening < 7.4 cm: continue
+if no basket map: map the basket from the wrist, holding the can
+spot = plan_spots(map) for the first can, else lowest_spot(remap)
+lower to the release height above the footprint reach; open; lift
+if task complete: return {raxcode} [firstnumber=148]basket.py \raxcodesep footprint reach and drop-spot planning
+def footprint_max(b, r=0.036):
+H = np.where(np.isfinite(b["H"]), b["H"], b["rim_z"]) # unobserved cells count as rim
+res = b["grid"][2]
+k = int(np.ceil(r / res))
+yy, xx = np.mgrid[-k:k + 1, -k:k + 1]
+fp = (xx ** 2 + yy ** 2) * res ** 2 <= r * r # disk of the can’s footprint
+return ndimage.maximum_filter(H, footprint=fp, mode="constant", cval=b["rim_z"]) def plan_spots(b, r=0.036, min_sep=0.068):
+F = footprint_max(b, r)
+ii, jj = np.nonzero(b["interior"])
+if len(ii) < 2:
+return None
+f = F[ii, jj]
+keep = np.argsort(f)[:400]
+ii, jj, f = ii[keep], jj[keep], f[keep]
+res = b["grid"][2]
+D = np.hypot(ii[:, None] - ii[None], jj[:, None] - jj[None]) * res
+cost = np.maximum(f[:, None], f[None]) + 0.5 * np.maximum(0.0, 0.08 - D)
+cost[D < min_sep] = np.inf
+a, c = np.unravel_index(np.argmin(cost), cost.shape)
+if not np.isfinite(cost[a, c]):
+return None
+s1, s2 = cell_xy(b["grid"], ii[a], jj[a]), cell_xy(b["grid"], ii[c], jj[c])
+return [(s1, float(f[a])), (s2, float(f[c]))] 11.2 Self-Calibration and Grasp Design: Tower of Hanoi with Two Dexterous Hands The bimanual Tower of Hanoi task of DexJoCo asks for the final two moves of a three-level tower:
+the medium red disk goes from the middle peg onto the large blue disk on the right peg, and the
+small yellow disk from the left peg on top of it. Two Franka arms carry 16-degree-of-freedom
+Allegro hands, and the disks slide over pegs that stand 13 cm above them, so a grasp has to hold
+a disk level as it travels along its peg without touching the peg. The agent received no grasp
+and no model of the hand, only the joint semantics and a few generic postures in its skills. It
+wrote a program that completed all 150 formal episodes
+on unseen layouts, in which the board shifts by up to 4.9 cm and the table height varies by as
+much. Measuring its own fingertips. The agent spent its first episode on its own hand,
+without touching a disk. It moved single joints of the right hand and lifted the wrist cameras’
+depth into world points to see what each joint moves, finding that the first thumb joint turns
+the thumb from pointing sideways to pointing straight down and that the last two flex its tip
+forward. It then held the posture it meant to grasp with, the index finger and the thumb both
+pointing down, segmented the white fingertip caps in the right wrist camera, lifted them to 3D,
+and split them into two clusters ( Figure 15 ). Relative to the measured flange,
+the thumb cluster lies at cm and the index cluster at cm; the agent adopted tip offsets of and cm,
+about 1 cm toward the centre of each tip, and every grasp of its program is built on them, as
+the first listing at the end of this section shows. The agent never saw a model of the hand, yet its thumb offset lies within
+1.1 mm of the fingertip of the official model. Its index offset lies 27 mm from the model’s,
+because the camera sees only the upper part of that cap, but the error shifts the planned pinch
+line by only about 8 mm across a 7.7 cm disk. The same measurements placed the wrist camera at cm from the flange, exactly where the official model puts it. Figure 15 : Measuring the fingertips with the wrist camera, in the agent’s first episode,
+re-run on its stored frames. (a) The right wrist camera with the hand in its grasp posture;
+the agent segments the white fingertip caps and splits them into two clusters. (b) The hand’s
+point cloud in the frame of the measured flange, with the two clusters and the tip offsets
+the agent adopted (stars). (c) A side view of the clusters, their centroids and the adopted
+offsets, with the fingertips of the official hand model, which the agent never saw, for
+comparison. Designing the grasp. The agent then designed its grasp by trying candidates on the red
+and yellow disks ( Figure 16 ). A palm-down hook pressed the palm onto the disk, and
+flexing the thumb turned the disk by 45 ∘ about its peg. A palm-down pinch at the wall of
+the disk lifted it, but the disk swung by about 40 ∘ about the pinch line, which the agent
+measured to pass 2.8 cm from the disk’s centre of mass, and a firmer squeeze dropped it. A side
+pinch lifted the yellow disk by 10 cm before it slipped back onto its peg, and a cage grasp left
+only 4 mm between the hand’s fixed thumb–index gap of 8.1 cm and the 7.7 cm red disk, so that
+only the thumb touched it. From these failures, the agent derived that rolling the hand by an
+angle moves the index edge of the palm m away from the
+thumb–index line, so that a roll of about 25 ∘ clears the peg and lets the pinch line pass
+through the centre of the disk. The resulting rolled vertical pinch, with a roll of 0.44 rad,
+held both disks through a 22 cm lift and a 40 cm carry in the fourth episode. Figure 16 : The grasps the agent tried, seen by the wrist camera of the grasping hand in
+its exploration episodes, with panels 3 and 4 rotated so that the peg stands upright. The first
+four failed for the reasons given below them; the rolled vertical pinch carried both disks and
+became the grasp of the program. The program. On every layout, the program measures the disks and pegs from the
+egocentric depth image, pinches both disks at once, and moves the red disk first while the left
+hand waits. It verifies every lift by measuring the held disk from three
+cameras, and it opens, backs off, and pinches again when the disk rose less than half of the lift.
+Because each arm keeps converging to its command after a move, the agent measured the tracking
+lag, which decays by a factor of 0.78 every five steps, and the program aligns the disk with the
+peg on its predicted final position rather than on its current one. Before submitting, the agent
+injected alignment errors of 8 and 15 mm and a missed pinch into its own runs, and the program
+recovered from all of them; its five versions completed all of their autonomous runs. Precision on unseen layouts. The program’s estimate of the target peg follows the hidden
+pose of the board across all 150 formal layouts, with residual standard deviations of 0.24, 0.05,
+and 0.18 mm in , , and height ( Figure 17 ). After placing the red disk, the
+program measures its top again and finds it on average 0.66 mm, and at most 1.0 mm, below the
+height it predicted from the blue disk, the counterpart of the 6.5 mm check on the air fryer
+( Section 14.2.1 ). Figure 17 : Perception on an unseen layout and precision over the 150 formal episodes, re-run with the agent’s code. (a) The egocentric point cloud, coloured by height, with the
+measured disks, the peg axes, the target peg, the thumb and index targets of both pinches, and
+the predicted seat of the red disk. (b) The height of the red disk measured after placement,
+minus the height the program predicted. (c) The program’s estimate of the target peg against
+the hidden pose of the board, both relative to their means over the 150 layouts. {raxcode} [firstnumber=10]task.py \raxcodesep tip offsets and the rolled vertical pinch
+TH_TIP = np.array([-0.024, 0.038, -0.163]) # default-frame right-hand thumb tip (th0=1.396, straight)
+IX_TIP = np.array([0.083, 0.036, -0.133]) # index tip, x1=1.57 straight
+R_T = 0.012
+ROLL = 0.44
+DISK_H = 0.05
+PEG_ABOVE_TOP = 0.135 # peg top above top of a disk resting on the board
+PRESHAPE = dict(ff=(0, 1.3, 0, 0), th=(1.396, 0, 0, 0))
+SQUEEZE = dict(ff=(0, 1.75, 0.5, 0.3), th=(1.396, 0, 0.7, 0.4))
+RELEASE = dict(ff=(0, 1.2, 0, 0), th=(1.396, 0, 0, 0))
+PARK = "right": np.array([-0.45, -0.40, 1.42]), "left": np.array([-0.45, 0.40, 1.42]) def pinch_pose(side, c, half, yaw, mid, gap_t=0.006, dz=-0.010):
+"""Flange pose so thumb tip is gap_t outside the near face and the thumb-index line crosses the centre."""
+c = np.asarray(c, float)
+th_off = world_offset(side, TH_TIP, ROLL, yaw)
+ix_off = world_offset(side, IX_TIP, ROLL, yaw)
+u = np.array([np.cos(yaw), np.sin(yaw)]); v = np.array([-np.sin(yaw), np.cos(yaw)])
+lat_t = (th_off[:2] @ v - ix_off[:2] @ v) / 2
+t_xy = c + (-half - R_T - gap_t) * u + lat_t * v
+t = np.array([t_xy[0], t_xy[1], mid + dz])
+flange = t - th_off
+rv = rotvec_near(hand_rot(side, ROLL, yaw), np.array([-np.pi, 0, 0]))
+return flange, rv {raxpseudo} run(), condensed from controller.py
+def run():
+disks = colour and depth boxes from the egocentric camera # measured on every layout
+pegs = depth column above each disk; target = fuse(blue disk, blue peg)
+pinch(red, right hand) and pinch(yellow, left hand) at once # rolled vertical pinch
+for hand, disk in [(right, red), (left, yellow)]:
+repeat up to 3 times:
+lift until the disk clears the peg top
+if the held disk rose less than half the lift: # three cameras
+open, back off, measure again, pinch again # GRASP FAILED
+carry: flange = target - (disk centre - measured flange)
+repeat up to 3 times: # settle, then predict the final pose
+lag = measured flange - command
+err = target - (disk centre - lag); stop if |err| < 4 mm
+lower onto the support; check the bottom; open; lift by 15 cm
+if disk is red: measure its top, predicted as the blue top + 5 cm 11.3 From Exploration to Code: Carrying a Hammer over a Bar on a Humanoid In the DoubleDesk task of HumanoidArena, a Unitree G1 humanoid has to take a hammer from one desk,
+carry it over a bar on the floor, and drop it into a basket on a second desk. The agent commands
+the robot through whole-body kinematic references that a learned tracker, SONIC, executes; it
+was given the tracker, three teleoperated demonstrations, a forward-kinematic model of the robot,
+and a tool that returns the level frame of the pelvis. Over 125 exploration episodes and 10.7 hours,
+it wrote a program of 3,639 lines in eleven files, of which the 637-line kinematic model is the
+one it was given. The program completed 34 of the 60 formal episodes; before submitting it, the
+agent predicted “roughly half to two-thirds”. Perception. Every quantity the program uses comes from the depth image of the head
+camera, lifted into a point cloud in the level frame of the pelvis ( Figure 18 ).
+The rotation into that frame comes from the provided tool, and the agent’s own fit of the floor
+plane by random sample consensus agrees with it to within 0.07 ∘ . On this cloud, the agent’s
+code finds the floor as the mode of the point heights, the bar as the dominant line among points 5
+to 11 cm above the floor, the desk tops and their near edges among upward-facing points, and the
+back wall, and it localizes the robot from the bar, the desks, and the wall against a map whose
+constants it measured itself. It finds the hammer by its orange handle, takes the handle’s
+principal axis, decides which end carries the head from the dark points beyond the handle, and
+measures its length, using the 0.302 to 0.310 m it found during exploration to place the centre when
+part of the hammer is hidden; on the unseen scene of Figure 18 , the length is
+0.305 m. It finds the basket as the largest cluster of
+points above a desk and fits a rectangle of 0.60 by 0.40 m with its rim 0.90 m above the floor,
+and it measures the distance of each sole from the bar by combining the fitted bar with the
+kinematic model. The program perceives anew at every stage and before every step at the bar, and
+after a grasp it confirms that the hammer is held by measuring the height of the handle again. Figure 18 : Perception on an unseen DoubleDesk scene, re-run with the agent’s code on
+the stored frames of one formal episode. (a) The head camera at the start, with the hammer the
+program finds and, enlarged, its axis and length. (b) The point cloud in the level frame,
+coloured by height, with the hammer and the bar fitted to it. (c) The last stance before the
+crossing, seen from above in the frame of the bar: the soles, the window from which the program
+starts a crossing, and the position of the left sole that the stance model predicted. (d) The
+basket found at the placing stance. Locomotion and the bar. The agent’s skills recommended walking by replaying a cycle cut
+from a teleoperated recording. The agent cut a symmetric 66-step cycle from one demonstration,
+looped it with a ramp in heading, and measured that its amplitude does not control the length of
+a single step, which varied by 10 cm; it therefore calibrated multi-step walks against its
+own localization and used them as a table of distances. Sidestepping moved the robot by 1 to 2 cm
+per cycle, so lateral placement turns and then walks. The crossing replays the step over the bar
+from one demonstration: with the recorded pitch, the pelvis did not travel and the lead foot
+landed on the bar, so the agent scaled the pitch to zero; perpendicular approaches landed the lead
+foot on the edge of the bar, so it approaches at 64 ∘ , where the swinging foot also reaches
+sideways; and it adds a trailing step when the robot ends astride the bar, after learning never
+to turn in that position. Whether a crossing succeeds depends on the stance from which it starts,
+and the agent built a model of how each step moves the two soles relative to the bar, from its
+own measurements of 102 transitions ( Figure 19 a). The model predicts that a left step
+places the left sole 14.5 cm ahead of the right one up to an amplitude of 0.35, and up to 25 cm
+at 0.6; a planner searches three actions ahead to bring the left sole into the window from which
+the program crosses. The bounds of that window are measured too: crossings started with the left
+sole within 21 cm of the bar succeeded in 17 of 17 trials, which set the far edge of the window
+at 21.5 cm, and the trailing sole is kept within
+37 cm of it, since the agent found that crossings with the trailing sole closer than 35.5 cm had
+succeeded 27 times out of 27, and those with it between 35.5 and 42 cm had fallen 4 times out of
+13. The agent then wrote its own Monte Carlo simulators of the approach, which replay the stance
+model with its measured errors, and used them to choose that margin, which lowered the simulated
+risk of a fall from 9.3 to about 6% at a cost of 0.3 actions. Over all 137 crossings in its logs,
+every crossing started with the trailing sole within 35.5 cm of the bar succeeded, and in the formal
+evaluation the robot crossed the bar in all 59 logged episodes without a fall
+( Figure 19 b). In the episode of Figure 18 c, the model predicted that the
+left step would bring the left sole to 16.7 cm before the bar, and the point cloud measured it at
+17.3 cm. Figure 19 : The stance model and the crossing window. (a) How far a left step from a
+squared stance places the left sole ahead of the right one, against the step amplitude: the
+agent’s measurements and the piecewise-linear model it wrote. (b) The positions of the two
+soles before the bar at every start of a crossing in exploration, rehearsal, and formal episodes,
+with the window that the program uses. The program and its versions. The program runs seven stages, each with its own
+checks: it approaches the hammer until the handle lies at about 60 ∘ to its heading, which
+the agent found to give grasps that hold; it grasps with up to two attempts, treating a closure
+without torque as a miss; it carries the hammer to the bar while correcting its odometry from the
+bar and the basket; it plans its stance at the bar and crosses only from the window; it verifies
+after the crossing that both soles are past the bar; and it finds the basket and places the hammer
+inside its fitted rectangle. Each stage has a deadline in steps, measured from the durations of
+earlier runs. The agent kept its own table of every stage in every episode, linked each failure to
+the change it made, and grew the program over more than thirty versions
+( Tables 18 and 20 ). Its interactive and rehearsal runs completed 41 of 82
+episodes, rising to 6 of 9 for the final versions, and in the formal evaluation most failures
+occurred at the grasp, which held in 40 of the 59 logged episodes. Table 18: Versions of the DoubleDesk program. From the agent’s own records.
+Completed counts interactive and rehearsal runs of each group of versions. Versions Main changes Failures that motivated them Completed up to v8 First full chain; localization from the bar and the basket; crossing window and
+stance planner; grasp retries; basket approach by turning, then walking Odometry off by
+0.55 m; a walk onto the bar; a fall from 25.6 cm; a false miss that dropped the hammer 4/13 v9–v9g Left step aimed by the stance model; handle at 60 ∘ ; deadlines; a subagent’s
+grasp measured at 3/13 against 13/22 and reverted Late grasps; sweeps of the desk 5/10 v9h–v9k Looser carrying posture; limited fine steps and backing off; window back to
+21.5 cm The arm over the head; the hammer lost; a fall from 22.4 cm 3/7 v9l–v9o Limits on the trailing sole; stance model refitted on 60 transitions with a
+calibration episode; correction of the handle axis A fall with the trailing sole
+41.8 cm back; a handle at 85 ∘ ; a flipped hammer 8/12 v9p–v9t Trailing-sole margin from the 27/27 against 4/13 record; search turn; stall
+guard; placing in a partly seen basket A fall in rehearsal; stalled steps; a basket
+not seen 6/13 v9u–v9u5b Re-approach; correction of lateral drift (9.5 cm, ); cycle guard; a
+faster place near the step limit Three to six actions at the bar; a rehearsal cut off
+with 49 steps left 9/18 v9v–v9w Turning toward the basket and looking before walking; position tolerance of
+9.5 cm Walks back at the basket; an overshoot of 35 cm 6/9 Figure 20 : The outcome of every stage in every program run, in interactive and rehearsal
+episodes grouped by version (left), and for the submitted version on the 60 formal episodes,
+ordered by outcome (right). Each column is one episode; the counts give completed episodes. {raxcode} [firstnumber=58]phases.py \raxcodesep the crossing window and its evidence
+BAR_GO = -0.215 # crossings from L >= -0.21 succeeded 17/17 (ep26-57); -0.232 (x1), -0.224 (x2) and -0.223
+# (ep43) crossed but -0.224 with R -0.396 fell (ep59), as did -0.256/-0.257
+BAR_MAX = -0.12
+R_GO_MIN = -0.37 # trailing (right) sole at the go: R > -0.355 crossed 27/27; R -0.42..-0.355 fell 4/13
+# (ep72 -0.364, R5 -0.374, ep59 -0.396, ep64 -0.418)
+R_PLAN_MIN = -0.355 # planned stances keep the right sole at least here (sim: fall risk 9 {raxcode} [firstnumber=252]phases.py \raxcodesep crossing with verification
+def cross_bar(r, log, f=None):
+"""Two high steps over the bar (demo01 replay, expert roll, no pitch). Returns True when both feet are past."""
+if f is None:
+f = C.measure_feet(r)
+lead = ’L’ # diagonal approach (heading = normal - 26 deg): the left foot leads
+r.step(C.cross_frames(r.base_joints(), r.base_yaw(), r.hands, mirror=(lead == ’R’), rp=1.0, pitch=0.0))
+r.hold(20)
+f2 = C.measure_feet(r)
+log(f"[bar] crossed lead lead: after None if f2 is None else (round(f2[’L’], 3), round(f2[’R’], 3))")
+if f2 is not None and min(f2[’L’], f2[’R’]) < 0.0 < max(f2[’L’], f2[’R’]):
+trail = ’L’ if f2[’L’] < f2[’R’] else ’R’
+log(f"[bar] straddle; trail step trail")
+r.step(C.cross_frames(r.base_joints(), r.base_yaw(), r.hands, 905, 965, mirror=(trail == ’L’), rp=1.0,
+pitch=0.0))
+r.hold(20)
+f2 = C.measure_feet(r)
+return f2 is None or min(f2[’L’], f2[’R’]) > 0.0 {raxpseudo} run() and deliver(), condensed from controller.py
+def run():
+approach the hammer until the handle lies at about 60 deg # search turns if unseen
+grasp with up to 2 attempts # a closure without torque is a miss
+while not held and step < 1000: # deadlines measured from earlier runs
+re-approach if the hammer moved out of reach; grasp again
+deliver() def deliver():
+carry: locate from the bar and the basket; turn; walk a calibrated distance; face 64 deg
+repeat up to 3 times:
+repeat up to 8 times: # stance planning at the bar
+measure L, R from depth and kinematics
+action = bar_action(L, R) # go, left step, right step, back, or walk
+if action is go: break
+if cross_bar(): break # both soles past the bar
+raise the hand; find the basket (up to 6 looks); place inside the fitted rectangle 11.4 Adaptation Under Perturbation on LIBERO-Pro After its exploration on unperturbed layouts, RAX may adapt its program to the perturbed
+distribution of LIBERO-Pro. A subagent reads the program, the description of the perturbed
+task, and the first frame of a perturbed layout, and judges whether the program will transfer.
+When it judges that the program will not, the agent resumes from its workspace, with the notes
+and code of its exploration, and continues for at most 5 episodes on perturbed layouts before the
+program is evaluated again on its own. In this mode, RAX runs as an agent-in-the-loop program
+across the change of distribution: the program acts alone, and the agent steps in only to
+revise it, so that adaptation exercises the continual learning of Section 3.4 . The
+agent adapted its program on five of the 40 tasks, tasks 3, 8, and 9 of the Long suite and
+tasks 1 and 5 of the Goal suite ( Table 19 ). Table 19: Tasks adapted to LIBERO-Pro. Success rate (%) on the 50 position-perturbed
+states before and after adaptation, with the exploration episodes it used. Task Instruction Episodes Before after Long 3 put the black bowl in the bottom drawer of the cabinet and close it 5 0 100 Long 8 put both moka pots on the stove 5 0 100 Long 9 put the yellow and white mug in the microwave and close it 4 0 2 Goal 1 put the bowl on the stove 5 2 96 Goal 5 push the plate to the front of the stove 4 2 44 A mirrored cabinet. The third task of the Long suite asks the robot to put the black bowl
+in the bottom drawer of the cabinet and close it. The program solved all 50 official states, but
+LIBERO-Pro places the cabinet on the other side of the table, facing the other way
+( Figure 21 a,b), and the program, whose code assumed a drawer that opens toward , failed in all 50 perturbed states. Its checks kept it from acting blindly: in 38 of them, it
+found no drawer panel where it expected one and stopped at the first step. Resuming from its
+workspace, the agent identified the cause in its first episode on the perturbed layouts and,
+rather than rewriting the program, added a 36-line layer that mirrors the frame in which it
+plans: points, orientations, and action rows are reflected across the plane whenever the
+cabinet stands at (the listing below). The program decides the side itself, from the flat top
+of the cabinet in the agent-view point cloud ( Figure 21 c). In a stress test, the agent
+moved the wine bottle in front of the drawer and found that its detector of the drawer panel took
+the bottle for the panel; it narrowed the detector’s window, and with its five episodes spent, the
+adapted program completed all 50 perturbed states ( Figure 21 d). Figure 21 : Adapting to a mirrored cabinet. (a) An official layout of the third Long task
+and (b) the same layout under the LIBERO-Pro perturbation, which moves the cabinet to the other
+side of the table. (c) The adapted program’s check of the side, re-run on both first frames:
+level cells of the cabinet top above 1.08 m (orange) on either side of the robot, counted on
+the height map of the agent-view point cloud. (d) The adapted program on the perturbed layout,
+with the bowl in the drawer. {raxcode} frame.py \raxcodesep the mirror layer added during adaptation (excerpt)
+"""World <-> planning frame. The controller plans in a frame where the cabinet stands at +y and its drawer opens
+toward -y (the layouts it was developed on). A cabinet at -y facing +y (swapped layouts) is handled by mirroring
+y: points (x, -y, z), rotation vectors (-wx, wy, -wz) (pseudovector under the reflection), action rows likewise.
+The mirror is an involution, so the same functions map both ways."""
+MIRROR = False def pts(P):
+if not MIRROR:
+return P
+P = np.array(P, dtype=float, copy=True)
+P[…, 1] *= -1
+return P # state(s) mirrors the 8-D state in the same way def row(r):
+"""7-D action row [dx, dy, dz, drx, dry, drz, grip]."""
+r = list(r)
+if MIRROR:
+r[1], r[3], r[5] = -r[1], -r[3], -r[5]
+return r

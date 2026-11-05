@@ -1,0 +1,95 @@
+4 The RAX System RAX supports a wide range of embodiments in simulation and in the real world, including
+single-arm and bimanual manipulators, dexterous hands, mobile manipulators, and humanoids, with
+one agent architecture. To do so, it adopts a separation familiar from software engineering, in
+which a frontend is kept apart from the backend that serves it. In RAX, the backend is the robot’s physical stack: the
+hardware drivers or the simulator, the low-level controllers, the sensor pipelines, and the
+safeguards around them. The frontend is the agent’s workspace, where the agent observes,
+decides, and acts, and where it writes the programs that encode its decision logic. The two meet
+only at a tool interface ( Figure 4 ), and the same frontend connects to the backend of every platform, from
+the real Franka and Rainbow RB-Y1 robots to each simulated benchmark. The agent never touches the
+backend: it cannot modify controllers, drivers, or robot infrastructure. Because the agent acts only through these tools, its programs contain the
+decision logic of a task, namely perception, planning, and the checks between stages, while
+low-level control, from joint-level PD control to whole-body motion tracking on humanoids, and
+the enforcement of safety limits remain in the backend. The remainder of this
+section describes the separation and what each side provides ( Section 4.1 ), and the
+control interface through which one frontend drives arms, dexterous hands, mobile manipulators,
+and humanoids ( Section 4.2 ). 4.1 Frontend–Backend Separation Figure 4 : Frontend–backend separation. The agent and its programs act only through the
+tool interface; the backend owns control, sensing, and safeguards on every platform. On a real robot, the backend owns everything that keeps the hardware calibrated and safe. It runs
+the vendor’s drivers and real-time controllers, serves calibrated RGB-D images together with the
+intrinsics and poses of their cameras, and records the robot’s sensors and state continuously,
+so that the agent can review the outcome of an action after the fact. It also enforces the
+safeguards. Motion is enabled only while an operator has armed the robot, and disarming halts it
+immediately; every motion command is validated before execution against workspace bounds, joint
+limits, and self-collision, and on the RB-Y1 mobile manipulator also against joint load. A command that violates
+a limit is refused before the robot moves, together with the limit it violated, so that the agent
+can change its approach. The frontend receives exactly two things from the system, tools and skills. The tools expose as much of the backend as
+possible: observation, raw control, and model-based helpers in the form of forward and inverse
+kinematics, motion planning where the platform offers it, and a preview that executes a candidate
+motion on the robot model alone, without the scene. They also provide the geometric primitives on
+which perception is built, namely the back-projection of pixels to metric 3D points, the poses of
+the cameras in the robot’s frame, and the kinematic chain from each camera to the end-effectors.
+The skills are documents that describe how to work with these tools: the robot’s frames,
+action spaces, rates, limits, and failure modes, the conventions of perception, and the workflow
+of exploration and memory. They are organized along four axes, namely task strategy,
+coordination, perception, and robot-specific control, and are composed into a single workspace
+for each session according to its embodiment and observation mode. Everything that solves a task,
+from object models and perception pipelines to grasps and control code, is written by the agent,
+which works in an isolated container with a persistent workspace and standard programming tools. Figure 5 : A long-horizon task on the real RB-Y1. The agent composes six sub-tasks from skills
+learned in earlier sessions. It finds the cups from Gemini’s rim points and depth, measures the desk
+edge by picking points in the head image, and plans the base routes on a model of the scene. This division has three consequences. First, programs written by the agent call exactly
+the tools that the agent itself calls, so code developed interactively runs unchanged as
+a fully automated program. Second, the interface returns compact results, consisting of
+structured state and the final image of each motion, while the complete images and actions of
+every motion are stored as episodic evidence that the agent retrieves on demand, which keeps the
+agent’s context small over sessions that last many hours. Third, on real robots, the skills that
+agents verify are kept in a versioned repository for each robot, in which every session works on
+its own branch, and a contribution is merged only after its structure, its entry point, and the
+evidence of its unattended success have been validated. Most importantly, the separation makes RAX multi-embodiment by construction. Bringing up a new
+robot requires only a backend that exposes it through the tool interface, together with documentation of its control and
+sensing interfaces, while the frontend, the organization of
+memory, and the evaluation protocol are
+shared across all platforms. No expert teleoperation data is collected and no policy is trained to bring a robot into
+RAX. The single-arm, bimanual, dexterous, mobile, and humanoid embodiments of our experiments,
+in simulation and in the real world, differ only in their backends and in the
+documentation of their interfaces, and the agent learns to control each of them through exploration. 4.2 Multi-Embodiment Control Interface RAX adopts a layered control design. Low-level controllers, from joint position and impedance controllers to whole-body motion
+trackers, run in the backend and are responsible for high-rate tracking and
+stability, while the agent makes decisions at the level of short action chunks and motion goals.
+Each platform exposes raw control for full expressiveness, together with model-based helpers in
+the form of forward and inverse kinematics, collision-aware motion
+planning ( Sundaralingam et al., 2023 ) , and a robot-only preview that executes a candidate
+motion on the robot model without the scene. The agent thus chooses its own level of
+abstraction, from individual joint targets to planned free-space motions. Table 1 summarizes this construction for each platform. Table 1: Low-level control on each platform. EEF: end effector; OSC: operational-space
+control; PD: proportional-derivative. Platform Low-level control Agent action space Model-based helpers LIBERO, LIBERO-Pro single-arm Franka Panda EEF pose control (OSC) EEF position and rotation deltas; gripper command Pixel-to-3D projection from depth RoboDojo dual-arm ARX X5 Joint position control (PD) Joint-target chunks for both arms and grippers; bounded EEF steps Forward kinematics, differential IK, pose algebra, collision-aware motion
+planning, robot-only preview DexJoCo Franka Panda + Allegro hands Arm: EEF pose control (OSC); hand: joint position control Flange pose and sixteen hand joint targets per arm, single- or dual-arm Pixel-to-3D projection from depth, robot-only preview BEHAVIOR-1K Galaxea R1Pro Base velocity control; trunk and arm joint position control Base velocity, trunk and arm joint targets, grippers; closed-loop base moves
+from odometry Closed-loop arm IK, arm and trunk motion planning, robot-only preview HumanoidArena Unitree G1 + Dex3 Whole-body motion tracker Whole-body reference frames: heading, 29 joint targets, hand open or close Arm and waist motion planning to hand poses; kinematic model for forward
+kinematics and image projection Franka FR3 real Joint impedance control Straight-line EEF moves, joint moves, force-controlled grasps Inverse kinematics; path checks against workspace and table Rainbow RB-Y1 real, mobile manipulator Joint position control; Cartesian IK commands for torso and arms; wheel velocity
+control EEF poses; torso, arm, and head joint targets; coordinated torso and arm motions; base
+motion; head gaze Forward and inverse kinematics; dry-run checks of collision, joint load, and
+center of mass On the real robots, the backend wraps each vendor’s own control stack. The Franka FR3 arm runs joint impedance control, and the agent commands straight-line Cartesian
+moves of the tool center point, joint-space moves whose paths are checked against the workspace
+and the table before the arm moves, and force-controlled grasps that close the gripper to a
+target width with a set force. The Rainbow RB-Y1, a wheeled mobile manipulator with a torso, two arms, and
+a two-joint head that carries an RGB-D camera, runs joint position control on its robot controller,
+which also accepts Cartesian IK commands for the torso and arms. The agent commands end-effector
+poses, joint-space postures of the torso, arms, and head, coordinated motions of the torso and arms, motions
+of the differential-drive base, and the gaze of the head camera. It can query the vendor’s
+kinematic model for the collisions, joint load, and center of mass of any posture, and dry-run any
+motion command to learn whether it would be accepted. Neither robot offers a motion planner, so
+the agent composes long motions from short checked moves through clear intermediate postures. On the HumanoidArena
+benchmark ( Wang et al., 2026b ) , the agent commands the Unitree G1 through whole-body
+kinematic references rather than joint torques: each reference specifies a desired heading, a
+full joint configuration, and hand commands, and a whole-body motion tracker converts these references into balanced whole-body motion. Because the robot moves through space only by
+stepping, locomotion is not provided as a primitive but must be constructed by the agent from leg
+references, and agents do so by measuring their own gait, calibrating step length, and composing
+walking, turning, and stepping over obstacles from these measurements. On DexJoCo ( Wang et al., 2026a ) , the official
+operational-space controller tracks the flange pose of each arm while position actuators drive
+the sixteen joints of each Allegro hand, and no motion planner is
+provided, so the agent plans the motion of each arm and the configuration of each hand itself. The remaining simulated
+platforms span the same range of abstraction. The single arm of LIBERO and
+LIBERO-Pro ( Liu et al., 2023 ; Zhou et al., 2025 ) is driven through the benchmark’s own
+operational-space controller by relative end-effector commands alone, whereas on
+RoboDojo ( Chen et al., 2026a ) and BEHAVIOR-1K ( Li et al., 2023 ) the native controllers
+execute joint targets under each benchmark’s own dynamics, and inverse kinematics and motion
+planning are offered as helpers alongside raw control rather than as replacements for it. Motion
+planning accounts for the robot and static structures but never for task objects, which the agent
+must perceive itself.

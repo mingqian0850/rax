@@ -1,0 +1,13 @@
+6 Discussion Progress in robot learning has largely been driven by collecting more demonstrations and
+training larger models. Our results show that a capable agent, when allowed to explore, continues to
+improve with the experience it accumulates, without teleoperation and without updates to its
+parameters. Because this form of learning relies on general-purpose agents whose capabilities are
+advancing rapidly in other domains, every improvement in those agents translates directly into
+improved robot learning. The knowledge acquired by RAX agents takes the form of perception and control programs,
+skills, and notes. In this form, knowledge executes at the rate of the robot, can be inspected
+and verified, composes into longer behaviors, and transfers across tasks, and we
+expect code to play the same role for learning from experience that network parameters play
+for learning from data. Since the instructions, skills, and memory structures of RAX are
+themselves code and text, a natural next step is to let agents improve the architecture itself
+from experience, and to share verified skills across fleets of robots, so that a skill learned
+by one robot becomes available to all.

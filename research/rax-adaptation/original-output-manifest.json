@@ -1,0 +1,284 @@
+[
+  {
+    "original_path": "outputs/adaptation-note-example.md",
+    "archive_path": "research/rax-adaptation/outputs/adaptation-note-example.md",
+    "sha256_original": "f0bc8820588ef9fec21e0229f4fb9d9cbba78d6981590cc450d1c100624b5564",
+    "bytes": 464,
+    "sha256_archived": "f0bc8820588ef9fec21e0229f4fb9d9cbba78d6981590cc450d1c100624b5564"
+  },
+  {
+    "original_path": "outputs/阅读进度.md",
+    "archive_path": "research/rax-adaptation/outputs/阅读进度.md",
+    "sha256_original": "7c0ade29595ce1233fc1d1a84f5ab0f06aac342166e3cf87b42ab115d2fc9ade",
+    "bytes": 4026,
+    "sha256_archived": "7c0ade29595ce1233fc1d1a84f5ab0f06aac342166e3cf87b42ab115d2fc9ade"
+  },
+  {
+    "original_path": "outputs/simulator-env-setup.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-env-setup.log",
+    "sha256_original": "e43e380fb963c4d224f9edcfb1f02a8be2acb651f717ae2403e4b8faf0ae0ca2",
+    "bytes": 81852,
+    "sha256_archived": "e43e380fb963c4d224f9edcfb1f02a8be2acb651f717ae2403e4b8faf0ae0ca2"
+  },
+  {
+    "original_path": "outputs/libero-data-setup.log",
+    "archive_path": "research/rax-adaptation/outputs/libero-data-setup.log",
+    "sha256_original": "0a274b952424aea25832a0f3368c555ce2e09c073b82eae859e9f853fdb057de",
+    "bytes": 809,
+    "sha256_archived": "0a274b952424aea25832a0f3368c555ce2e09c073b82eae859e9f853fdb057de"
+  },
+  {
+    "original_path": "outputs/guide-shell-syntax.json",
+    "archive_path": "research/rax-adaptation/outputs/guide-shell-syntax.json",
+    "sha256_original": "a857f80744d49fee9b2de9d02e7f460895251fb07e965631146d14496eecd8aa",
+    "bytes": 1300,
+    "sha256_archived": "a857f80744d49fee9b2de9d02e7f460895251fb07e965631146d14496eecd8aa"
+  },
+  {
+    "original_path": "outputs/tests-libero-pinned-host.log",
+    "archive_path": "research/rax-adaptation/outputs/tests-libero-pinned-host.log",
+    "sha256_original": "51c6b7e68447269d0e9bba7bf9017db73cc4d483bbf2eb45058c378ce99ba05b",
+    "bytes": 180,
+    "sha256_archived": "51c6b7e68447269d0e9bba7bf9017db73cc4d483bbf2eb45058c378ce99ba05b"
+  },
+  {
+    "original_path": "outputs/simulator-build-tools.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-build-tools.log",
+    "sha256_original": "b0df4e6f54d0c4358f9855846902fa8405893af1d6657db0a563403e68fcd3a9",
+    "bytes": 3116,
+    "sha256_archived": "b0df4e6f54d0c4358f9855846902fa8405893af1d6657db0a563403e68fcd3a9"
+  },
+  {
+    "original_path": "outputs/libero-init-data-check.json",
+    "archive_path": "research/rax-adaptation/outputs/libero-init-data-check.json",
+    "sha256_original": "0fcbce52c542c6c2bc4f4fa8ac78d559afc0d02c645754fdc4703ef605a4efe3",
+    "bytes": 1619,
+    "sha256_archived": "0fcbce52c542c6c2bc4f4fa8ac78d559afc0d02c645754fdc4703ef605a4efe3"
+  },
+  {
+    "original_path": "outputs/verify_adaptation_offline.py",
+    "archive_path": "research/rax-adaptation/outputs/verify_adaptation_offline.py",
+    "sha256_original": "2fca84e6a1c28ee5da18dc10f07086c8775493e4281911126e3049ff24d1ba9f",
+    "bytes": 3833,
+    "sha256_archived": "9c38110d5ba89244fa9c066738be9228e16dce2c4a5c3d025f1be58a38b32e2e",
+    "archive_change": "Portable repository discovery and temporary-directory creation for the offline verification script; source workspace copy remains unchanged.",
+    "change_note": "Portable source discovery: RAX_SOURCE_REPO, ignored pinned checkout, and original workspace fallback."
+  },
+  {
+    "original_path": "outputs/patchelf-install.log",
+    "archive_path": "research/rax-adaptation/outputs/patchelf-install.log",
+    "sha256_original": "ebca534286f6f12c795e6144fb5377203b58e0947d49c2a4b9505a76f019d2d4",
+    "bytes": 1247,
+    "sha256_archived": "ebca534286f6f12c795e6144fb5377203b58e0947d49c2a4b9505a76f019d2d4"
+  },
+  {
+    "original_path": "outputs/tests-real--franka.log",
+    "archive_path": "research/rax-adaptation/outputs/tests-real--franka.log",
+    "sha256_original": "7b8aa2a255b31b44fed4fff85ae9c44702e7624b1eee8ee9b954c0cae2b25994",
+    "bytes": 272,
+    "sha256_archived": "7b8aa2a255b31b44fed4fff85ae9c44702e7624b1eee8ee9b954c0cae2b25994"
+  },
+  {
+    "original_path": "outputs/本地验证指南.md",
+    "archive_path": "research/rax-adaptation/outputs/本地验证指南.md",
+    "sha256_original": "70f62e1ac76e1dd7498cb17fe8664100ce2f20c14a83d592694ce1e9c03bf8ed",
+    "bytes": 10566,
+    "sha256_archived": "70f62e1ac76e1dd7498cb17fe8664100ce2f20c14a83d592694ce1e9c03bf8ed"
+  },
+  {
+    "original_path": "outputs/data-integrity.json",
+    "archive_path": "research/rax-adaptation/outputs/data-integrity.json",
+    "sha256_original": "1dd8117c9703224939c34b6b8dd3fdb68c03c2c82f071b0548cb4e3404cd86fc",
+    "bytes": 58486,
+    "sha256_archived": "1dd8117c9703224939c34b6b8dd3fdb68c03c2c82f071b0548cb4e3404cd86fc"
+  },
+  {
+    "original_path": "outputs/simulator-import-recheck.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-import-recheck.log",
+    "sha256_original": "62207badcd44fe426a4d0ade902769155776de9df4e8ea15e268b1c2d0420736",
+    "bytes": 1231,
+    "sha256_archived": "62207badcd44fe426a4d0ade902769155776de9df4e8ea15e268b1c2d0420736"
+  },
+  {
+    "original_path": "outputs/simulator-import-check.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-import-check.log",
+    "sha256_original": "666184be0eea38adf62933f831110adf4b85b2bf4697cca4eccdb564bd39a0cf",
+    "bytes": 854,
+    "sha256_archived": "666184be0eea38adf62933f831110adf4b85b2bf4697cca4eccdb564bd39a0cf"
+  },
+  {
+    "original_path": "outputs/shell-syntax-checks.json",
+    "archive_path": "research/rax-adaptation/outputs/shell-syntax-checks.json",
+    "sha256_original": "faffdfd4f38a53a4937fb835e366161207b2d01e6479f03f88708e1b430d0088",
+    "bytes": 9352,
+    "sha256_archived": "faffdfd4f38a53a4937fb835e366161207b2d01e6479f03f88708e1b430d0088"
+  },
+  {
+    "original_path": "outputs/torch-compat-patch.json",
+    "archive_path": "research/rax-adaptation/outputs/torch-compat-patch.json",
+    "sha256_original": "0c83b459431e9742175746839cacd18973ae8f5a08d508de38c94bf62b520f42",
+    "bytes": 666,
+    "sha256_archived": "0c83b459431e9742175746839cacd18973ae8f5a08d508de38c94bf62b520f42"
+  },
+  {
+    "original_path": "outputs/tests-libero-core.log",
+    "archive_path": "research/rax-adaptation/outputs/tests-libero-core.log",
+    "sha256_original": "4ebcfea0b549a762d110a71bd76e5badc8ce5f33df62921384f5f07baca2ed9d",
+    "bytes": 180,
+    "sha256_archived": "4ebcfea0b549a762d110a71bd76e5badc8ce5f33df62921384f5f07baca2ed9d"
+  },
+  {
+    "original_path": "outputs/host-pip-freeze.txt",
+    "archive_path": "research/rax-adaptation/outputs/host-pip-freeze.txt",
+    "sha256_original": "e0decc4890482ee428a11b2daa5fa4ec455b8d9a75cdd9053257817dd7ff8dd2",
+    "bytes": 531,
+    "sha256_archived": "e0decc4890482ee428a11b2daa5fa4ec455b8d9a75cdd9053257817dd7ff8dd2"
+  },
+  {
+    "original_path": "outputs/reading_summary.json",
+    "archive_path": "research/rax-adaptation/outputs/reading_summary.json",
+    "sha256_original": "018db6b2f83236469969bae7280328cd8f800093f4be96127fdaad75ad701e97",
+    "bytes": 709,
+    "sha256_archived": "018db6b2f83236469969bae7280328cd8f800093f4be96127fdaad75ad701e97"
+  },
+  {
+    "original_path": "outputs/source-lock.json",
+    "archive_path": "research/rax-adaptation/outputs/source-lock.json",
+    "sha256_original": "eba234ddac87f5c5eb6d110e8f7b154dd96a34a679882e32f0656f089031e47d",
+    "bytes": 5205,
+    "sha256_archived": "eba234ddac87f5c5eb6d110e8f7b154dd96a34a679882e32f0656f089031e47d"
+  },
+  {
+    "original_path": "outputs/simulator-doctor.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-doctor.log",
+    "sha256_original": "88ea25f237c91c019b8222699b826ea4456c4a644da7e2db3e7f42ac36ed7a8c",
+    "bytes": 268,
+    "sha256_archived": "88ea25f237c91c019b8222699b826ea4456c4a644da7e2db3e7f42ac36ed7a8c"
+  },
+  {
+    "original_path": "outputs/环境验收.md",
+    "archive_path": "research/rax-adaptation/outputs/环境验收.md",
+    "sha256_original": "96a8a042935b8f9459c093c18b66882349fa9c9c22bd8cac81eaf2f647b68c91",
+    "bytes": 5523,
+    "sha256_archived": "96a8a042935b8f9459c093c18b66882349fa9c9c22bd8cac81eaf2f647b68c91"
+  },
+  {
+    "original_path": "outputs/simulator-pip-check.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-pip-check.log",
+    "sha256_original": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "bytes": 30,
+    "sha256_archived": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  },
+  {
+    "original_path": "outputs/code_inventory.json",
+    "archive_path": "research/rax-adaptation/outputs/code_inventory.json",
+    "sha256_original": "881624406aee7b550f3e2cb8ef79f5e70043ba3819192f06668f7b8800430feb",
+    "bytes": 4406543,
+    "sha256_archived": "881624406aee7b550f3e2cb8ef79f5e70043ba3819192f06668f7b8800430feb"
+  },
+  {
+    "original_path": "outputs/tests-real--rainbow.log",
+    "archive_path": "research/rax-adaptation/outputs/tests-real--rainbow.log",
+    "sha256_original": "2a18dd2c7662f505ef6e7dde55abf82b4874deb77d362c1b635a4e820449a1f1",
+    "bytes": 272,
+    "sha256_archived": "2a18dd2c7662f505ef6e7dde55abf82b4874deb77d362c1b635a4e820449a1f1"
+  },
+  {
+    "original_path": "outputs/simulator-pip-freeze.txt",
+    "archive_path": "research/rax-adaptation/outputs/simulator-pip-freeze.txt",
+    "sha256_original": "0dd6131294681ac34560f74f2c8e3571a88877961c8a78db301f133120d9b1cf",
+    "bytes": 1956,
+    "sha256_archived": "0dd6131294681ac34560f74f2c8e3571a88877961c8a78db301f133120d9b1cf"
+  },
+  {
+    "original_path": "outputs/RAX适配机制与代码阅读.md",
+    "archive_path": "research/rax-adaptation/outputs/RAX适配机制与代码阅读.md",
+    "sha256_original": "a44266d116386086cfc445610986943e158e0bc0325924b548c7cf0c48e56845",
+    "bytes": 14998,
+    "sha256_archived": "a44266d116386086cfc445610986943e158e0bc0325924b548c7cf0c48e56845"
+  },
+  {
+    "original_path": "outputs/实验记录模板.json",
+    "archive_path": "research/rax-adaptation/outputs/实验记录模板.json",
+    "sha256_original": "2d75f0a0fe33d8c3e1bb334ddb8dc4e44d51e0ffada4d7b2c2f394bac56fa542",
+    "bytes": 2373,
+    "sha256_archived": "2d75f0a0fe33d8c3e1bb334ddb8dc4e44d51e0ffada4d7b2c2f394bac56fa542"
+  },
+  {
+    "original_path": "outputs/simulator-env-retry.log",
+    "archive_path": "research/rax-adaptation/outputs/simulator-env-retry.log",
+    "sha256_original": "9dfff7413b39586a0ae1ee52a6c9f76efb5f026654bfb6a97a1dce27615825b0",
+    "bytes": 42308,
+    "sha256_archived": "9dfff7413b39586a0ae1ee52a6c9f76efb5f026654bfb6a97a1dce27615825b0"
+  },
+  {
+    "original_path": "outputs/miniforge-install.log",
+    "archive_path": "research/rax-adaptation/outputs/miniforge-install.log",
+    "sha256_original": "0e57973a9aa56de65d6d761f0fd765b773d06401e5d902a73b79bc99b8c6af75",
+    "bytes": 25871,
+    "sha256_archived": "0e57973a9aa56de65d6d761f0fd765b773d06401e5d902a73b79bc99b8c6af75"
+  },
+  {
+    "original_path": "outputs/阅读覆盖.md",
+    "archive_path": "research/rax-adaptation/outputs/阅读覆盖.md",
+    "sha256_original": "c01c41080e0d337d7e336978da270e7fb8f6539aa9b6c37881707ef58fec68a3",
+    "bytes": 6623,
+    "sha256_archived": "c01c41080e0d337d7e336978da270e7fb8f6539aa9b6c37881707ef58fec68a3"
+  },
+  {
+    "original_path": "outputs/simulator-conda-explicit.txt",
+    "archive_path": "research/rax-adaptation/outputs/simulator-conda-explicit.txt",
+    "sha256_original": "c03cbc7e39d209dd1d5f12f935b3570f72e616ab0413b7eceabde6bbe8cf14c2",
+    "bytes": 4633,
+    "sha256_archived": "c03cbc7e39d209dd1d5f12f935b3570f72e616ab0413b7eceabde6bbe8cf14c2"
+  },
+  {
+    "original_path": "outputs/host-env-setup.log",
+    "archive_path": "research/rax-adaptation/outputs/host-env-setup.log",
+    "sha256_original": "689b52b9c11777ac8d46e4206a5674c1c2ae73d2636d59603efcc4e5c641c0f4",
+    "bytes": 13706,
+    "sha256_archived": "689b52b9c11777ac8d46e4206a5674c1c2ae73d2636d59603efcc4e5c641c0f4"
+  },
+  {
+    "original_path": "outputs/host-pip-check.log",
+    "archive_path": "research/rax-adaptation/outputs/host-pip-check.log",
+    "sha256_original": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "bytes": 30,
+    "sha256_archived": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  },
+  {
+    "original_path": "outputs/host-conda-explicit.txt",
+    "archive_path": "research/rax-adaptation/outputs/host-conda-explicit.txt",
+    "sha256_original": "3fbc5c3b4cca8f7a2402e6dd7ca25d433ed5aaf2d0f27c87c2eb287d0a96e5ad",
+    "bytes": 2350,
+    "sha256_archived": "3fbc5c3b4cca8f7a2402e6dd7ca25d433ed5aaf2d0f27c87c2eb287d0a96e5ad"
+  },
+  {
+    "original_path": "outputs/adaptation-offline-check.json",
+    "archive_path": "research/rax-adaptation/outputs/adaptation-offline-check.json",
+    "sha256_original": "bf709170a09f8e03a7aafe0a0aa52943bef61a70e9f56a31e0589c1ebf11aeca",
+    "bytes": 467,
+    "sha256_archived": "bf709170a09f8e03a7aafe0a0aa52943bef61a70e9f56a31e0589c1ebf11aeca"
+  },
+  {
+    "original_path": "outputs/全代码导航.md",
+    "archive_path": "research/rax-adaptation/outputs/全代码导航.md",
+    "sha256_original": "e86e82405c00c3d15c46b0afcd5abeb8eecebee812ef045efebe814f656f2749",
+    "bytes": 593433,
+    "sha256_archived": "e86e82405c00c3d15c46b0afcd5abeb8eecebee812ef045efebe814f656f2749"
+  },
+  {
+    "original_path": "outputs/host-doctor.log",
+    "archive_path": "research/rax-adaptation/outputs/host-doctor.log",
+    "sha256_original": "336b76032d6f8a3c91ac5c55598bc2923c4d89a126bcd413350b91dc97be03c4",
+    "bytes": 519,
+    "sha256_archived": "336b76032d6f8a3c91ac5c55598bc2923c4d89a126bcd413350b91dc97be03c4"
+  },
+  {
+    "original_path": "outputs/libero-first-doctor/doctor-report.json",
+    "archive_path": "research/rax-adaptation/outputs/libero-first-doctor/doctor-report.json",
+    "sha256_original": "8fccb4058b1002d5258c3bb56f03bacbe10b9af41674870b4863e2245f73c279",
+    "bytes": 210,
+    "sha256_archived": "8fccb4058b1002d5258c3bb56f03bacbe10b9af41674870b4863e2245f73c279"
+  }
+]

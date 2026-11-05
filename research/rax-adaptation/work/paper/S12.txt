@@ -1,0 +1,32 @@
+12 Exploration Budget of ASPIRE on LIBERO-Pro ASPIRE ( Lu et al., 2026 ) writes robot programs in CaP-X ( Fu et al., 2026 ) with Claude Code
+and Claude Opus 4.6. Its programs call the CaP-X interfaces for perception, including
+text-prompted segmentation and vision-language pointing, for grasp planning, including a
+top-down grasp selector, for inverse kinematics, and for joint-space motion, and they may not
+read the simulator’s ground-truth state. On LIBERO-Pro, the unit of development is a task under
+one perturbation: each of the 30 tasks of the Spatial, Object, and Goal suites is developed
+separately for the position and the task perturbation, giving 60 programs, each written for
+its own perturbed suite. For each task and perturbation, ASPIRE executes an initial program on a debugging split of 15
+environment seeds (51–65), where a seed fixes one instance of the task, including object
+poses, distractors, and the initial state of the robot. After each execution, the coding agent
+reads a trace of every primitive call, with its inputs, outputs, and return status, the camera
+frames before and after the call, grasp candidates, object poses, and motion-planning results.
+It diagnoses the failure, patches the program, and replays the debugging seeds, with at most
+three replays per seed. On some tasks, an evolutionary search additionally proposes candidate programs per iteration, conditioned on the three best programs and their failure
+traces, and executes each candidate on the debugging split; the reported searches run for up
+to four iterations, and is not reported. The final program is executed once on a
+validation split of 15 further seeds (66–80) and then evaluated on seeds 1–50. A coordinator
+promotes validated repairs into a shared library of skills, each stored with its failure
+signature, its condition of use, its repair strategy, and a code sketch, which later sessions
+read as in-context guidance. With the same loop on Claude Opus 5, Kang et al. (2026) report
+a median of 0.99 hours and 91 thousand output tokens per task and perturbation. The debugging and validation seeds index instances of the same perturbed suite as the
+evaluation seeds, so every rollout before the final evaluation is drawn from the distribution
+on which the program is evaluated. This is also required by the task perturbation, which
+changes the goal of the task: a program developed on the original task would pursue the
+original goal. ASPIRE’s result on the Long suite comes from a separate setting, in which a
+skill library built on the 90 tasks of LIBERO-90 is applied to the Long tasks without any
+debugging on them. ASPIRE does not report the total number of rollouts per task; Table 20 gives the budget that its protocol implies, alongside that of RAX.
+With at most 5 rollouts from the evaluation distribution on the five tasks that adapted to the
+perturbation ( Section 11.4 ), and none on the other 35, RAX exceeds ASPIRE on every suite
+under position perturbation, by 28.2 points on Spatial, 2.0 on Object, 6.0 on Goal, and 48.8 on
+Long ( Table 6 ). Table 20: Exploration before evaluation under position perturbation. ASPIRE’s counts
+are its debugging and validation splits for one task and perturbation; evolutionary search adds rollouts per debugging instance and iteration. ASPIRE RAX Programs per task one per perturbation one, adapted on 5 of 40 tasks Instances from the evaluation distribution 30 0, or up to 5 when adapted Rollouts on these instances up to 75, plus evolutionary search 0, or up to 5 when adapted Exploration on unperturbed layouts – up to 20 episodes Evaluation under perturbation after development on it zero-shot, or after adaptation

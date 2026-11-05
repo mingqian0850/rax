@@ -1,0 +1,23 @@
+{
+  "status": "template_not_an_experiment_result",
+  "question": "保留代码和记忆后，少量交换布局探索能否改善泛化且不损害原布局表现？",
+  "rax_commit": "1767412c5300b9358059ae6a39740c3c28d2b8b9",
+  "libero_pro_commit": "eafdb809426b13153aa1e4c42d6601844217dfec",
+  "data_revision": "c86fc3b8293185a6f373677018ff3e37f8391602",
+  "task": "libero_goal_1",
+  "model": {"provider": null, "requested_model_id": null, "resolved_model_revision": null, "cli": null, "cli_version": null, "reasoning_effort": "xhigh"},
+  "input_conditions": {"observation_profile": "rgbd", "demonstration_context": "terminal_state", "external_perception": false},
+  "hardware": {"gpu": "RTX 4070 Laptop (user supplied)", "gpu_memory_measured_mb": null, "driver": null},
+  "parallelism": {"exploration_envs": 1, "formal_workers": 1, "subagents": 0},
+  "trials": [
+    {"stage": "A", "source_session": null, "exploration_collection": 0, "exploration_start_seed": 1, "exploration_budget": 4, "exploration_used": null, "formal_collection": 1, "formal_init_indices": [0,1,2,3,4], "bundle_sha256": null, "session_path": null},
+    {"stage": "B", "source_stage": "A", "exploration_budget": 0, "formal_collection": 2, "formal_init_indices": [0,1,2,3,4], "bundle_sha256": null, "output_path": null},
+    {"stage": "C", "source_stage": "A", "exploration_collection": 6, "exploration_start_seed": 1, "exploration_budget": 5, "exploration_used": null, "formal_collection": 2, "formal_init_indices": [0,1,2,3,4], "transfer_parts": ["memory","code","handoff"], "context": "resume", "bundle_sha256": null, "session_path": null},
+    {"stage": "D", "source_stage": "C", "exploration_budget": 0, "formal_collection": 1, "formal_init_indices": [0,1,2,3,4], "bundle_sha256": null, "output_path": null}
+  ],
+  "per_stage_results": [],
+  "per_episode_fields": ["stage","init_index","native_success","task_failure_reason","infrastructure_error","interrupted","seconds"],
+  "adaptation_analysis": {"changed_files": [], "broken_assumptions": [], "retained_skills": [], "new_measurements": [], "regression_on_original_layouts": null},
+  "cost": {"provider_reported_usd": null, "missing_cost_information": true, "wall_seconds": null},
+  "protocol_deviations": ["初步试验只有5个formal初态，不用于宣称论文成绩复现", "关闭外部感知工具，需在比较中保持一致"]
+}

@@ -1,0 +1,954 @@
+Retrieving notices: ...working... done
+Channels:
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro
+
+  added / updated specs:
+    - pip
+    - python=3.8.13
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.10.23 |       hbd8a1cb_0         127 KB  conda-forge
+    ld_impl_linux-64-2.46.1    |default_hbd61a6d_103         725 KB  conda-forge
+    libffi-3.4.6               |       h2dba641_1          56 KB  conda-forge
+    liblzma-devel-5.8.3        |       hb03c661_1         480 KB  conda-forge
+    libsqlite-3.54.1           |     h0737f62_101         958 KB  conda-forge
+    openssl-3.6.5              |       h781a0a9_0         3.0 MB  conda-forge
+    pip-24.3.1                 |     pyh8b19718_0         1.2 MB  conda-forge
+    python-3.8.13              |ha86cf86_0_cpython        25.2 MB  conda-forge
+    setuptools-75.3.0          |     pyhd8ed1ab_0         761 KB  conda-forge
+    sqlite-3.54.1              |     h6e79ffa_101         214 KB  conda-forge
+    wheel-0.45.1               |     pyhd8ed1ab_0          62 KB  conda-forge
+    xz-5.8.3                   |       ha02ee65_1          23 KB  conda-forge
+    xz-gpl-tools-5.8.3         |       ha02ee65_1          39 KB  conda-forge
+    xz-tools-5.8.3             |       hb03c661_1          94 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        32.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-20_gnu 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-hda65f42_10 
+  ca-certificates    conda-forge/noarch::ca-certificates-2026.10.23-hbd8a1cb_0 
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.46.1-default_hbd61a6d_103 
+  libffi             conda-forge/linux-64::libffi-3.4.6-h2dba641_1 
+  libgcc             conda-forge/linux-64::libgcc-16.2.0-ha9f2e26_7 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-16.2.0-h69a702a_7 
+  libgomp            conda-forge/linux-64::libgomp-16.2.0-he0feb66_7 
+  liblzma            conda-forge/linux-64::liblzma-5.8.3-hb03c661_1 
+  liblzma-devel      conda-forge/linux-64::liblzma-devel-5.8.3-hb03c661_1 
+  libnsl             conda-forge/linux-64::libnsl-2.0.1-hb9d3cd8_1 
+  libsqlite          conda-forge/linux-64::libsqlite-3.54.1-h0737f62_101 
+  libuuid            conda-forge/linux-64::libuuid-2.42.4-hcfc3c73_0 
+  libzlib            conda-forge/linux-64::libzlib-1.3.2-h25fd6f3_3 
+  ncurses            conda-forge/linux-64::ncurses-6.6-hdb14827_1 
+  openssl            conda-forge/linux-64::openssl-3.6.5-h781a0a9_0 
+  pip                conda-forge/noarch::pip-24.3.1-pyh8b19718_0 
+  python             conda-forge/linux-64::python-3.8.13-ha86cf86_0_cpython 
+  readline           conda-forge/linux-64::readline-8.3-hd6e31c0_1 
+  setuptools         conda-forge/noarch::setuptools-75.3.0-pyhd8ed1ab_0 
+  sqlite             conda-forge/linux-64::sqlite-3.54.1-h6e79ffa_101 
+  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h1df4ec4_4 
+  wheel              conda-forge/noarch::wheel-0.45.1-pyhd8ed1ab_0 
+  xz                 conda-forge/linux-64::xz-5.8.3-ha02ee65_1 
+  xz-gpl-tools       conda-forge/linux-64::xz-gpl-tools-5.8.3-ha02ee65_1 
+  xz-tools           conda-forge/linux-64::xz-tools-5.8.3-hb03c661_1 
+  zstd               conda-forge/linux-64::zstd-1.5.7-hb78ec9c_7 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+WARNING conda.conda_pypi.main:notify_externally_managed_future(156): 
+  Did you know? You can install many PyPI packages with conda
+  using the conda-pypi beta. Get started:
+    https://docs.conda.io/projects/conda/en/stable/new-features.html
+
+#
+# To activate this environment, use
+#
+#     $ conda activate /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Channels:
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro
+
+  added / updated specs:
+    - cmake
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    c-ares-1.34.9              |       hebe6cf0_0         228 KB  conda-forge
+    cmake-4.4.3                |       hff7ac6b_0        24.9 MB  conda-forge
+    libcurl-8.21.0             |       hcf29cc6_1         468 KB  conda-forge
+    libedit-3.1.20260512       | pl5321h373387f_0         133 KB  conda-forge
+    libexpat-2.9.0             |       hd2095e1_0          77 KB  conda-forge
+    libnghttp2-1.71.0          |       hc5e5977_0         803 KB  conda-forge
+    libuv-1.52.1               |       h280c20c_1         410 KB  conda-forge
+    rhash-1.4.6                |       hb03c661_2         190 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        27.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  c-ares             conda-forge/linux-64::c-ares-1.34.9-hebe6cf0_0 
+  cmake              conda-forge/linux-64::cmake-4.4.3-hff7ac6b_0 
+  keyutils           conda-forge/linux-64::keyutils-1.6.3-h7cc23a3_1 
+  krb5               conda-forge/linux-64::krb5-1.22.2-hbc21106_2 
+  libcurl            conda-forge/linux-64::libcurl-8.21.0-hcf29cc6_1 
+  libedit            conda-forge/linux-64::libedit-3.1.20260512-pl5321h373387f_0 
+  libev              conda-forge/linux-64::libev-4.33-h280c20c_3 
+  libexpat           conda-forge/linux-64::libexpat-2.9.0-hd2095e1_0 
+  libnghttp2         conda-forge/linux-64::libnghttp2-1.71.0-hc5e5977_0 
+  libssh2            conda-forge/linux-64::libssh2-1.11.1-h6154650_1 
+  libstdcxx          conda-forge/linux-64::libstdcxx-16.2.0-h934c35e_7 
+  libuv              conda-forge/linux-64::libuv-1.52.1-h280c20c_1 
+  rhash              conda-forge/linux-64::rhash-1.4.6-hb03c661_2 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+WARNING conda.conda_pypi.main:notify_externally_managed_future(156): 
+  Did you know? You can install many PyPI packages with conda
+  using the conda-pypi beta. Get started:
+    https://docs.conda.io/projects/conda/en/stable/new-features.html
+
+Looking in indexes: https://download.pytorch.org/whl/cpu
+Collecting torch==1.11.0
+  Downloading https://download-r2.pytorch.org/whl/cpu/torch-1.11.0%2Bcpu-cp38-cp38-linux_x86_64.whl (169.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 169.2/169.2 MB 17.9 MB/s eta 0:00:00
+Collecting torchvision==0.12.0
+  Downloading https://download-r2.pytorch.org/whl/cpu/torchvision-0.12.0%2Bcpu-cp38-cp38-linux_x86_64.whl (14.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.7/14.7 MB 16.9 MB/s eta 0:00:00
+Collecting typing-extensions (from torch==1.11.0)
+  Downloading typing_extensions-4.13.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting numpy (from torchvision==0.12.0)
+  Downloading numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+Collecting requests (from torchvision==0.12.0)
+  Downloading https://download.pytorch.org/whl/requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision==0.12.0)
+  Downloading pillow-10.4.0-cp38-cp38-manylinux_2_28_x86_64.whl.metadata (9.2 kB)
+Collecting charset-normalizer<3,>=2 (from requests->torchvision==0.12.0)
+  Downloading https://download.pytorch.org/whl/charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5 (from requests->torchvision==0.12.0)
+  Downloading https://download.pytorch.org/whl/idna-3.4-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1 (from requests->torchvision==0.12.0)
+  Downloading https://download.pytorch.org/whl/urllib3-1.26.13-py2.py3-none-any.whl (140 kB)
+Collecting certifi>=2017.4.17 (from requests->torchvision==0.12.0)
+  Downloading https://download.pytorch.org/whl/certifi-2022.12.7-py3-none-any.whl (155 kB)
+Downloading pillow-10.4.0-cp38-cp38-manylinux_2_28_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 19.0 MB/s eta 0:00:00
+Downloading numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.3/17.3 MB 18.8 MB/s eta 0:00:00
+Downloading typing_extensions-4.13.2-py3-none-any.whl (45 kB)
+Installing collected packages: urllib3, typing-extensions, pillow, numpy, idna, charset-normalizer, certifi, torch, requests, torchvision
+Successfully installed certifi-2022.12.7 charset-normalizer-2.1.1 idna-3.4 numpy-1.24.4 pillow-10.4.0 requests-2.28.1 torch-1.11.0+cpu torchvision-0.12.0+cpu typing-extensions-4.13.2 urllib3-1.26.13
+Collecting mujoco==3.2.3
+  Downloading mujoco-3.2.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (44 kB)
+Collecting msgpack
+  Downloading msgpack-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.3 kB)
+Collecting absl-py (from mujoco==3.2.3)
+  Downloading absl_py-2.3.1-py3-none-any.whl.metadata (3.3 kB)
+Collecting etils[epath] (from mujoco==3.2.3)
+  Downloading etils-1.3.0-py3-none-any.whl.metadata (5.5 kB)
+Collecting glfw (from mujoco==3.2.3)
+  Downloading glfw-2.11.0-py2.py3-none-manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+Requirement already satisfied: numpy in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from mujoco==3.2.3) (1.24.4)
+Collecting pyopengl (from mujoco==3.2.3)
+  Downloading pyopengl-3.1.10-py3-none-any.whl.metadata (3.3 kB)
+Collecting importlib_resources (from etils[epath]->mujoco==3.2.3)
+  Downloading importlib_resources-6.4.5-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: typing_extensions in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from etils[epath]->mujoco==3.2.3) (4.13.2)
+Collecting zipp (from etils[epath]->mujoco==3.2.3)
+  Downloading zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Downloading mujoco-3.2.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 10.5 MB/s eta 0:00:00
+Downloading msgpack-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (413 kB)
+Downloading absl_py-2.3.1-py3-none-any.whl (135 kB)
+Downloading glfw-2.11.0-py2.py3-none-manylinux_2_28_x86_64.whl (248 kB)
+Downloading pyopengl-3.1.10-py3-none-any.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 18.6 MB/s eta 0:00:00
+Downloading etils-1.3.0-py3-none-any.whl (126 kB)
+Downloading importlib_resources-6.4.5-py3-none-any.whl (36 kB)
+Downloading zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Installing collected packages: pyopengl, glfw, zipp, msgpack, etils, absl-py, importlib_resources, mujoco
+Successfully installed absl-py-2.3.1 etils-1.3.0 glfw-2.11.0 importlib_resources-6.4.5 msgpack-1.1.1 mujoco-3.2.3 pyopengl-3.1.10 zipp-3.20.2
+Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cpu
+Requirement already satisfied: torch==1.11.0 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (1.11.0+cpu)
+Requirement already satisfied: torchvision==0.12.0 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (0.12.0+cpu)
+Requirement already satisfied: mujoco==3.2.3 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (3.2.3)
+Collecting hydra-core==1.2.0 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 1))
+  Downloading hydra_core-1.2.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting numpy==1.22.4 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 2))
+  Downloading numpy-1.22.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.0 kB)
+Collecting wandb==0.13.1 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading wandb-0.13.1-py2.py3-none-any.whl.metadata (7.4 kB)
+Collecting easydict==1.9 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 4))
+  Downloading easydict-1.9.tar.gz (6.4 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting transformers==4.21.1 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading transformers-4.21.1-py3-none-any.whl.metadata (81 kB)
+Collecting opencv-python==4.6.0.66 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 6))
+  Downloading opencv_python-4.6.0.66-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting robomimic==0.2.0 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading robomimic-0.2.0.tar.gz (192 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting einops==0.4.1 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 8))
+  Downloading einops-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting thop==0.1.1-2209072238 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 9))
+  Downloading thop-0.1.1.post2209072238-py3-none-any.whl.metadata (2.7 kB)
+Collecting robosuite==1.4.0 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 10))
+  Downloading robosuite-1.4.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting bddl==1.0.1 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading bddl-1.0.1.tar.gz (164 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting future==0.18.2 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 12))
+  Downloading future-0.18.2.tar.gz (829 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 829.2/829.2 kB 14.5 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting matplotlib==3.5.3 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading matplotlib-3.5.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (6.7 kB)
+Collecting cloudpickle==2.1.0 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 14))
+  Downloading cloudpickle-2.1.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting gym==0.25.2 (from -r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 15))
+  Downloading gym-0.25.2.tar.gz (734 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 734.5/734.5 kB 13.1 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: typing-extensions in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from torch==1.11.0) (4.13.2)
+Requirement already satisfied: requests in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from torchvision==0.12.0) (2.28.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from torchvision==0.12.0) (10.4.0)
+Requirement already satisfied: absl-py in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from mujoco==3.2.3) (2.3.1)
+Requirement already satisfied: etils[epath] in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from mujoco==3.2.3) (1.3.0)
+Requirement already satisfied: glfw in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from mujoco==3.2.3) (2.11.0)
+Requirement already satisfied: pyopengl in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from mujoco==3.2.3) (3.1.10)
+Collecting omegaconf~=2.2 (from hydra-core==1.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 1))
+  Downloading omegaconf-2.3.1-py3-none-any.whl.metadata (4.5 kB)
+Collecting antlr4-python3-runtime==4.9.* (from hydra-core==1.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 1))
+  Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting packaging (from hydra-core==1.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 1))
+  Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: importlib-resources in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from hydra-core==1.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 1)) (6.4.5)
+Collecting Click!=8.0.0,>=7.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Collecting GitPython>=1.0.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading gitpython-3.2.1-py3-none-any.whl.metadata (13 kB)
+Collecting promise<3,>=2.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading promise-2.3.tar.gz (19 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting shortuuid>=0.5.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading shortuuid-1.0.13-py3-none-any.whl.metadata (5.8 kB)
+Collecting psutil>=5.0.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting sentry-sdk>=1.0.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading sentry_sdk-2.73.0-py3-none-any.whl.metadata (11 kB)
+Collecting six>=1.13.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting docker-pycreds>=0.4.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading docker_pycreds-0.4.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting protobuf<4.0dev,>=3.12.0 (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading protobuf-3.20.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (679 bytes)
+Collecting PyYAML (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+Collecting pathtools (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading pathtools-0.1.2.tar.gz (11 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting setproctitle (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading setproctitle-1.3.8.tar.gz (27 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: setuptools in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3)) (75.3.0)
+Collecting filelock (from transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading filelock-3.16.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting huggingface-hub<1.0,>=0.1.0 (from transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Collecting regex!=2019.12.17 (from transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading regex-2024.11.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Collecting tokenizers!=0.11.3,<0.13,>=0.11.1 (from transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading tokenizers-0.12.1-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.5 kB)
+Collecting tqdm>=4.27 (from transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting h5py (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading h5py-3.11.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting termcolor (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading termcolor-2.4.0-py3-none-any.whl.metadata (6.1 kB)
+Collecting tensorboard (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading tensorboard-2.14.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting tensorboardX (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl.metadata (5.8 kB)
+Collecting imageio (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading imageio-2.35.1-py3-none-any.whl.metadata (4.9 kB)
+Collecting imageio-ffmpeg (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading imageio_ffmpeg-0.5.1-py3-none-manylinux2010_x86_64.whl.metadata (1.6 kB)
+Collecting egl_probe>=1.0.1 (from robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading egl_probe-1.0.2.tar.gz (217 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting numba>=0.49.1 (from robosuite==1.4.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 10))
+  Downloading numba-0.58.1-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Collecting scipy>=1.2.3 (from robosuite==1.4.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 10))
+  Downloading scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Collecting pytest (from bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading pytest-8.3.5-py3-none-any.whl.metadata (7.6 kB)
+Collecting networkx (from bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading networkx-3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting jupytext (from bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading jupytext-1.17.1-py3-none-any.whl.metadata (14 kB)
+Collecting cycler>=0.10 (from matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (102 kB)
+Collecting kiwisolver>=1.0.1 (from matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (6.3 kB)
+Collecting pyparsing>=2.2.1 (from matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading pyparsing-3.1.4-py3-none-any.whl.metadata (5.1 kB)
+Collecting python-dateutil>=2.7 (from matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting gym-notices>=0.0.4 (from gym==0.25.2->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 15))
+  Downloading gym_notices-0.1.0-py3-none-any.whl.metadata (1.2 kB)
+Collecting importlib-metadata>=4.8.0 (from gym==0.25.2->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 15))
+  Downloading importlib_metadata-8.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting gitdb<5,>=4.0.1 (from GitPython>=1.0.0->wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub<1.0,>=0.1.0->transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading fsspec-2025.3.0-py3-none-any.whl.metadata (11 kB)
+Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface-hub<1.0,>=0.1.0->transformers==4.21.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 5))
+  Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Requirement already satisfied: zipp>=3.20 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from importlib-metadata>=4.8.0->gym==0.25.2->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 15)) (3.20.2)
+Collecting llvmlite<0.42,>=0.41.0dev0 (from numba>=0.49.1->robosuite==1.4.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 10))
+  Downloading llvmlite-0.41.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+Collecting tzdata (from python-dateutil>=2.7->matplotlib==3.5.3->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 13))
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: charset-normalizer<3,>=2 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from requests->torchvision==0.12.0) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from requests->torchvision==0.12.0) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from requests->torchvision==0.12.0) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from requests->torchvision==0.12.0) (2022.12.7)
+Collecting markdown-it-py>=1.0 (from jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting mdit-py-plugins (from jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading mdit_py_plugins-0.4.2-py3-none-any.whl.metadata (2.8 kB)
+Collecting nbformat (from jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)
+Collecting tomli (from jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading tomli-2.5.0-py3-none-any.whl.metadata (10 kB)
+Collecting exceptiongroup>=1.0.0rc8 (from pytest->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Collecting iniconfig (from pytest->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting pluggy<2,>=1.5 (from pytest->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading pluggy-1.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting grpcio>=1.48.2 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading grpcio-1.70.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.9 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading google_auth-2.50.0-py3-none-any.whl.metadata (6.2 kB)
+Collecting google-auth-oauthlib<1.1,>=0.5 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting markdown>=2.6.8 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading tensorboard_data_server-0.7.2-py3-none-manylinux_2_31_x86_64.whl.metadata (1.1 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading werkzeug-3.0.6-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: wheel>=0.26 in /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages (from tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7)) (0.45.1)
+Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=1.0.0->wandb==0.13.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 3))
+  Downloading smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading cryptography-47.0.0-cp38-abi3-manylinux_2_34_x86_64.whl.metadata (4.5 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<1.1,>=0.5->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=1.0->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading https://download.pytorch.org/whl/MarkupSafe-2.1.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26 kB)
+Collecting fastjsonschema>=2.15 (from nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading fastjsonschema-2.21.2-py3-none-any.whl.metadata (2.3 kB)
+Collecting jsonschema>=2.6 (from nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading jsonschema-4.23.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting jupyter-core!=5.0.*,>=4.12 (from nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading jupyter_core-5.8.1-py3-none-any.whl.metadata (1.6 kB)
+Collecting traitlets>=5.1 (from nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+Collecting cffi>=1.14 (from cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading cffi-1.17.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=2.6->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading attrs-25.3.0-py3-none-any.whl.metadata (10 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=2.6->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting pkgutil-resolve-name>=1.3.10 (from jsonschema>=2.6->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading pkgutil_resolve_name-1.3.10-py3-none-any.whl.metadata (624 bytes)
+Collecting referencing>=0.28.4 (from jsonschema>=2.6->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading referencing-0.35.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.7.1 (from jsonschema>=2.6->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading rpds_py-0.20.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting platformdirs>=2.5 (from jupyter-core!=5.0.*,>=4.12->nbformat->jupytext->bddl==1.0.1->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 11))
+  Downloading platformdirs-4.3.6-py3-none-any.whl.metadata (11 kB)
+Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading pyasn1-0.6.5-py3-none-any.whl.metadata (8.4 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Collecting pycparser (from cffi>=1.14->cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard->robomimic==0.2.0->-r /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/LIBERO-PRO/requirements.txt (line 7))
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading hydra_core-1.2.0-py3-none-any.whl (151 kB)
+Downloading numpy-1.22.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 15.2 MB/s eta 0:00:00
+Downloading wandb-0.13.1-py2.py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 9.8 MB/s eta 0:00:00
+Downloading transformers-4.21.1-py3-none-any.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 10.8 MB/s eta 0:00:00
+Downloading opencv_python-4.6.0.66-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (60.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.9/60.9 MB 18.8 MB/s eta 0:00:00
+Downloading einops-0.4.1-py3-none-any.whl (28 kB)
+Downloading thop-0.1.1.post2209072238-py3-none-any.whl (15 kB)
+Downloading robosuite-1.4.0-py3-none-any.whl (193.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 193.5/193.5 MB 8.4 MB/s eta 0:00:00
+Downloading matplotlib-3.5.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (11.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 17.7 MB/s eta 0:00:00
+Downloading cloudpickle-2.1.0-py3-none-any.whl (25 kB)
+Downloading click-8.1.8-py3-none-any.whl (98 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading docker_pycreds-0.4.0-py2.py3-none-any.whl (9.0 kB)
+Downloading fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 18.7 MB/s eta 0:00:00
+Downloading gitpython-3.2.1-py3-none-any.whl (231 kB)
+Downloading gym_notices-0.1.0-py3-none-any.whl (3.3 kB)
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 15.5 MB/s eta 0:00:00
+Downloading importlib_metadata-8.5.0-py3-none-any.whl (26 kB)
+Downloading kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 16.8 MB/s eta 0:00:00
+Downloading numba-0.58.1-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.7/3.7 MB 18.6 MB/s eta 0:00:00
+Downloading omegaconf-2.3.1-py3-none-any.whl (79 kB)
+Downloading packaging-26.2-py3-none-any.whl (100 kB)
+Downloading protobuf-3.20.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 15.6 MB/s eta 0:00:00
+Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Downloading pyparsing-3.1.4-py3-none-any.whl (104 kB)
+Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+Downloading PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.0/806.0 kB 15.9 MB/s eta 0:00:00
+Downloading regex-2024.11.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (785 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 785.1/785.1 kB 15.7 MB/s eta 0:00:00
+Downloading scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.5/34.5 MB 19.2 MB/s eta 0:00:00
+Downloading sentry_sdk-2.73.0-py3-none-any.whl (549 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 549.0/549.0 kB 15.3 MB/s eta 0:00:00
+Downloading shortuuid-1.0.13-py3-none-any.whl (10 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tokenizers-0.12.1-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (6.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 9.7 MB/s eta 0:00:00
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading filelock-3.16.1-py3-none-any.whl (16 kB)
+Downloading h5py-3.11.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 18.6 MB/s eta 0:00:00
+Downloading imageio-2.35.1-py3-none-any.whl (315 kB)
+Downloading imageio_ffmpeg-0.5.1-py3-none-manylinux2010_x86_64.whl (26.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.9/26.9 MB 18.9 MB/s eta 0:00:00
+Downloading jupytext-1.17.1-py3-none-any.whl (164 kB)
+Downloading networkx-3.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 17.1 MB/s eta 0:00:00
+Downloading pytest-8.3.5-py3-none-any.whl (343 kB)
+Downloading tensorboard-2.14.0-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 18.4 MB/s eta 0:00:00
+Downloading tensorboardX-2.6.2.2-py2.py3-none-any.whl (101 kB)
+Downloading termcolor-2.4.0-py3-none-any.whl (7.7 kB)
+Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+Downloading fsspec-2025.3.0-py3-none-any.whl (193 kB)
+Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
+Downloading google_auth-2.50.0-py3-none-any.whl (246 kB)
+Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl (18 kB)
+Downloading grpcio-1.70.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.0/6.0 MB 18.5 MB/s eta 0:00:00
+Downloading hf_xet-1.8.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 18.2 MB/s eta 0:00:00
+Downloading llvmlite-0.41.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (43.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.6/43.6 MB 18.9 MB/s eta 0:00:00
+Downloading Markdown-3.7-py3-none-any.whl (106 kB)
+Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Downloading pluggy-1.5.0-py3-none-any.whl (20 kB)
+Downloading tensorboard_data_server-0.7.2-py3-none-manylinux_2_31_x86_64.whl (6.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 19.0 MB/s eta 0:00:00
+Downloading tomli-2.5.0-py3-none-any.whl (14 kB)
+Downloading werkzeug-3.0.6-py3-none-any.whl (227 kB)
+Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+Downloading mdit_py_plugins-0.4.2-py3-none-any.whl (55 kB)
+Downloading nbformat-5.10.4-py3-none-any.whl (78 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Downloading cryptography-47.0.0-cp38-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 18.2 MB/s eta 0:00:00
+Downloading fastjsonschema-2.21.2-py3-none-any.whl (24 kB)
+Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
+Downloading jupyter_core-5.8.1-py3-none-any.whl (28 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Downloading smmap-5.0.3-py3-none-any.whl (24 kB)
+Downloading traitlets-5.14.3-py3-none-any.whl (85 kB)
+Downloading attrs-25.3.0-py3-none-any.whl (63 kB)
+Downloading cffi-1.17.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (446 kB)
+Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl (18 kB)
+Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Downloading pkgutil_resolve_name-1.3.10-py3-none-any.whl (4.7 kB)
+Downloading platformdirs-4.3.6-py3-none-any.whl (18 kB)
+Downloading pyasn1-0.6.5-py3-none-any.whl (84 kB)
+Downloading referencing-0.35.1-py3-none-any.whl (26 kB)
+Downloading rpds_py-0.20.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (360 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Building wheels for collected packages: easydict, robomimic, bddl, future, gym, antlr4-python3-runtime, egl_probe, promise, pathtools, setproctitle
+  Building wheel for easydict (setup.py): started
+  Building wheel for easydict (setup.py): finished with status 'done'
+  Created wheel for easydict: filename=easydict-1.9-py3-none-any.whl size=6345 sha256=150e991ab5fa963816de51f6bb6bd86539eaf1f82f8aaa1310613d215fe590c3
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/d3/e0/e9/305e348717e399665119bd012510d51ff4f22d709ff60c3096
+  Building wheel for robomimic (setup.py): started
+  Building wheel for robomimic (setup.py): finished with status 'done'
+  Created wheel for robomimic: filename=robomimic-0.2.0-py3-none-any.whl size=223234 sha256=1e665b7f2785b764e02603c7d9cf0f53112c8daac02dac7b0c0358a509314d5f
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/cc/21/38/e01a7647b68fa797ee8e5aaeb25ec78df0925b9b9433e9a649
+  Building wheel for bddl (setup.py): started
+  Building wheel for bddl (setup.py): finished with status 'done'
+  Created wheel for bddl: filename=bddl-1.0.1-py3-none-any.whl size=212351 sha256=3a533d0f26dbe9530a8741910f7c30ed77e7372aed4c9179f0110ea0c4f3ec5a
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/17/33/d4/c51b0332fb55d3802766dca72a5ec05c899b4adbf385070f54
+  Building wheel for future (setup.py): started
+  Building wheel for future (setup.py): finished with status 'done'
+  Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491058 sha256=6980cb91a4e2e4bf43e354bba43012beab2e340dec846f6652f95b50cfb92ea7
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/8e/70/28/3d6ccd6e315f65f245da085482a2e1c7d14b90b30f239e2cf4
+  Building wheel for gym (pyproject.toml): started
+  Building wheel for gym (pyproject.toml): finished with status 'done'
+  Created wheel for gym: filename=gym-0.25.2-py3-none-any.whl size=852287 sha256=3dd693a20b78363c0420c90f24c317194a1a7d13669af581f2a9d4dbd4ecab53
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/34/ba/37/f93d1f24733295c755baa43d0579d5b652062475f12639a205
+  Building wheel for antlr4-python3-runtime (setup.py): started
+  Building wheel for antlr4-python3-runtime (setup.py): finished with status 'done'
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144556 sha256=4231d8a1e1073d53e7e792f1dc46316c17659b61ca23da643ccc32e86fd367e2
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/b1/a3/c2/6df046c09459b73cc9bb6c4401b0be6c47048baf9a1617c485
+  Building wheel for egl_probe (setup.py): started
+  Building wheel for egl_probe (setup.py): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × python setup.py bdist_wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [360 lines of output]
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/dist.py:261: UserWarning: Unknown distribution option: 'tests_require'
+        warnings.warn(msg)
+      running bdist_wheel
+      running build
+      running build_py
+      creating build/lib.linux-x86_64-cpython-38/egl_probe
+      copying egl_probe/get_available_devices.py -> build/lib.linux-x86_64-cpython-38/egl_probe
+      copying egl_probe/__init__.py -> build/lib.linux-x86_64-cpython-38/egl_probe
+      running egg_info
+      writing egl_probe.egg-info/PKG-INFO
+      writing dependency_links to egl_probe.egg-info/dependency_links.txt
+      writing top-level names to egl_probe.egg-info/top_level.txt
+      reading manifest file 'egl_probe.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      adding license file 'LICENSE'
+      writing manifest file 'egl_probe.egg-info/SOURCES.txt'
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad' to be distributed and are
+              already explicitly excluding 'egl_probe.glad' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad.EGL' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad.EGL' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad.EGL' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad.EGL' to be distributed and are
+              already explicitly excluding 'egl_probe.glad.EGL' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad.KHR' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad.KHR' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad.KHR' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad.KHR' to be distributed and are
+              already explicitly excluding 'egl_probe.glad.KHR' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad.X11' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad.X11' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad.X11' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad.X11' to be distributed and are
+              already explicitly excluding 'egl_probe.glad.X11' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad.X11.extensions' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad.X11.extensions' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad.X11.extensions' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad.X11.extensions' to be distributed and are
+              already explicitly excluding 'egl_probe.glad.X11.extensions' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/build_py.py:220: _Warning: Package 'egl_probe.glad.glad' is absent from the `packages` configuration.
+      !!
+      
+              ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'egl_probe.glad.glad' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+      
+              This leads to an ambiguous overall configuration. If you want to distribute this
+              package, please make sure that 'egl_probe.glad.glad' is explicitly added
+              to the `packages` configuration field.
+      
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+      
+              You can read more about "package discovery" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+      
+              If you don't want 'egl_probe.glad.glad' to be distributed and are
+              already explicitly excluding 'egl_probe.glad.glad' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+      
+              You can read more about "package data files" on setuptools documentation page:
+      
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+      
+      
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************
+      
+      !!
+        check.warn(importable)
+      copying egl_probe/CMakeLists.txt -> build/lib.linux-x86_64-cpython-38/egl_probe
+      copying egl_probe/query_devices.cpp -> build/lib.linux-x86_64-cpython-38/egl_probe
+      copying egl_probe/test_device.cpp -> build/lib.linux-x86_64-cpython-38/egl_probe
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad
+      copying egl_probe/glad/egl.cpp -> build/lib.linux-x86_64-cpython-38/egl_probe/glad
+      copying egl_probe/glad/gl.cpp -> build/lib.linux-x86_64-cpython-38/egl_probe/glad
+      copying egl_probe/glad/glx_dyn.cpp -> build/lib.linux-x86_64-cpython-38/egl_probe/glad
+      copying egl_probe/glad/linmath.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad/EGL
+      copying egl_probe/glad/EGL/eglplatform.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/EGL
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad/KHR
+      copying egl_probe/glad/KHR/khrplatform.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/KHR
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/X.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/XKBlib.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xatom.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xfuncproto.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xfuncs.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xlib.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/XlibConf.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xlibint.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xmd.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xosdefs.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xproto.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xprotostr.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/Xutil.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/cursorfont.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/keysym.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      copying egl_probe/glad/X11/keysymdef.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/XKB.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/XKBstr.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/XShm.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/Xext.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/extutil.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/shape.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/shapeconst.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      copying egl_probe/glad/X11/extensions/shm.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/X11/extensions
+      creating build/lib.linux-x86_64-cpython-38/egl_probe/glad/glad
+      copying egl_probe/glad/glad/egl.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/glad
+      copying egl_probe/glad/glad/gl.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/glad
+      copying egl_probe/glad/glad/glx.h -> build/lib.linux-x86_64-cpython-38/egl_probe/glad/glad
+      running build_ext
+      CMake Warning (deprecated) at CMakeLists.txt:1 (cmake_minimum_required):
+        Compatibility with CMake < 3.10 will be removed from a future version of
+        CMake.
+      
+        Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+        to tell CMake that the project requires at least <min> but has been updated
+        to work with policies introduced by <max> or earlier.
+      This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+      to suppress it.
+      
+      CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+      CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+      CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+      -- Configuring incomplete, errors occurred!
+      /bin/sh: 1: make: not found
+      Traceback (most recent call last):
+        File "<string>", line 2, in <module>
+        File "<pip-setuptools-caller>", line 34, in <module>
+        File "/tmp/pip-install-j1or4elj/egl-probe_90938c8c34484f95a9233e39a149fff9/setup.py", line 50, in <module>
+          setup(
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/__init__.py", line 117, in setup
+          return distutils.core.setup(**attrs)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/core.py", line 183, in setup
+          return run_commands(dist)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/core.py", line 199, in run_commands
+          dist.run_commands()
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/dist.py", line 954, in run_commands
+          self.run_command(cmd)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/dist.py", line 999, in run_command
+          super().run_command(command)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/dist.py", line 973, in run_command
+          cmd_obj.run()
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/command/bdist_wheel.py", line 410, in run
+          self.run_command("build")
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/cmd.py", line 316, in run_command
+          self.distribution.run_command(command)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/dist.py", line 999, in run_command
+          super().run_command(command)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/dist.py", line 973, in run_command
+          cmd_obj.run()
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/command/build.py", line 135, in run
+          self.run_command(cmd_name)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/cmd.py", line 316, in run_command
+          self.distribution.run_command(command)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/dist.py", line 999, in run_command
+          super().run_command(command)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/setuptools/_distutils/dist.py", line 973, in run_command
+          cmd_obj.run()
+        File "/tmp/pip-install-j1or4elj/egl-probe_90938c8c34484f95a9233e39a149fff9/setup.py", line 26, in run
+          self.build_extension(ext)
+        File "/tmp/pip-install-j1or4elj/egl-probe_90938c8c34484f95a9233e39a149fff9/setup.py", line 38, in build_extension
+          subprocess.check_call("cmake ..; make -j", cwd=build_dir, shell=True)
+        File "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/subprocess.py", line 364, in check_call
+          raise CalledProcessError(retcode, cmd)
+      subprocess.CalledProcessError: Command 'cmake ..; make -j' returned non-zero exit status 127.
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for egl_probe
+  Running setup.py clean for egl_probe
+  Building wheel for promise (setup.py): started
+  Building wheel for promise (setup.py): finished with status 'done'
+  Created wheel for promise: filename=promise-2.3-py3-none-any.whl size=21483 sha256=e203388b37bab26f34cd951d7b1b215238d78b578931f74b3975d57de8d3ce61
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/54/aa/01/724885182f93150035a2a91bce34a12877e8067a97baaf5dc8
+  Building wheel for pathtools (setup.py): started
+  Building wheel for pathtools (setup.py): finished with status 'done'
+  Created wheel for pathtools: filename=pathtools-0.1.2-py3-none-any.whl size=8791 sha256=f4b321f0f6ec685c51f1a647295baf2e8c69e7cfc5e8f40fd895ef38f5e89d1d
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/4c/8e/7e/72fbc243e1aeecae64a96875432e70d4e92f3d2d18123be004
+  Building wheel for setproctitle (pyproject.toml): started
+  Building wheel for setproctitle (pyproject.toml): finished with status 'done'
+  Created wheel for setproctitle: filename=setproctitle-1.3.8-py3-none-any.whl size=6704 sha256=d01f0b712db56b80612ebcd80c9581957a833add10654e4f04b324b0348cc688
+  Stored in directory: /home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/pip-cache/wheels/78/cb/a3/81fdd54ccafc76bd36a6f7b3b51249f672bde4a1fbf670c739
+Successfully built easydict robomimic bddl future gym antlr4-python3-runtime promise pathtools setproctitle
+Failed to build egl_probe
+ERROR: ERROR: Failed to build installable wheels for some pyproject.toml based projects (egl_probe)

@@ -1,0 +1,13 @@
+# Reconstructed source snapshots and machine-local environments.
+/work/branches/
+/work/learned-skills/
+/work/upstream-skills-lib/
+/work/adaptation-check-*/
+/work/tmp/
+**/__pycache__/
+*.pyc
+# Evidence logs are intentional research deliverables, overriding the root rule.
+!/outputs/*.log
+!/outputs/**/*.log
+
+/work/upstream-rax/

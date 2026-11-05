@@ -1,0 +1,2 @@
+15 Compute and Cost Across all experiments in this paper, simulated and real, the agents’ model calls consumed over
+100k US dollars of API credits.

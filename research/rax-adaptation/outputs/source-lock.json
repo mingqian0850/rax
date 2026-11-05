@@ -1,0 +1,242 @@
+{
+  "recorded": "2026-11-05",
+  "origin": "https://github.com/mingqian0850/rax.git",
+  "upstream": "https://github.com/robot-agent-exploration/rax.git",
+  "branches": [
+    {
+      "branch": "dexjoco/container",
+      "commit": "3ed12c905dfdd011be682157ade56c3ec5a31578",
+      "files": 311,
+      "bytes": 2144914,
+      "types": {
+        ".lock": 1,
+        ".md": 69,
+        ".ini": 1,
+        "": 3,
+        ".py": 207,
+        ".toml": 1,
+        ".sh": 11,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".json": 6,
+        ".Dockerfile": 1,
+        ".txt": 1,
+        ".html": 1,
+        ".js": 1
+      }
+    },
+    {
+      "branch": "dexjoco/native",
+      "commit": "4b577aa2ba0039ad01707ede236be9913274180e",
+      "files": 304,
+      "bytes": 2271369,
+      "types": {
+        ".lock": 1,
+        ".md": 69,
+        ".ini": 1,
+        "": 3,
+        ".py": 200,
+        ".toml": 1,
+        ".sh": 11,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".json": 6,
+        ".js": 2,
+        ".html": 1,
+        ".png": 1
+      }
+    },
+    {
+      "branch": "humanoid-arena/container",
+      "commit": "e81a6e1fc3f8d434da576f5e2771f79eb349037e",
+      "files": 316,
+      "bytes": 2381632,
+      "types": {
+        ".lock": 1,
+        ".md": 60,
+        ".ini": 1,
+        "": 4,
+        ".py": 210,
+        ".toml": 1,
+        ".patch": 1,
+        ".sh": 12,
+        ".json": 9,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".txt": 2,
+        ".Dockerfile": 1,
+        ".urdf": 1,
+        ".yml": 1,
+        ".unitree": 1,
+        ".sha256": 1,
+        ".html": 1,
+        ".js": 1
+      }
+    },
+    {
+      "branch": "humanoid-arena/native",
+      "commit": "5d39d245d30e5ef36a7f53602c35465fab1f6534",
+      "files": 308,
+      "bytes": 2312683,
+      "types": {
+        ".lock": 1,
+        ".md": 60,
+        ".ini": 1,
+        "": 4,
+        ".py": 203,
+        ".toml": 1,
+        ".patch": 1,
+        ".sh": 12,
+        ".json": 9,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".js": 2,
+        ".txt": 1,
+        ".urdf": 1,
+        ".yml": 1,
+        ".unitree": 1,
+        ".sha256": 1,
+        ".html": 1
+      }
+    },
+    {
+      "branch": "libero-pro/container",
+      "commit": "d49c8ad605008bb5a87e909d0473cc3f5e3600a6",
+      "files": 271,
+      "bytes": 1918778,
+      "types": {
+        ".lock": 1,
+        ".md": 43,
+        ".ini": 1,
+        "": 3,
+        ".py": 193,
+        ".toml": 1,
+        ".sh": 11,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".json": 6,
+        ".Dockerfile": 1,
+        ".txt": 1,
+        ".html": 1,
+        ".js": 1
+      }
+    },
+    {
+      "branch": "libero-pro/native",
+      "commit": "1767412c5300b9358059ae6a39740c3c28d2b8b9",
+      "files": 263,
+      "bytes": 1849470,
+      "types": {
+        ".lock": 1,
+        ".md": 43,
+        ".ini": 1,
+        "": 3,
+        ".py": 186,
+        ".toml": 1,
+        ".sh": 11,
+        ".yaml": 1,
+        ".mjs": 7,
+        ".json": 6,
+        ".js": 2,
+        ".html": 1
+      }
+    },
+    {
+      "branch": "main",
+      "commit": "db744f5950582c7c301f249192c0ed3c76517dd8",
+      "files": 29,
+      "bytes": 868659,
+      "types": {
+        ".md": 24,
+        "": 3,
+        ".svg": 2
+      }
+    },
+    {
+      "branch": "real/franka",
+      "commit": "8858d7f3e34eff382abae738cf0578d2726a9a0a",
+      "files": 85,
+      "bytes": 432744,
+      "types": {
+        ".md": 18,
+        ".ini": 1,
+        "": 2,
+        ".json": 1,
+        ".py": 57,
+        ".toml": 1,
+        ".sh": 3,
+        ".html": 1,
+        ".js": 1
+      }
+    },
+    {
+      "branch": "real/rainbow",
+      "commit": "36c926ca3cf15921c6fc746a4bf309c26b0aa3c4",
+      "files": 101,
+      "bytes": 876722,
+      "types": {
+        ".md": 24,
+        ".ini": 1,
+        "": 2,
+        ".py": 67,
+        ".toml": 1,
+        ".sh": 3,
+        ".html": 1,
+        ".js": 1,
+        ".urdf": 1
+      }
+    },
+    {
+      "branch": "robodojo-behavior/container",
+      "commit": "9d03ba60cee50f5a39c0031774b337dc1ff75245",
+      "files": 482,
+      "bytes": 2900483,
+      "types": {
+        ".lock": 1,
+        ".md": 198,
+        ".ini": 1,
+        "": 1,
+        ".py": 241,
+        ".toml": 1,
+        ".patch": 2,
+        ".sh": 14,
+        ".yaml": 3,
+        ".mjs": 7,
+        ".json": 9,
+        ".Dockerfile": 1,
+        ".txt": 1,
+        ".html": 1,
+        ".js": 1
+      }
+    },
+    {
+      "branch": "robodojo-behavior/native",
+      "commit": "16e75db0d0258a4870935d0c4b2402ab618db11d",
+      "files": 470,
+      "bytes": 2782248,
+      "types": {
+        ".lock": 1,
+        ".md": 198,
+        ".ini": 1,
+        "": 1,
+        ".py": 230,
+        ".toml": 1,
+        ".patch": 2,
+        ".sh": 14,
+        ".yaml": 3,
+        ".mjs": 7,
+        ".json": 9,
+        ".js": 2,
+        ".html": 1
+      }
+    }
+  ],
+  "libero_pro_commit": "eafdb809426b13153aa1e4c42d6601844217dfec",
+  "hf_data_revision": "c86fc3b8293185a6f373677018ff3e37f8391602",
+  "paper": "https://arxiv.org/html/2610.22496v1",
+  "skills_lib": {
+    "franka": "f1845de5c915b9e16590b86fbb64e957f020f5a1",
+    "rby1": "d749168be6f85764db89182096656bd05e58f04b",
+    "simulation": "95418f056e28e6e78e6e4e2d9f1ce04e096f9206"
+  }
+}

@@ -1,0 +1,286 @@
+14 Real-Robot Tasks This section describes the setup of every real-robot experiment: the task, the robot and its
+sensors, what the agent was given, what the operator did, how many trials the agent ran, how
+success was judged, and the final outcome. Five tasks use a Franka FR3 arm with a parallel
+gripper, two exterior RGB-D cameras (left and right of the table), and an RGB-D camera on the
+wrist; the sixth uses a Rainbow RB-Y1 mobile manipulator with an RGB-D camera on its head. The
+control interfaces are those of Section 4.2 . In every task the agent received only the task
+text quoted below, typed by the operator, and the robot’s tools; it received no demonstrations,
+no object models, and no trained policy. Each session ran Claude Code with maximum reasoning
+effort. The agent could send requests to the operator through its tools, and the operator could
+reply in a chat; we report every reset and intervention recorded in the agent’s notes. Times are
+local wall-clock times taken from the agent’s notes and the camera recordings, which are timestamped
+frame by frame. The key-frame figures show raw camera frames without overlays. 14.1 Find the Cube Task. The operator hides a white cube of about 3 cm under one of four inverted green
+cups (about 9.3 cm tall) and shuffles the cups by hand; the robot must then lift the cup that
+holds the cube away and grasp and lift the cube. The task text was: “First wait for the
+operator to place a cube under a green cup and watch it permute the positions of the cups. after it
+finishes, you should identify the cup with the cube insides and lift the cup away, then grasp the
+cube and lift it in the gripper, as success.” The agent had to watch the shuffle while it
+happened: it held the arm still at a watch pose above the cups and recorded the wrist camera’s
+stream, then identified the cup from that recording. Operator. The operator hid the cube, shuffled the cups, and reset the scene between
+trials when the agent asked. During the session the operator made the game harder in three steps.
+At first the cube was covered by a cup and the cups were slid around. In later trials the operator
+also lifted the cube and moved it, or set a decoy cup on its old spot. From 21:35 the operator
+dropped the cube into an upright cup, not necessarily the nearest, turned that cup over, and then
+shuffled. From 21:50 the cube was replaced by a red wedge of about 4 cm. Trials and outcome. The agent ran 12 trials between 20:08 and 22:35, and recorded each
+in its notes; trials that stopped partway were resumed from the step that failed. In the first
+trial the shuffle started before the arm reached the watch pose. In the next two the agent
+finished parts by hand-issued commands, and in the third its tracker assumed a static cube and
+chose the decoy. Trials 4, 5, and 6 were three consecutive end-to-end successes of the agent’s
+program without intervention, in 166, 231, and 194 s. Trial 7 missed the moment the cup
+covered the cube; trial 8 identified the cup correctly but pinched the cube through the cup wall
+and carried both, after which the agent grasped cups higher and with less force. Trial 9 introduced a
+new way of hiding the cube: dropped into an upright cup that was then turned over. The program
+recognized no hiding event it knew and stopped without moving the robot. The agent adapted on the
+spot: it added a detector for a cube lying inside an upright cup, checked it on the recorded stream
+and on all seven recordings so far, and resumed the same scene one minute later, when the robot
+lifted the predicted cup and grasped the cube in 98 s ( Figure 22 ). Figure 24 shows how its program tracks the cups. With the red wedge, the cup was identified correctly in trials 10 and 11;
+the wedge was grasped after several fixes and manual help in trial 10, and on the first attempt in
+the resumed trial 11 ( Figure 23 ). For the wedge the agent kept the cup tracker and
+20 of the program’s 41 functions unchanged, generalized its model of the hidden object to a
+measured size, color, and height, and changed the grasp to close on the wedge along two axes. Success was judged from the gripper width after the grasp and from the
+wrist camera’s view of the object in the gripper. Figure 22 : Find the cube, trial 9: adapting to a new way of hiding the cube. (a)–(d)
+Left exterior camera: the operator drops the cube into an upright cup, turns the cup over, and
+shuffles the four cups. (e)–(f) Right exterior camera: after the agent added a detector for this
+case, the robot sets the identified cup aside and grasps the cube. The identification comes from
+the updated detector run on the recorded wrist stream, and the run resumed from locating the
+cups. Time is from the first frame. Figure 23 : Find the cube, trial 11: a red wedge instead of the cube. (a)–(d) The operator
+tosses the wedge into an upright cup, turns the cup over, and shuffles; (c) is the wrist camera,
+which the agent’s detector watches. (e)–(f) On the resumed run, the robot sets the predicted cup
+aside and grasps the wedge on the first attempt. Left exterior camera except (c); time is from the
+first frame. Figure 24 : The find-the-cube program. During the shuffle it follows every cup on the wrist camera
+and remembers the cup that covered the cube (top); it also catches a cube that is moved or dropped into
+a cup (middle). It then lifts the cup that hides the cube and picks the cube up (bottom). 14.2 Air Fryer Task. The robot must open the drawer of an air fryer by its handle, put a banana into
+the basket, and close the drawer. The task text was: “You should open the air fry pan, put
+the banana inside, and close it. Reminder: the plate is really heavy and you should figure out
+where to grasp and the force applied. Also if the position of the air fry pan is out of range you
+may ask for operator reset. Be careful about the forces and maybe not pull out the plate entirely so
+we do not have to lift it in everytime.” The agent’s perception, its articulated model of the
+fryer, and its verification are described in Section 14.2.1 . Operator. The operator reset the scene between runs; after the first run, for example, the operator took the
+banana out of the basket, which the robot cannot reach into. Between runs the fryer was moved (by
+about 6 cm and 4 cm in the two table directions before run 7) and rotated it (so that the handle
+faced the robot’s base, before run 8). Before the final run the operator moved the banana away
+from the left camera at the agent’s request and added an orange ball as a second object. Runs and outcome. The session lasted from 09:18 to 12:05. The agent first completed the
+task once by direct tool calls (run 1, about 75 minutes including exploration), then wrote a
+program and ran it nine times (runs 2–10). Run 2 ended with a safety stop when the elbow hit the
+left camera; the collision moved the right camera, which the agent stopped using. Runs 4, 5, and 8
+needed resumes after a false-negative check, a descent timeout, and refused long moves, and run 8
+also needed recovery commands issued by the agent. Runs 6, 7, 9, and 10 were clean unattended
+successes, including run 7 on the moved fryer and run 9 on the rotated one. In the final run the
+program opened the drawer by 13.1 cm, placed the banana and then the ball in the basket, and
+closed the drawer, in 210 s, leaving the handle 3.5 mm from its initial position; Figure 27 shows it. Figure 25 shows how its program handles the fryer’s layout, the camera bump, and the release. Success was judged by the agent’s own measurements: the drawer
+opening, the objects’ points inside the basket rim, and the handle’s final position. Figure 25 : The air-fryer program. After its elbow hit the left camera in run 2, the agent
+re-registered the camera and planned only postures clear of both cameras; it releases the banana with
+the hand tilted 60 ∘ . One program handles four fryer layouts; the bottom row follows the run with
+the fryer rotated. 14.2.1 Agent-Written 3D Perception This section details the perception code behind Figure 3 . The task is to open the
+drawer of an air fryer by its handle, put a banana into the basket, and close the drawer, on a
+real Franka FR3 with a left exterior and a wrist RGB-D camera. The agent wrote the perception
+and the program itself, in about 1,500 lines of Python; they use no learned detector and no
+vision-language model. All numbers below are from the agent’s final run. Lifting to a metric frame. Every depth pixel is back-projected with the camera
+intrinsics and the camera-to-base pose into the robot’s base frame, and the views of the
+exterior and wrist cameras are fused in that frame. All later computations operate on these
+points; estimates are projected back into the images only to check them. Segmentation and geometric primitives. Each part of the scene is selected by a
+colour threshold combined with a height band and a workspace region: the dark lid on top of the
+fryer, its white body, the dark handle outside the body, the yellow banana, and an orange ball
+just above the table. Geometric primitives are then fitted to the selected points, each with a
+plausibility check on its size: • the fryer body, by a robust circle fit to its side (radius 8 to 16 cm accepted), and
+the lid, seen from the wrist camera above, by a second circle (4.5 to 8 cm), whose centre
+gives the fryer’s vertical axis ; • the handle, by the direction from the axis to its horizontal arm, which gives the pull
+direction , the outer face of its grip in 1.5 cm height slices, the height of its arm,
+and its lateral offset; • the banana, by its principal axis and a quadratic centre line, which give its arc
+middle, the normal on its convex side, its chord (13 to 21 cm accepted; 18.0 cm here), and
+its height; • the basket, once the drawer is open, by a circle fitted to its rim. The pull direction from the top view must agree with the one from the side view within
+12 ∘ ; the side view alone was biased by about , which is why the agent added the
+top view. Task frame and articulated model. All targets are expressed in a frame anchored on
+the fryer: the axis , the pull direction , and . The agent also wrote an
+articulated model of the fryer: a fixed upper cylinder and the back of the lower body, and a
+drawer cylinder with box models of the handle’s grip and arm, which translate together by the
+drawer’s opening along . The model provides a signed distance from any point, and the
+program instantiates it at the drawer’s current opening to check every planned motion for
+clearance between the arm, hand, fingers, wrist camera, and held object, and the fryer, the
+table, and keep-out regions around the exterior cameras. How the agent built the model. No model of the fryer was provided. The agent first
+completed the task once by hand, controlling the robot step by step, and recorded what it measured
+in its notes: the fryer’s top at a height of 0.415 m and the seam between body and drawer at
+0.245 m, a handle with a horizontal arm and a hanging grip, and the basket centre relative to the
+handle once the drawer was out. It also noted that the drawer slides freely along the pull
+direction and tips slightly when released. About 90 minutes into the session it turned these
+observations into the model above, in the first version of its program, and revised it in later
+versions. Table 21 separates what the agent estimates in each new scene from what
+it fixed from these measurements. Table 21: What the agent’s fryer model takes from each scene. Part of the model In each scene Source Position and orientation (axis , pull direction ) estimated lid circle and handle direction in the point cloud Handle face, arm height, lateral offset estimated handle points in the point cloud Drawer opening (joint state) measured shift of the handle face after the pull Radii, heights, handle dimensions fixed the agent’s measurements from its first manual run Estimators. The agent does not register the whole model to the point cloud at once.
+Instead, each parameter of the model comes from a small, robust estimate on the points of one
+part of the scene, illustrated on its final run in Figure 26 : 1. Axis ( Figure 26 a). From the wrist camera above the fryer, the
+dark points at the height of the lid are fitted with a circle by least squares: writing the
+circle as turns the fit into a linear system for the centre and , with radius . The fit is repeated six times, each time
+discarding the points that lie farthest from the current circle, so that the dark inner part
+of the lid and stray points do not pull the centre away. The centre is the fryer’s axis; the
+radius, 6.3 cm here, must lie between 4.5 and 8 cm. 2. Pull direction ( Figure 26 b). Dark points at the height of
+the handle and just outside the lid are the handle’s arm seen from above. Points more than
+0.25 rad from their median bearing around the axis are dropped, and points from the axis
+to the median of the rest; a median ignores the few points of other dark objects. 3. Handle face and arm height ( Figure 26 c). In the plane through the
+axis along , the handle’s points are cut into 1.5 cm height slices. In each slice, the
+97th percentile of the distance along marks the handle’s outer face, the surface the
+fingers and the closing push rest on, while ignoring a few noisy points beyond it; the 95th
+percentile of height gives the top of the arm, which sets the grasp height. 4. Banana ( Figure 26 d). The banana’s yellow points are expressed
+along their principal axis, found by singular value decomposition, and a quadratic curve
+fitted by least squares gives its centre line. The middle of that curve is the grasp point,
+its bulge gives the convex side that sets the hand’s orientation, and its ends give the chord,
+18.0 cm here, which must lie between 13 and 21 cm. 5. Basket rim ( Figure 26 e). After opening, the dark rim points are
+searched for around the rim predicted by the model and fitted with a circle in the same way as
+the lid. The measured centre lies 6.5 mm from the prediction, and the release poses use it. The drawer’s opening is the shift of the handle face between the measurements before and after
+the pull, and the camera pose after the bump is a rigid transform fitted by least squares to
+feature matches that agree with each other within 8 mm. Figure 26 : The agent’s estimators on its final run , computed by its own code. (a) Lid
+points from the wrist camera above the fryer; blue points are kept and grey points discarded by
+the trimmed least-squares circle fit (red), whose centre is the axis . (b) Handle-arm points
+seen from above, around the lid circle; points outside the rad window (dashed) are
+discarded, and points to the median of the rest. (c) Handle points in the plane along :
+the outer face in each 1.5 cm height slice (red bars) and the top of the arm (dashed). (d)
+Banana points along their principal axis, with the fitted centre line, its ends, and its middle
+(the grasp point). (e) Rim points after opening around the model’s prediction (dashed), and the
+fitted rim (green), 6.5 mm apart. Distances are in centimetres. Figure 27 : The air fryer task on the real robot. The agent’s final run, from the
+continuous recording of an exterior camera, with the time since the start of the run under each
+frame. Each row is one planned action, numbered as in Figure 3 (b): grasping the
+handle, pulling the drawer open by 13.1 cm in 3 cm steps, carrying the banana and releasing it
+with the hand tilted over the basket, releasing the ball, and closing the drawer by a
+push that stops about 2 cm short followed by a push with closed fingers, which leaves the
+handle within 3.5 mm of its initial position. This camera was moved by a collision earlier in
+the session and was not used for perception. Planning on the model. Figure 27 shows each planned action on the real
+robot, numbered as in Figure 3 (b). The handle grasp lies 1.2 cm inside the measured grip face
+along and 9 mm below the top of the arm, with the hand tilted toward the fryer.
+The drawer is pulled 12.5 cm along in absolute 3 cm steps at a fixed height, since relative
+steps sagged under the drawer’s weight. The basket centre is predicted from the handle face and
+the opening, with an offset measured in the first manual run; the banana is released with its
+middle 1.5 cm beyond the basket centre and the hand tilted about the banana’s axis, and
+the ball slightly further along . The drawer is closed by pushing along , finishing with
+the fingertips on the grip face. Verification. Each step is checked by a new measurement. The opening is the shift
+of the handle face (13.1 cm here), and the step fails if it falls more than 3 cm short of the
+command. The rim is searched for around the model’s prediction and found 6.5 mm from it, and the
+release poses use the measured rim. The banana counts as placed when its points lie inside the
+rim and below its height: 99.99% of them, with its top at 17.9 cm against a rim at 23.5 cm.
+Before closing, the handle is measured again, since the released drawer tips by about 2.5 cm and
+shifts sideways by about 1.5 cm; after closing, its face lies 3.5 mm from its initial position. Sensor limits and calibration. The agent recorded two limits of its sensors and
+coded around them: the wrist camera’s depth is unreliable closer than about 30 cm, so metric
+targets come from the exterior camera; and side-view pixels on the edge of the banana take the
+depth of the rim behind it, so heights are measured from the top-down wrist view. When the arm
+bumped the left camera, whose reported pose stayed unchanged, the agent re-estimated that pose
+by matching image features against frames captured before the bump, lifting the matches to 3D
+with both depth maps, and fitting a rigid transform, with a residual of 3.5 mm and fixed
+landmarks within 2 to 9 mm of their references. It applies the correction only to frames
+captured after the bump, and it stopped using the right camera, which had moved too far to
+correct. 14.3 Wiping a Stain Figure 28 : Wiping a stain, trial 7b, from the left exterior camera. (a) The poured stain
+and the towel heap; (b) the grasped wad pressed on the stain; (c) scrubbing; (d) the towel is
+carried back; (e) the table after one pass. Time is from the first frame. Figure 29 : Wiping with paper towels, second wet run, from the left exterior camera. (a) The
+poured stain, the tissue box, and the bin behind it; (b) a sheet pulled from the box; (c) six sheets
+piled on the stain; (d) the pile pressed and grasped as a wad; (e) wiping, with the towel program’s
+zig-zag; (f) the wad released over the bin; (g) a leftover sheet picked up by the sweep; (h) the
+table afterwards, with a flat wet scrap the sweep missed. Time is from the first frame. Figure 30 : The wiping program. It finds the stain by comparing both exterior cameras with a clean
+reference and the towel heap in depth, grasps the heap as a wad, and wipes a zig-zag fitted to the
+reachable area. The wrist camera catches thin streaks that the exterior cameras miss, so the table is
+checked at both scales. Task. The robot must grasp a wet towel and wipe a soy-sauce stain off the table. The
+task text was: “You are given a wet towel, and I will ask you to wipe the soy sauce stain on
+the table using it. First get familiar with the robot and environment. When you are ready, please
+call for operator to pour the soy sauce on the table for you to wipe. Also, if you need help such as
+adding some soap to the towel also ask for operator help.” The towel is deformable and has no
+fixed shape on the table. The agent did not use force sensing: it pressed the towel onto the table
+by commanding a height 12 mm below the contact height it had measured. Operator. The operator poured soy sauce when the agent asked, washed the towel and
+added soap to it between trials, and returned it to the table as a loose heap. The stains
+differed from trial to trial in size (the agent measured 10 to 311 cm 2 ), shape, and position,
+including one next to the left camera at the edge of the reachable workspace. Trials and outcome. The session lasted from 09:21 to 12:46. The agent first wiped a
+stain by direct tool calls (two passes; the first left a smeared film, and the second, after the
+operator added soap, cleaned it), then wrote a program that locates the towel heap, grasps a wad
+of it, locates the stain against a clean reference image, scrubs it in a back-and-forth pattern,
+parks the towel, and checks for residue. It ran the program in 13 recorded trials and resumes (trials 1 to 7b). Failures
+were a refused far reach, an operator reply the program did not expect, one false “clean”
+verdict on thin streaks (the operator asked for a second wipe; the agent then added a check with
+the wrist camera at 1 mm resolution), stains next to the left camera that required fitting the
+wiping region to the reachable area, and a refused approach move. The last two trials, 6 and 7b,
+cleaned the stain in one pass without intervention; trial 7b reused the scene of trial 7 after the
+agent fixed the approach move ( Figure 28 ). Figure 30 shows how its program finds, wipes, and checks the stain. Success was judged by the agent’s residue
+measurement against the clean reference in the exterior and wrist cameras (0 cm 2 in both for
+trials 6 and 7b) and by eye in the three camera views. Adaptation to paper towels. Afterwards the operator asked for a variant: “pull
+paper towels out of the box, wipe table, and then throw them into the waste bin.” The agent wrote
+a new program that imports the towel program unchanged and calls its parts: locating the stain
+against the clean reference, fitting the wiping region to the reachable area, the press-then-grasp
+of a wad, the zig-zag wipe 12 mm below the measured contact, and the residue check. The new code
+handles the paper: it finds the box and the bin, pinches the top of a protruding sheet and pulls it
+out, piles six sheets on the stain, releases the wad over the bin and scrapes paper stuck to the
+fingers, and sweeps up sheets left on the table. After three dry runs, the stain was removed in both
+wet runs ( Figure 29 ), but leftover sheets, and in the second run a flat wet scrap
+that the sweep missed, were cleaned up with supervised scripts. 14.4 Peg Insertion: the ManipulationNet Peg-in-Hole Challenge Figure 31 : The ManipulationNet peg-in-hole challenge, final run, from a crop of the left
+exterior camera. (a) A peg inserted into L1 (3 mm clearance); (b)–(d) the rectangle peg
+entering L3 (0.1 mm clearance) corner first, turned upright, and seated; (e) the three pegs seated in L3.
+Time is from the first frame. Figure 32 : The peg-insertion procedure. The agent fits the board’s CAD model and each peg’s top
+outline to the wrist camera’s image edges. It drops the peg into the 3 mm row, probes by touch for the
+1 mm hole, and tilts a corner into the 0.1 mm hole before turning the peg upright and pushing it down. Task. This is the peg-in-hole challenge of ManipulationNet ( Chen et al., 2026b ) .
+Its board is a transparent acrylic plate of mm with blind holes 21.8 mm
+deep for five peg shapes, each at four clearance levels, rows L1 to L4 with 3, 1, 0.1, and 0.02 mm clearance.
+Neither the steel pegs, 50 mm long, nor the holes are chamfered. We used three pegs, the
+rectangle, the triangle, and the hexagon. The task text was: “There is a white transparent
+board in front and below you. There are openings on top that match the shape of the silver metal
+pegs (3 of them. rectangle. triangle and hexagon). You need to grasp them up and insert into the
+holes upright. Reminder: the depth of the wrist is not accurate at close distance, so you can locate
+approximately and probe the position and yaw based on force feedback, to succeed in the fine
+insertion. If you need help or if the position is of bad IK you can ask for operator to move it.” The agent converted the public CAD files of the board and the pegs into a
+model of the hole positions, which it registered to the wrist camera’s image. During the session
+the user asked it to work toward the tighter rows, from L2 to L3. L4 was not attempted. Operator. The board rests on the table unfixed. After the agent dragged it while lifting
+a jammed peg with a closed gripper, the operator taped the board to the table (at 01:30). The
+operator re-seated a hexagon peg that had toppled in L2 after a failed L3 attempt. The L3 fits are
+tight enough that the robot could not pull a seated peg out (15 N with rocking); before the final
+run the operator pulled the three pegs out of L3 and stood them upright on the table. The user also
+gave advice in the chat, for example to lower the peg further before turning it upright. Exploration and outcome. The agent worked by direct tool calls and its own scripts,
+supervised by the user; it never ran an unattended program in this task. Between 23:13 and 01:46
+it inserted each peg into L1, L2, and L3 in turn (the triangle and the hexagon each failed once in L3
+before succeeding). The user then asked for a full run, and between 02:28 and
+03:22 the agent took each peg from the table and inserted it into L1, then L2, then L3, showing it
+upright in each row ( Figure 31 ). Figure 32 shows how it registers the board, finds the holes by touch, and tilts the peg in. L3 needed a tilted entry with a corner of the peg first,
+followed by small rocking pushes while the peg was turned upright. All three pegs were seated in L3
+at the end, at depths of 20.8 mm (hexagon), 19.7 mm (triangle), and 21.0 mm (rectangle), out of
+21.8 mm. The full run took about 55 minutes including the operator’s extraction of the pegs from
+the earlier L3 attempts. Success was judged by the insertion depth the agent measured with the arm
+and by images of the upright pegs. 14.5 Bandu Tower Figure 33 : Bandu tower, final fully automatic assembly, from the left exterior camera.
+(a) The pieces after disassembly; (b)–(c) pieces are placed on the base; (d) the knob is held
+over the urn for visual alignment; (e) the completed tower. Time is from the first frame. Figure 34 : The Bandu assembly program, running fully automatically. It finds the pieces with both
+exterior cameras and Gemini, keeps a slot model of the demonstrated tower, and places each piece by a
+guarded place, a tactile search for the seat (with a tilt check for the urn), or a camera alignment of the
+knob over the urn’s opening. Task. Bandu is a stacking game with irregular wooden pieces. The task text was a single
+sentence: “Stack the bandu blocks as the demonstrated tower.” The “demonstration” was a
+tower standing on the table when the session began; the agent was not shown how it was built. The tower stands on a base of four rectangular blocks laid in a pattern and consists of seven pieces: a ring with a dowel standing in it, a barrel, a goblet with an
+urn seated in its cup and a knob seated in the urn, and an oblique cylinder that the user added
+at 13:42, asking for it on top of the barrel. Several of these placements leave little play, and
+the knob’s opening clearance was about 1 mm by the agent’s estimate. The user told the agent to
+take the tower apart and rebuild it, and to repair its own disturbances rather than rely on
+human resets. Operator. The operator reset the pieces once after the robot’s hand swept the tower
+(at 15:06, during a sideways pick the user had asked for), restarted or re-homed the gripper twice, and moved
+one piece the arm could not reach. The user asked for visual alignment instead of a contact search
+for the knob (“align with at most 1 mm opening error”). Exploration and outcome. The session lasted from 11:13 to 17:20. The agent first took the
+tower apart and rebuilt it by direct tool calls, then wrote a program with a disassembly and an
+assembly mode and alternated them over runs 1 to 15, fixing a failure after each stop. In the
+final exploration cycle the program disassembled the tower (7/7 pieces, 459 s) and then rebuilt
+it fully automatically, without intervention: 7/7 pieces in 663 s, the knob placed by visual
+alignment from both exterior cameras to an offset of 0.19 mm before insertion ( Figure 33 ). Figure 34 shows how its program perceives, places, and checks each piece. Each
+placement was checked by the measured seat height and, for the urn, an uprightness check in both
+cameras; the final tower was compared with the demonstrated one in both exterior views. 14.6 Long-Horizon Tidying on the RB-Y1 Task. The RB-Y1 must tidy a lab corner in six chained subtasks given in one
+instruction: “I want you to complete a series of tasks and you should reuse the skills while
+still monitor and control the process. First, you should move the chair in front of you out and
+park it to the left of the yellow table in front of you to clear it out of the way. then you should
+stack the two silver cups together and carry the stacked cups and banana over to the orange basket
+to your right and place them in, and pick up the orange basket on to the cabinet with dark top.
+Then you should move the chair back and tuck it to the table again. Finally you should pick up the
+box on your right and put it also on the cabinet. Be agile and reactive.” The robot perceives
+the scene only through its head camera and must move between the table, the basket, and the cabinet
+with its base. Skills from earlier sessions. The agent started from a shared skill library written in
+five earlier RB-Y1 sessions: carrying a box between the floor and a table ( bimanual-box-pnp ,
+from three sessions), lifting the basket onto the cabinet by its rim with both grippers
+( bimanual-bucket-rim-pnp ), and moving and tucking an office chair ( office-chair-tuck )
+and nesting two cups ( stack-cups ), both from one chair session. Carrying the cups and the
+banana into the basket had no skill. During the session the agent added a skill for reaching hand
+moves ( oc-hand-reach ) and a composition skill for the whole task, and updated the
+library after each trial. Operator. The operator reset the scene before each trial, stayed in the loop
+throughout, and gave advice in the chat, such as “straighten the arms”, “lift first”, and
+“check the torso and height against previous skills”. In trial 1 the robot’s base hit the
+cabinet during a hand-planned turn, after which the agent checked the base’s swept footprint
+before every base move. In trial 3 the operator re-armed the robot after controller faults while the cups
+were being nested. Trials and outcome. The agent ran the whole sequence three times; all six subtasks
+were completed in each trial (trials 1 and 2 overnight on the first day, trial 3 on the
+next evening). Trial 3, shown in Figure 5 , ran from 19:31 to 21:09 (98 minutes), with the agent at
+every checkpoint of the skills. Success of each subtask was judged by the agent from head-camera
+images (for example, two rims visible for nested cups, both objects inside the basket, the basket
+and the box on the cabinet).

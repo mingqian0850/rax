@@ -1,0 +1,239 @@
+5 Experiments In this section we report our simulation benchmark results as well as case studies on both simulation and real robot experiments. 5.1 Setup We comprehensively evaluate RAX in both simulated environments and on real-world robotic hardware. In simulation, the evaluation spans six benchmarks covering single-arm, bimanual, dexterous, mobile, and humanoid embodiments: RoboDojo, BEHAVIOR-1K, HumanoidArena, DexJoCo, LIBERO, and LIBERO-Pro. In each session, a coding agent starts in a localized workspace containing only the platform’s baseline skills. Guided by a task description and RGB-D observations, the agent explores training scenes within a strictly defined episode budget. The submitted code is then executed as a fully automated program under each benchmark’s official evaluation protocol ( Section 10 ). On physical robots, RAX is deployed on a Franka FR3 manipulator to master five distinct tabletop tasks: (1) memory , tracking and finding a hidden cube randomly shuffled under four cups ( Section 14.1 ); (2) articulated objects , opening an air fryer drawer, inserting a banana, and closing it ( Section 14.2 ); (3) deformable objects , wiping a stain off a table using a wet towel ( Section 14.3 ); (4) precision , inserting pegs into a ManipulationNet board with a stringent 0.1,mm clearance ( Section 14.4 ); and (5) precision and long horizon , dismantling and rebuilding a Bandu tower of irregular pieces ( Section 14.5 ). Additionally, we evaluate RAX on a Rainbow RB-Y1 mobile manipulator to solve a long-horizon logistical task. This involves pulling out a chair, stacking cups, picking up a banana, loading the items into a basket, carrying the basket to a cabinet, tucking the chair back, and subsequently transferring a box to the cabinet ( Section 14.6 ). Crucially, the agent receives only natural-language instructions and zero teleoperated demonstrations. It is designed to autonomously evaluate its own success criteria, only prompting a human operator to reset the physical scene between trials. 5.2 Simulation Results Here we report the simulation benchmark results across RoboDojo, BEHAVIOR-1K, HumanoidArena, DexJoCo, LIBERO, and LIBERO-Pro. 5.2.1 RoboDojo Setup. We measure exploration scaling on seven RoboDojo tasks with the dual-arm ARX X5 ( Section 10.3 ), spanning domain-randomized variants ( make toast random , hang mugs random , sweep blocks random ), as well as precision ( plug in charger ), memory ( swap blocks ), long-horizon ( make kong ), and open-instruction ( pour by language ) tasks. For each task, a single agent explores a single environment from an empty workspace, given the task’s public scoring rubric with a short clarification of its conditions, RGB-D observations, and one image of the task’s completed state. Sessions differ only in the exploration budget (i.e., the number of exploration episodes), with each episode conducted in a new exploration scene. At the end of exploration, the agent submits its rehearsed bundle. The resulting fully automated program is then evaluated without the agent on 30 to 50 unseen scenes, scored by the native evaluator with partial credit. Baselines. We compare our approach with the five strongest learned policies on the RoboDojo-Sim leaderboard ( Chen et al., 2026a ) , which are trained on demonstrations, and with PhysicalRSI, an agent-based system listed separately on the same leaderboard ( Table 2 ). Results. With its largest budget on each task, RAX exceeds every baseline on all seven tasks, averaging 78.3% compared to 24.9% for VPP2, the strongest policy on the leaderboard ( Table 2 ). The margins are largest where learned policies make little progress: on sweep blocks random , RAX reaches 71.7% where the best baseline achieves only 8.0%; and on pour by language , which every learned policy fails, it reaches 100.0%. Performance consistently grows with the exploration budget. Plug in charger rises from 26.0% with 4 exploration episodes to 94.0% with 8; swap blocks improves from 34.0% to 100.0% with 16; and make kong —for which the agent submitted no program within 8 episodes—increases from 64.0% with 16 episodes to 96.0% with 32. The domain-randomized tasks require the largest budgets: make toast random rises from 2.5% with 16 episodes to 31.7% with 32 and 47.2% with 64, and sweep blocks random improves from 53.3% to 71.7%, while hang mugs random stays between 33.3% and 39.2% across all budgets. Table 2: Scaling exploration on RoboDojo. Score (%) on unseen layouts;
+baselines from the top five policies of the RoboDojo-Sim leaderboard ( Chen et al., 2026a ) . Cells
+with more than one run report the mean. –: not run. † No program submitted. ‡ Agent + VLA; listed among agents and unranked on the leaderboard. Make toast Hang mugs Sweep blocks Plug Swap Make Pour by Method Budget random random random charger blocks kong language VPP2 – 38.0 13.5 1.3 16.7 26.0 78.7 0.0 Awomo-0.5 – 7.0 9.6 0.0 7.3 4.7 30.0 0.0 Simate-beta – 7.7 11.4 0.0 29.3 38.7 76.0 0.0 Rex-M1 Preview – 14.3 20.2 8.0 3.3 13.3 33.3 0.0 VPP2-Preview – 13.7 14.5 2.7 6.0 22.7 34.7 0.0 PhysicalRSI ‡ – 4.7 2.0 0.0 30.7 0.0 82.0 10.1 RAX 4 – – – 26.0 34.0 0.0 94.4 8 – – – 94.0 74.0 0.0 † 100.0 16 2.5 36.9 53.3 – 100.0 64.0 – 32 31.7 33.3 68.3 – – 96.0 – 64 47.2 39.2 71.7 – – – – 5.2.2 BEHAVIOR-1K Setup. We evaluate RAX on six long-horizon household tasks from the 2025 BEHAVIOR Challenge ( Li et al., 2023 ) , where previous challenge entries have struggled to make progress. For each task, cooperating agents explore parallel environments using the Galaxea R1Pro for 128 exploration episodes, given the task description, RGB-D observations, and an image sequence of a successful completion (keyframes of official demonstrations, without actions or states). We evaluate the agent-in-the-loop program: a fresh copy of the agent starts from the frozen workspace and attempts each of the ten public test instances of the challenge—the same instances used to report public results. Review reports. Throughout exploration, after each run of the agent’s code, a separate review model provides detailed feedback to the agent regarding the outcome. This report outlines any missed goal conditions and their likely causes, suggests the most valuable code changes, and includes the run’s partial score alongside key camera frames ( Section 10.4 ). Scoring and baselines. Episodes are evaluated using the challenge’s Q-score, which measures the fraction of satisfied goal conditions and awards full credit for a complete success. We compare our approach against the five highest-ranked entries from the challenge ( Table 3 ). Figure 6 illustrates the program RAX generates for the boxing books task. Table 3: BEHAVIOR-1K. Q-score (%) on the ten public test instances; baselines from
+the five highest-ranked entries of the 2025 BEHAVIOR Challenge ( Li et al., 2023 ) . † Fully automated program. ‡ Privileged track. Boxing Getting Sorting Clearing Clean up Loading Method books organized items food desk the car Avg. Robot Learning Collective 0.0 2.0 6.2 8.0 12.7 20.0 8.2 Comet 0.0 0.0 0.0 0.0 0.0 0.0 0.0 SimpleAI Robot 0.0 0.0 0.0 0.0 0.0 0.0 0.0 The North Star 0.0 0.0 0.0 0.0 0.0 20.0 3.3 Embodied Intelligence ‡ 0.0 0.0 0.0 0.0 0.0 0.0 0.0 RAX 26.7 † 9.0 75.0 40.0 28.2 100.0 46.5 Figure 6 : The program RAX writes for boxing books on BEHAVIOR-1K ( Table 3 ).
+It detects the books, shelves and box in the head camera, tracks the robot’s motion by visual
+odometry, maps the scene, and plans paths with A*; the policy flow shows the camera view at each step. 5.2.3 HumanoidArena Setup. We evaluate RAX on all seven tasks of
+HumanoidArena ( Wang et al., 2026b ) that have official test episodes: three
+human–object interaction tasks (Football, DoubleDesk, and P&PBox) and four human–scene
+interaction tasks (OpenDoor, SitSofa, Boxing, and VisNavi), on a Unitree G1 with Dex3 hands
+( Section 10.5 ).
+The agent commands whole-body reference poses, which the SONIC motion
+tracker ( Luo et al., 2026 ) turns into balanced whole-body motion. The agent perceives the scene through the
+egocentric RGB-D camera and receives the task description together with three
+teleoperated demonstrations, which are available only to the exploring agent. It explores
+with a budget of up to 128 episodes on DoubleDesk and P&PBox and up to 32 episodes on each of
+the other tasks, on
+scenes drawn from the training distribution and never on a test episode, and the resulting
+fully automated program is evaluated alone, without the agent, on unseen scenes, the 60
+official test episodes of each task. Baselines. We compare with the baselines of the benchmark, ACT ( Zhao et al., 2023 ) , Diffusion
+Policy ( Chi et al., 2025 ) , a flow-matching policy ( Boston Dynamics and Toyota Research Institute, 2025 ) , and the VLA ( Intelligence et al., 2025 ) , each trained on 100 teleoperated demonstrations per
+task, and with WB-WAM ( Qin et al., 2026 ) , a world action model pretrained on
+1,880 hours of video and motion data and fine-tuned on the same 100 demonstrations per task, all with
+the same tracker ( Table 4 ). Results. RAX reaches an average success rate of 89.8% ( Table 4 ), 7.9 points above WB-WAM and 29.8 points above
+the strongest baseline of the benchmark, from three demonstrations instead of one hundred. It
+succeeds in every test episode of OpenDoor and Boxing, and on Football and VisNavi it improves
+on WB-WAM by 28.3 and 16.6 points. Performance grows with the exploration budget: averaged over
+the seven tasks, the success rate rises from 52.1% with 2 exploration episodes to 80.7% with 32.
+Tasks governed by whole-body posture and locomotion, such as OpenDoor and SitSofa, are solved
+within a few episodes, Football and VisNavi rise from 40.0% and 71.7% to 98.3% and 93.3%,
+and the two
+whole-body loco-manipulation tasks keep improving with further exploration, P&PBox from 0.0% to 83.3% and DoubleDesk from 0.0% to 56.7% at 128
+episodes. We also test RAX with the three demonstrations without their actions (RAX ⋆ , Section 5.3.4 ): without any action data, it still
+matches the 81.9% average of WB-WAM, which is fine-tuned on 100 action demonstrations per task. Table 4: HumanoidArena. Success rate (%) on the 60 official test episodes of
+each task, all methods with the SONIC tracker. Baselines from Wang et al. (2026b) and Qin et al. (2026) . Max: each task at its largest budget. ⋆ Three demonstrations without
+actions. –: not run. Human–object interaction Human–scene interaction Method Demos Budget Football DoubleDesk P&PBox OpenDoor SitSofa Boxing VisNavi Avg. ACT 100 – 16.7 18.3 56.7 78.3 73.3 56.7 33.3 47.6 Diffusion Policy 100 – 45.0 36.7 75.0 85.0 78.3 76.7 23.3 60.0 Flow matching 100 – 13.3 38.3 73.3 70.0 15.0 70.0 38.3 45.5 100 – 10.0 43.3 71.7 66.7 73.3 70.0 23.3 51.2 WB-WAM 100 – 70.0 65.0 86.7 98.3 95.0 81.7 76.7 81.9 RAX 3 2 40.0 0.0 0.0 98.3 96.7 58.3 71.7 52.1 4 51.7 1.7 16.7 93.3 98.3 95.0 80.0 62.4 8 76.7 5.0 23.3 93.3 100.0 80.0 80.0 65.5 16 96.7 28.3 20.0 93.3 96.7 80.0 83.3 71.2 32 98.3 25.0 51.7 100.0 96.7 100.0 93.3 80.7 64 – 25.0 46.7 – – – – – 128 – 56.7 83.3 – – – – – Max 98.3 56.7 83.3 100.0 96.7 100.0 93.3 89.8 RAX ⋆ 3 Max 98.3 46.7 70.0 95.0 100.0 86.7 76.7 81.9 5.2.4 DexJoCo Setup. DexJoCo ( Wang et al., 2026a ) evaluates task-oriented dexterous
+manipulation with Franka arms that carry 16-degree-of-freedom Allegro hands, on six
+single-arm and five bimanual tasks. The agent commands the end-effector pose of each arm and
+the joint positions of each hand. It perceives the scene through
+RGB-D observations and receives the task description and
+three completion images of expert episodes as a goal reference, but no action demonstrations or
+expert videos. For each task, a single agent
+explores a single environment from an empty workspace, with the exploration episodes drawn from
+the training distribution of the rand-obj setting and never on an evaluation layout. Sessions
+differ only in the exploration budget, from 2 to 32 exploration episodes, and the resulting fully
+automated program is evaluated alone, without the agent, on unseen scenes, the 150 official
+evaluation episodes of each task ( Section 10.6 ). Baselines. We compare with the baselines of
+the benchmark, Diffusion Policy with transformer and CNN backbones ( Chi et al., 2025 ) ,
+ACT ( Zhao et al., 2023 ) , and the VLAs ( Intelligence et al., 2025 ) and GR00T
+N1.5 ( Bjorck et al., 2025 ) , each trained on 100 teleoperated demonstrations per task, and
+with subsequent results on the same benchmark: GR00T N1.6, the world action models
+Fast-WAM ( Yuan et al., 2026 ) , PointWAM ( Park et al., 2026 ) , which pretrains on 1.15
+million human videos, and ME-Dex ( Zhang et al., 2026 ) , and the diffusion transformer
+DECO ( Li et al., 2026 ) ( Table 5 ). Results. Performance grows rapidly with exploration ( Table 5 ):
+averaged over the eleven tasks, the success rate rises from 31.9% with 2 exploration episodes to
+86.9% with 8 and 96.7% with 32, and with 32 exploration episodes RAX exceeds the best published
+result on every task. Hammer, Mouse, and iPad are solved from two exploration episodes, most
+other tasks within four to eight, and the bimanual Assembly within sixteen. Taking the best
+session of each task, RAX succeeds in every evaluation episode of eight of the eleven tasks and
+reaches an average success rate of 99.5%, 45.4 points above the strongest baseline of the
+benchmark and 34.2 points above the best published average, without a single action demonstration.
+The margins are largest on the bimanual tasks that existing methods rarely complete: RAX solves Hanoi ( Section 11.2 ) and iPad in every episode, where the best published results are 42.0 and
+52.0, and reaches 96.0 on Assembly, where the best published result is 28.0. Table 5 : DexJoCo, rand-obj setting. Success rate (%) on the 150 official evaluation
+episodes of each task. Baselines from Wang et al. (2026a) , Park et al. (2026) (GR00T N1.6, Fast-WAM, PointWAM), Zhang et al. (2026) , and Li et al. (2026) . DP-T and DP-C: Diffusion Policy with transformer and CNN backbones. † One policy for all tasks. ‡ Mean over the ten tasks other
+than iPad. § With simulated tactile input. –: not reported. Single-arm Bimanual Method Budget Hammer Mouse Bucket Tongs Glasses Water iPad Hanoi Assembly Microwave Photo Avg. DP-T – 81.3 62.0 83.3 22.7 53.3 84.0 8.0 24.7 4.7 73.3 56.7 50.4 DP-C – 58.7 74.0 70.0 57.3 54.0 63.3 52.0 12.7 3.3 54.0 24.0 47.6 ACT – 50.0 61.3 64.0 31.3 47.3 47.3 9.3 6.0 0.0 66.0 7.3 35.5 – 84.7 64.7 84.0 24.0 72.0 88.7 36.0 23.3 2.7 60.0 54.7 54.1 GR00T N1.5 – 67.3 85.3 72.0 12.7 27.3 72.7 12.7 0.7 0.7 50.7 40.7 40.2 GR00T N1.6 – 58.0 66.0 94.0 33.3 51.3 77.3 – 24.7 4.0 76.7 30.0 51.5 ‡ DECO – 68.0 90.0 80.0 46.0 50.0 88.0 40.0 18.0 0.0 64.0 76.0 56.4 Fast-WAM † – 43.3 77.3 81.3 47.3 62.7 42.7 – 42.0 2.7 88.7 40.7 52.9 ‡ PointWAM – 82.0 89.3 96.7 50.0 62.0 94.7 – 36.0 11.3 72.0 24.0 61.8 ‡ ME-Dex †§ – 86.0 76.0 92.0 92.0 56.0 72.0 48.0 32.0 28.0 88.0 48.0 65.3 RAX 2 98.7 100.0 0.0 36.7 0.7 0.0 100.0 0.0 14.7 0.0 0.0 31.9 4 98.7 97.3 93.3 2.7 0.0 0.0 100.0 100.0 0.7 0.0 0.0 44.8 8 94.0 100.0 100.0 100.0 100.0 91.3 100.0 100.0 0.0 84.0 86.7 86.9 16 98.0 100.0 96.7 99.3 55.3 98.7 100.0 98.7 96.0 93.3 68.7 91.3 32 100.0 100.0 100.0 100.0 93.3 99.3 100.0 100.0 72.0 99.3 100.0 96.7 5.2.5 LIBERO and LIBERO-Pro Setup. LIBERO ( Liu et al., 2023 ) evaluates a single Franka
+Panda arm with a parallel-jaw gripper on four ten-task suites, Spatial, Object, Goal, and Long
+( Section 10.7 ),
+and LIBERO-Pro ( Zhou et al., 2025 ) perturbs the layouts of the same tasks. The agent
+commands delta end-effector poses and the gripper. It perceives the scene
+through the agent-view and wrist RGB-D cameras and receives the task description and three
+images of the completed task, but no action demonstrations. It explores with a budget of up to 20 episodes on fresh layouts drawn from the official
+placement distribution and may continue with up to 5 episodes of adaptation on layouts drawn from
+the position-perturbed distribution of LIBERO-Pro, in which objects exchange their initial regions
+( Section 11.4 ), never on an evaluation state. The resulting fully automated program is
+evaluated alone, without the agent, on unseen scenes, the 50 official initial states of each task
+and the 50 position-perturbed states of LIBERO-Pro. Baselines. We
+compare with the VLAs OpenVLA ( Kim et al., 2024 ) , OpenVLA-OFT ( Kim et al., 2025 ) , ( Black et al., 2024 ) , ( Intelligence et al., 2025 ) , and
+X-VLA ( Zheng et al., 2026 ) , and with the world action models Cosmos
+Policy ( Kim et al., 2026 ) , Fast-WAM ( Yuan et al., 2026 ) , PatchWAM ( Wang et al., 2026c ) ,
+and VPP2 ( Guo et al., 2026 ) , all of which fine-tune on the benchmark’s demonstrations
+( Table 6 ). Results. Without a single action demonstration, RAX achieves one of the highest average
+success rates among these models on the original suites, 98.5% ( Table 6 ). Under position perturbation the
+learned policies collapse: OpenVLA, , and X-VLA succeed in at most 2% of the episodes
+of any suite, in at most 38%, and the world action models PatchWAM and VPP2 in
+8.8% and 42.3% on average. Without a single episode on perturbed layouts, the programs of
+RAX, which locate every object anew in each episode, already retain 76.0% on average and
+exceed every learned policy on every suite, 33.7 points above VPP2; they also exceed by 12.8
+points the coding agent ASPIRE ( Lu et al., 2026 ) , which develops a program for each task and
+perturbation with up to 75 rollouts and evolutionary search on instances from the evaluation distribution
+( Section 12 ). With at most 5 episodes of adaptation on perturbed layouts, RAX raises
+its average by a further 8.4 points to 84.4%, from 71.4% on Long to 100.0% on Object, and
+exceeds ASPIRE on every suite. Exploration thus yields programs that transfer to new layouts,
+and a few further episodes of exploration repair those that do not. Table 6: LIBERO and LIBERO-Pro. Success rate (%) on the 50 official initial states of
+each task and on the 50 position-perturbed states of LIBERO-Pro. Baselines from their papers,
+openpi ( , ), and the LIBERO-Pro leaderboard ( Zhou et al., 2025 ) ;
+PatchWAM reports only the mean, and VPP2 uses 10 initial states per task. † Developed
+on the perturbed setting under evaluation ( Section 12 ). ‡ Zero-shot with a
+skill library built on LIBERO-90; included in the average. –: not reported. LIBERO LIBERO-Pro, position perturbation Method Demos Spatial Object Goal Long Avg. Spatial Object Goal Long Avg. OpenVLA 50 84.7 88.4 79.2 53.7 76.5 0.0 0.0 0.0 0.0 0.0 OpenVLA-OFT 50 97.6 98.4 97.9 94.5 97.1 – – – – – 50 96.8 98.8 95.8 85.2 94.2 0.0 0.0 0.0 0.0 0.0 50 98.8 98.2 98.0 92.4 96.9 20.0 17.0 38.0 8.0 20.8 X-VLA 50 98.2 98.6 97.8 97.6 98.1 0.0 2.0 1.0 0.0 0.8 Cosmos Policy 50 98.1 100.0 98.2 97.6 98.5 – – – – – Fast-WAM 50 98.2 100.0 97.0 95.2 97.6 – – – – – PatchWAM 50 96.5 100.0 99.0 98.0 98.4 – – – – 8.8 VPP2 50 99.2 99.8 98.2 98.0 98.8 54.0 58.0 37.0 20.0 42.3 ASPIRE † 0 – – – – – 51.0 98.0 81.0 22.6 ‡ 63.2 ‡ RAX, no adaptation 0 99.2 100.0 98.6 96.2 98.5 79.2 100.0 73.4 51.2 76.0 RAX, adaptation 0 99.2 100.0 98.6 96.2 98.5 79.2 100.0 87.0 71.4 84.4 5.3 Ablations In this section we ablate the key design choices of our system, including parallel exploration with multi-agent and multiple environments, the effect of depth sensing over RGB-only observations, and the evolve of inference tokens and inference time over exploration. 5.3.1 Parallelization Exploration can also be parallelized
+( Section 3.5 ): the same budget of
+exploration episodes is distributed across parallel environments, explored by a team of
+cooperating agents that share a common workspace. In the same way that multiple agents
+scale test-time compute in parallel rather than purely serially, trading some efficiency for
+wall-clock time, parallel environments let a team of agents consume an exploration budget
+concurrently. We parallelize exploration on make
+toast . All sessions use RGB-D observations, an image sequence of one successful completion,
+and instructions that summarize the official task code, including its numeric success
+thresholds; the fully automated program is evaluated on the same 32 unseen scenes. Parallelization
+reduces the time needed to consume the exploration budget for both agents
+( Table 7 ). With four agents in four environments, Claude Code reaches a score of
+92.2 in 4.9 hours, against 63.3 in 13.7 hours for a single agent with a larger budget; with
+two agents in two environments, Codex matches its single-agent score in 9.2 hours instead of
+14.2. Table 7: Parallel exploration on make toast. Agent time until submission, and success
+rate and score (%) of the fully automated program on 32 unseen scenes. Agent Agents Envs Budget Time (h) Success Score Codex 1 1 32 14.2 40.6 66.4 Codex 2 2 32 9.2 56.3 65.6 Claude Code 1 1 48 13.7 50.0 63.3 Claude Code 4 4 32 4.9 87.5 92.2 5.3.2 Depth versus RGB-Only Perception To measure the contribution of depth, we compare RGB-D and RGB-only sessions on the three
+domain-randomized RoboDojo tasks. In the RGB-only profile, depth
+and the geometric primitives built on it are removed, and the agent must perceive through
+motion, relating image coordinates to robot motion by moving the robot by known amounts.
+Each pair shares the task, the agent, and the exploration budget , and its
+fully automated program is evaluated on the same unseen scenes as in Section 5.2.1 .
+With depth, the agent outperforms the RGB-only agent in every pair, by 17.3 points on
+average ( Table 8 ). Table 8: Depth versus RGB-only perception. Score (%) on unseen layouts at matched
+exploration budgets. Cells with more than one run report the mean. Task Budget RGB-D RGB-only Make toast random 16 2.5 0.0 2.5 Make toast random 32 31.7 7.8 23.9 Hang mugs random 16 36.9 13.9 23.0 Sweep blocks random 16 53.3 33.3 20.0 Average 31.1 13.8 17.3 Case study: perception with and without depth. To understand where this gap comes from, we inspect the fully automated programs submitted
+by the RGB-D and RGB-only agents on make toast random with a budget of 32 episodes. Both agents use the
+vision-language model in the same role, to point at semantic image locations such as the
+toaster slots, the top crust of a bread slice, and the lever. They differ in how they turn
+these image points into motion. With depth. The RGB-D agent lifts every image point into a metric 3D point and
+builds the task’s geometry from these points. It first refines each slot opening by
+fitting a line to its visible contour, then measures both rim endpoints of each slot in 3D,
+from which it derives the slot centers and their common heading. On the bread, it measures
+two points along the top crust and one on the near side, and recovers the slice’s full 3D
+orientation from the plane through these points. After the grasp, it measures the slice
+again in the wrist camera to obtain its pose in the hand, and repeats this measurement above
+the slot to correct any slip before release. The agent also uses metric geometry to verify
+its perception: a measurement is rejected when a rim point does not lie within a narrow band
+at the toaster’s roof height, when the two rim endpoints are not 9 to 20 cm apart, or when
+the two slots are not 2.6 to 7.5 cm apart, and a press of the lever counts only when the
+lever is measured to have travelled 2.5 to 13 cm downward. Without depth. The RGB-only agent does not give up on 3D reasoning; it
+reconstructs a coarse camera model of its own. It maps overhead-camera pixels to table
+coordinates through a linear calibration at an assumed height, about 1.8 mm per pixel
+across the image and 1.4 mm per pixel along it, and then refines every target by visual
+servoing in the wrist camera: it moves the gripper until the target is centered, with
+hand-tuned gains of 0.4 to 0.8 mm per pixel, and rotates it until the slot or the bread is
+aligned in the image. The quantities that depth would provide are replaced by constants,
+including the grasp and release heights, the 3.8 cm spacing between the slots, and the
+height to which the lever is pressed, and success is judged by asking the vision-language
+model whether a slice is held or seated. These approximations hold only where the scene
+matches the agent’s assumptions. In evaluation, 36 of its 45 episodes ended in the lever
+stage without success, the step at which a fixed press height replaces a measured one,
+against 8 successes for the RGB-D agent. 5.3.3 Inference Time and Tokens Here we demonstrate the decrease of inference wall time and output tokens with exploration as more and more decisions are being automated with programs. Simulation As the agent compiles its experience into autonomous code programs, the computational overhead of action generation decreases substantially. We evaluate this efficiency gain across two benchmark tasks: loading the car in BEHAVIOR-1K (128 exploration episodes across two parallel environments) and make toast random in RoboDojo (64 exploration episodes). We define episode inference time as the cumulative wall-clock latency dedicated to action generation—excluding simulator and hardware step times—regardless of whether actions stem from direct LLM deliberation, code program execution, or a hybrid mode. Figure 7 tracks inference latency and output token consumption across all successful exploration episodes. On loading the car , the initial successful episode required 123 minutes of inference time and 254k output tokens. By the final exploration episode, inference overhead dropped to 4 minutes and 4k tokens, while environment execution time remained over 1 hour per episode. Similarly, on make toast random , initial task completion required 17 minutes of inference latency. Once execution transitioned to the compiled program, inference latency for the final agent-monitored successes fell to 6 seconds per episode—matching the 3–7 seconds observed during standalone program rehearsals (which accounted for 7 of the 15 total successes). Figure 7 : From exploration to code. Inference time (left) and output tokens
+(right) of each successful exploration episode, on base-2 logarithmic vertical axes; for
+rehearsals, inference time is the program’s computation time as measured by the harness,
+without the overhead of running in isolation. The token
+axis is linear below one thousand tokens so that zero can be shown. Filled dots mark
+episodes in which the agent takes part, alone or together with its program; hollow circles
+mark rehearsals, in which the program runs alone. On loading the car, raw points are
+faint and the line is a
+running median over five successes; output tokens of parallel episodes are attributed to the environment an agent was assigned, or split evenly across the
+episodes active at that moment. Real robots Similar efficiency trends hold on real robots using the Franka manipulator ( Table 9 ). We evaluate air fryer manipulation ( Section 14.2 ) and Bandu tower assembly ( Section 14.5 ), comparing an initial trial in which the agent generates each action via active deliberation against a subsequent execution of the compiled autonomous program. In both paradigms, the system actuates the robot through identical tool interfaces, with robot time defined as the duration spent executing arm, gripper, and visual perception calls. For the air fryer task, initial task completion (including online exploration) required 72 minutes of inference latency and 262k output tokens, against 3 minutes of robot time. Upon compilation, the initial autonomous run required only 18 seconds of inference latency (attributable entirely to local programmatic execution), with four subsequent unattended trials consistently yielding latencies between 18 and 23 seconds. Similarly, on the Bandu tower, step-by-step LLM deliberation to assemble six blocks required 17 minutes of inference latency; once compiled, autonomous assembly of seven blocks completed with 10 seconds of program overhead alongside 11 minutes of continuous robot execution. During these autonomous runs, control proceeded without human intervention or online LLM action synthesis, while background monitoring generated at most 2.2k tokens per run in parallel without imposing latency on robot execution. Table 9: From the agent’s actions to a fully automated program on the real Franka. The
+first success with actions generated by the agent and a later unattended success of its program.
+Inference time: wall-clock time outside robot calls. The agent’s Bandu rebuild places six pieces,
+the program seven. Task Actions from Inference Robot time Output tokens Air fryer Agent 72.3 min 2.9 min 262.4 k Program 18 s 2.5 min 2.0 k Bandu tower Agent 17.2 min 9.3 min 88.4 k Program 10 s 10.9 min 2.2 k 5.3.4 Demonstrations Without Actions On HumanoidArena, the exploring agent reads three teleoperated demonstrations of each task, and
+its programs may reuse motion segments cut from them, such as a gait cycle
+( Section 11.3 ). We remove the actions from these demonstrations and keep everything
+else unchanged except the budget (RAX ⋆ ), which is 256 exploration episodes on DoubleDesk, 128 on
+P&PBox, and 64 on each of the other five tasks, and evaluate the program on the same 60 official
+test episodes. Without any action data, RAX ⋆ reaches 81.9% on average and matches
+WB-WAM, which is fine-tuned on 100 action demonstrations per task
+( Table 10 ). On Football, OpenDoor, and SitSofa, it stays within 5 points
+of RAX with action demonstrations. The more dynamic and contact-rich whole-body tasks, which
+require sustained locomotion or whole-body contact, VisNavi, Boxing, P&PBox, and DoubleDesk,
+remain 10.0 to 16.6 points lower despite larger budgets. When the agent has to discover a
+suitable gait and whole-body control on its own, whole-body loco-manipulation requires more
+exploration. Table 10: HumanoidArena without action demonstrations. Success rate (%) on the 60
+official test episodes of each task. RAX: largest budgets of Table 4 . ⋆ Three demonstrations without actions. Method Demos Budget Football DoubleDesk P&PBox OpenDoor SitSofa Boxing VisNavi Avg. WB-WAM 100 – 70.0 65.0 86.7 98.3 95.0 81.7 76.7 81.9 RAX 3 32–128 98.3 56.7 83.3 100.0 96.7 100.0 93.3 89.8 RAX ⋆ 3 64–256 98.3 46.7 70.0 95.0 100.0 86.7 76.7 81.9 5.4 Intriguing Emerging Agentic Behaviors with Scaling Exploration In this section, we analyze agentic behaviors that emerge as exploration scales, in simulation and on
+real robots; each task is detailed in Sections 11 and 14 . 5.4.1 Active Perception Active perception ( Xiong et al., 2025 ) emerges naturally as the agent does not treat perception as a single look at the scene ( Figure 8 ). It moves its cameras and its
+hand to obtain the measurements that a step needs, measures again before it acts, and checks the
+outcome of each action with a new measurement. Figure 8 : Active perception. Simulation, DexJoCo bimanual Tower of Hanoi
+( Section 11.2 ): (1) in its first episode, the agent moves single joints of the Allegro hand and
+finds the white fingertip caps in the wrist camera; (2) from the caps’ points it fits the
+fingertip offsets relative to the flange, and, without a model of the hand, its thumb tip lies
+1.1 mm from the official model; (3) after each placement, the program measures the disk again,
+on average 0.66 mm below the height it predicted over 150 evaluation episodes. Real robot,
+ManipulationNet peg-in-hole ( Section 14.4 ): the agent probes with closed fingers to
+measure the height of the transparent board and the tilt of the table. Simulation. On the bimanual Tower of Hanoi of DexJoCo ( Section 11.2 ), the agent
+received no model of its Allegro hands. It spent its first episode on its own hand: it moved single
+joints, lifted the wrist cameras’ depth into points to see what each joint moves, segmented the
+white fingertip caps, and fitted the fingertip offsets on which every grasp of its program is built;
+its thumb offset lies within 1.1 mm of the official model it never saw. On the LIBERO-Long task of putting two cans into a basket
+( Section 11.1 ), the program perceives the scene anew in every round; before each
+grasp, it hovers 7 cm above the can, refits the lid from the wrist camera, and rejects a top that
+is not can-shaped. Because the agent-view camera cannot see the floor of the basket, the program
+maps the basket from the wrist camera while it holds the first can, and maps it again after the
+first release. On the bimanual Tower of Hanoi of DexJoCo ( Section 11.2 ), the program verifies
+every lift by measuring the held disk from three cameras and pinches again when the disk rose less
+than half of the lift; after placing the red disk, it measures the disk’s top again and finds it on
+average 0.66 mm below the height it predicted. On the humanoid that carries a hammer over a bar
+( Section 11.3 ), the program perceives anew at every stage and before every step at the
+bar, and it confirms a grasp by measuring the height of the handle again. Without depth, the
+RGB-only agent recovers metric relations by moving the robot by known amounts and servoing on the
+wrist camera ( Section 5.3.2 ). Real robot. On the ManipulationNet peg-in-hole challenge ( Chen et al., 2026b ) ( Section 14.4 ), the board is transparent acrylic, and the task text warned that the wrist
+camera’s depth is inaccurate at close range. The agent turned this warning into a measurement
+procedure that uses the arm itself as a probe: it closes the gripper, descends in 1.5 mm steps,
+and records the height at which the vertical force drops by 3 to 4 N. Touching the table at three
+points, it found that the table rises by about 3.4 mm per 10 cm along the robot’s axis and
+that the top of the board lies 24.7 mm above the table, against 25 mm in the board’s CAD model,
+and it models the height of the board’s top as a plane that rises along . Before each insertion
+into the row with 0.1 mm clearance, it touches the board next to the hole with the held peg, and
+these reference heights agree within 0.5 mm. Probing also calibrates the camera: from a hole whose
+centre it had located by touch, the agent found that the wrist camera’s absolute positions were
+offset by 6.4 and mm, corrected every hole by this offset, and the next peg dropped into its
+hole on the first probe. Figure 9 : Error recovery and safety on real robots. Each incident and the rule the agent
+derived from it. RB-Y1: a turn planned by hand pushes a cabinet, after which every base move is
+checked against the area the base sweeps; squatting to lift a bucket overloads a wrist, and
+standing up first resolves it. Franka: an unusual arm posture hits a camera, after which the
+agent plans only natural postures that keep the arm away from the cameras. Figure 10 : Human–robot interaction. Requests that the agent sent to the operator, summarized,
+with the scene before and after. Right: the fryer poses
+that the agent requested across runs 6 to 10, from its own measurements of the fryer’s axis and
+handle direction. 5.4.2 Error Recovery and Safety On real robots, the agent’s mistakes have physical consequences, and it turns each one into a rule
+that its later programs follow ( Figure 9 ). On the RB-Y1, an in-place turn that the agent
+planned by hand swung the rear of the base into a cabinet; from then on, the agent checked every
+base move against the area the base sweeps. Lifting a bucket while squatting overloaded a wrist and
+stopped the robot; standing up before the lift, a correction from the operator, resolved it, and
+the agent kept it as a rule in its skill. On the Franka, an unusual arm posture drove the elbow
+into a camera; the agent then restricted itself to natural arm postures, kept the arm away from
+the cameras, and recalibrated the bumped camera itself ( Section 14.2.1 ). In simulation, the
+humanoid crosses a bar only from foot placements that its own falls showed to be safe
+( Section 11.3 ). Figure 11 : Continual learning on the real-world RB-Y1 mobile manipulator. Top: Modular skills acquired during prior exploration sessions and stored in the skill repository, complete with descriptions from their respective skill files. Middle: The final execution of a complex tidy-up task—a single high-level instruction carried out across six sequential stages, annotated with completion timestamps and invoked skills. Bottom: The agent’s generated code for each stage (condensed from execution logs with passed arguments). Code invoking pre-stored skills is color-coded by skill ( chair , cups , bucket , and box correspond to each skill’s run.py ), while ad-hoc control logic written directly by the agent is shown in black. 5.4.3 Human–Robot Interaction The agent reaches the operator through a request tool and uses it with purpose ( Figure 10 ). On
+the ManipulationNet board, after the board shifted during its attempts at tight fits, it asked the
+operator to tape the board to the table. On the air fryer ( Section 14.2 ), it refused to pick a banana placed in front
+of the camera it had hit earlier, because its forearm would pass within about 1 cm of the camera, and
+asked for the banana to be moved. After unattended successes, it asked the operator to move and rotate
+the fryer, in effect designing its own tests of generalization: across runs 6 to 10, the fryer moved
+by up to 7 cm and its handle turned by up to 18 ∘ , and the program succeeded unattended in every
+new placement but one, where it needed help and which exposed two errors in its program that the
+agent then fixed. 5.5 Continual Learning In this section, we demonstrate how RAX achieves continual learning with robot programs: by reusing skills learned in earlier exploration sessions, and by rapidly adapting its programs when the environment or the task changes. 5.5.1 Reusing Skills On the RB-Y1 mobile manipulator, RAX acquires skills through isolated exploration sessions and reuses them to solve long-horizon compositional tasks ( Figure 11 ). In initial sessions, the agent independently learned to park and tuck an office chair, stack nested cups, transport a bucket by its rim onto a cabinet, and pick and place a box. Each skill was committed to the repository only after achieving successful end-to-end execution, stored as a versioned program bound to explicit precondition checks. The multi-stage tidy-up task ( Figure 5 ) evaluates the composition of these skills under a single high-level goal: park the chair, stack the cups, place the cups and a banana inside the bucket, transport the bucket onto the cabinet, tuck the chair back under the desk, and finally pick the box onto the other empty cabinet. Skills are called, not relearned In the final execution of the tidy-up task, every stage is resolved by composing stored skills from the repository ( Figure 11 ). The agent executes the chair skill sequentially: it estimates the chair geometry, plans a collision-free motion path, grasps the backrest, navigates along the path, and releases the target. It invokes the cup-stacking skill using semantic visual grounding from the current scene, applying fine-grained closed-loop offsets prior to insertion. For the bucket and box skills, the agent parameterizes execution using real-time perception data, such as the estimated cabinet boundary derived from depth sensing. To bridge gaps between stored skills, the agent dynamically synthesizes ad-hoc code—such as extending the grasp planner to handle a banana, commanding torso elevation prior to transit, and re-estimating desk pose before final chair insertion. Skills are refined in use Across three iterations of the tidy-up task, the agent iteratively updated program versions rather than rewriting entire control loops. The bucket and box skills required minor programmatic adjustments ( 25 out of more than 1200 lines) to integrate dynamic cabinet-edge measurements from onboard depth perception. Skills encountering greater environmental domain shift underwent larger revisions: following two failed grasp attempts, the agent updated the chair skill to grasp 4 cm deeper, while extending the cup-stacking skill to support picking additional object classes. Figure 12 : Adapting skills and programs on the real Franka. Each row is one program that already worked,
+with the task it learned (left image) and the operator’s change (green). Right: the program’s entry
+point after the change, condensed from the agent’s code, with new lines in green, modified lines in
+blue, and reused lines in black. Top: find the cube, where each image overlays frames from the left
+camera a quarter of a second apart, earlier ones fainter, to show how the object is hidden; the cube
+is first dropped into a cup and then replaced by a red wedge. Bottom: wiping with paper towels from a box; S and P are
+the towel program’s modules, imported unchanged. Repository expansion Intermediary control code synthesized by the agent to bridge task stages is modularized and saved as new skills. For instance, a synthesized hand-reach primitive was automatically abstracted, committed to the repository, and subsequently reused across both the chair-manipulation and cup-stacking routines. 5.5.2 Rapid Adaptation of Programs When task conditions vary post-deployment, RAX preserves valid program subroutines and selectively updates only the modules invalidated by environmental shifts ( Figure 12 ). On the Franka manipulator, two end-to-end autonomous programs were adapted to novel task variants within the same session. Find the cube In a hidden-object task, the physical occlusion sequence was modified: rather than directly inverting a cup over the target cube, the cube was placed inside an upright cup prior to inversion. The original program detected no covering cup and safely halted execution via exception handling without initiating ungrounded motion. The agent extended its perception pipeline with a detector for cubes contained within upright cups, validated the new logic against current and historical sensor logs, and resumed execution to complete the task ( Figure 22 ). Crucially, the cup-tracking, execution-monitoring, and removal routines were reused without modification. When substituting the cube with a red wedge, the agent generalized its geometric object representation from a fixed cube primitive to an object parameterized by estimated dimensions, color, and height, adjusting grasp synthesis accordingly while preserving 20 of the original 41 program functions (including the tracking pipeline; Figure 23 ). Wiping with paper towels Following the acquisition of a reliable surface-wiping skill using a wet cloth, the task was extended to require pulling disposable paper towels from a dispenser box, executing the wiping motion, and discarding used towels into a receptacle. The agent synthesized a composite program that imported the original wiping module as a dependency. The new program reused existing subroutines for stain segmentation against the table background, reachable workspace estimation, pressing by position control ( below the measured surface contact, along a serpentine trajectory), and post-wipe residue verification. Only paper-handling subroutines were added: locating the dispenser box and disposal bin, extracting individual sheets onto the stain, discarding the crumpled towel, and clearing loose paper from the workspace. The stain was removed in both wet runs, although leftover sheets still had to be cleared with supervised scripts ( Section 14.3 , Figure 29 ).

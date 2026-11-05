@@ -1,0 +1,7 @@
+[
+  {
+    "task": "libero_spatial_0",
+    "collection": 0,
+    "error": "CalledProcessError: Command '['nvidia-smi', '--query-gpu=index,uuid', '--format=csv,noheader']' returned non-zero exit status 18."
+  }
+]

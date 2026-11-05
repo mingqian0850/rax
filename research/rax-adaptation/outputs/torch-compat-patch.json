@@ -1,0 +1,9 @@
+{
+  "reason": "torch 1.11 CPU wheel import failed on host glibc 2.43; GNU_STACK was RWE",
+  "operation": "patchelf --clear-execstack",
+  "target": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/runtime/envs/libero_pro/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so",
+  "backup": "/home/mingqian/Documents/Codex/2026-11-05/https-github-com-robot-agent-exploration/work/compat-backups/libtorch_cpu.so.original",
+  "sha256_before": "63a8253c371c8317ab74e2e18649939ced76674cf74ba343e51a80c9b1e2bb2a",
+  "sha256_after": "cd0ce547ffaa0a05eb7463aa4a7064c9b7abcdd7a3c69268d945006bfeec12c3",
+  "source_repo_modified": false
+}

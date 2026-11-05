@@ -1,0 +1,174 @@
+10 Benchmarks and Tasks This section gives the protocol that all simulation experiments share and then the setting of
+each benchmark and its tasks. The real-robot tasks are described in Section 14 . 10.1 Sessions Agents. Every experiment is a session of one coding agent in its own command-line
+harness: Claude Code with Claude Opus 5.5 or, on four RoboDojo tasks and one BEHAVIOR-1K task,
+Codex with a GPT-6 model, at the xhigh reasoning effort unless stated otherwise. A session
+provides one or more simulated environments; with more than one, the agent may start subagents
+of the same model, which share its workspace and its budget. The weights of the model are never
+updated. Workspace. The agent starts from an empty workspace. Its folders for code, notes, and
+outputs are empty, and it holds only the instructions of the harness, the task description, the
+contract of the tool interface, and the skills of the platform, composed for the embodiment and
+the observation mode of the session ( Section 9 ); the agent keeps no memory from earlier
+sessions. It runs in a container without network access, with 16 GB of memory and four CPUs,
+and reaches the simulator only through its tools. Every program it registers runs in a fresh
+container with 8 GB of memory, four CPUs, and no network access. Task information. The task description is generated from the public definition of the
+task; its content differs between benchmarks and is given below. Images of the completed task
+are frames of successful official demonstrations, either the final frame of each or a sequence of
+keyframes along each. They contain no actions and no states, and only the exploring agent sees
+them, never its programs. During an interactive episode, the agent may ask the benchmark’s
+evaluator whether the task is complete. Budget and scenes. The exploration budget counts exploration episodes. A single ledger
+charges every episode start and every rehearsal, across all environments and subagents, and the
+agent sees how many episodes remain. The budget is an upper bound, since submission ends
+exploration. Exploration scenes come in a fixed order, which the agent cannot choose, from the
+training distribution of the benchmark, and evaluation scenes from its official evaluation set,
+which exploration never uses. Limits. Each episode has the native step limit of the benchmark and a wall-clock limit,
+which during an interactive episode also bounds the agent’s own deliberation. The agent and its
+programs may call a vision-language model, Gemini 3.8 Flash, with a budget of $10 per session
+that exploration and evaluation share. 10.2 Rehearsal and Evaluation Rehearsal. When the agent considers its program ready, it freezes a copy of its
+code with a registered entry point into a bundle and requests a rehearsal. The bundle is executed
+alone in a fresh isolated environment on a new exploration scene while the agent is paused, and the
+rehearsal consumes one exploration episode, like an episode in which the agent acts itself.
+Afterwards, the agent reads the outcome and the logs of the rehearsal and may revise the bundle
+and rehearse again. Only a bundle that has completed a rehearsal without error can be submitted,
+and submission ends exploration. Fully automated program. Evaluation executes the submitted bundle on each unseen
+scene in a fresh isolated environment, without the agent and without edits or retries. The
+results are never revealed to the agent. Because the bundle calls the same tools that the agent
+called during exploration, the program that is evaluated is the program that was rehearsed. Agent-in-the-loop program. At the end of exploration, the workspace is frozen,
+including the code, the notes, the handoff, and a compressed version of the conversation. For
+each evaluation scene, a fresh copy of the agent starts from this frozen workspace and attempts
+the scene, running its code, observing, and acting through the same tools as during exploration. Scoring. Both forms are scored by the benchmark’s native evaluator, with partial
+credit wherever the benchmark defines it. An error, a timeout, or an early exit of the program
+counts as a failure, and scores are averaged over all scheduled evaluation episodes. 10.3 RoboDojo Tasks and interface. We use seven tasks of RoboDojo-Sim ( Chen et al., 2026a ) with the
+dual-arm ARX X5 ( Table 13 ). The agent commands absolute joint targets at 25 Hz,
+six arm joints and a gripper opening for each arm, with between 1 and 50 rows per call. It may
+also command bounded end-effector steps, plan collision-free motions of one arm against the robot
+and the table, lift pixels to 3D points, and preview a motion on the robot alone. It observes the
+scene through a high camera and a camera on each wrist at 640 480; the benchmark renders
+RGB, and the harness adds metric depth, the intrinsics, and the pose of every camera. Task information. The task description is the public scoring rubric of the task, which
+for the randomized variants is that of the base task, with its score table. For make kong, pour
+by language, and swap blocks it adds a short clarification of the conditions, and for plug in
+charger and pour by language a summary of the official task code without its numeric thresholds.
+The agent also receives one image of the completed task, the last frame of the official video of
+the task. Exploration and evaluation. A single agent explores a single environment; on plug in
+charger and pour by language it may start one subagent. Exploration scenes are the layouts of one
+official collection in order, which repeat once the collection is exhausted, and the program is
+evaluated on the first layouts of another collection ( Table 13 ); on hang mugs
+random, both come from a pooled collection, with evaluation on layouts 0 to 49 and exploration on
+layouts 50 to 89. An episode is limited to 6 s of wall-clock time per allowed step. A score is
+100 on native success and the native partial score otherwise. The parallel experiment
+( Table 7 ) uses make toast with a description that includes the numeric thresholds,
+keyframes of a completed run, and 32 evaluation layouts from a third collection; the RGB-only
+sessions of Table 8 receive no depth, calibration, or pixel lifting. Table 13: RoboDojo tasks. Step limit at 25 Hz; partial credit: native score
+tiers; evaluation: number of official layouts. Task Benchmark id Step limit Partial credit Evaluation Agent Make toast random make_toast_random 1400 25/50/100 45 Codex Hang mugs random hang_mugs_random 800 15/40/100 50 Claude Code Sweep blocks random sweep_blocks_random 1000 – 30 Codex Plug in charger plug_in_charger 400 – 50 Claude Code Swap blocks swap_blocks 700 – 50 Codex Make kong make_kong 600 – 50 Codex Pour by language pour_by_language 800 20/50/100 50 Claude Code 10.4 BEHAVIOR-1K Tasks and interface. We use six tasks of the 2025 BEHAVIOR
+Challenge ( Li et al., 2023 ) with the Galaxea R1Pro, in the official evaluation environment
+of BEHAVIOR-1K ( Table 14 ). The agent commands the native action at 30 Hz, base
+velocity together with absolute joint targets of the four trunk joints and the two seven-joint
+arms and a command for each gripper, with between 1 and 150 rows per call. It may also move the
+base in closed loop, step an end effector through inverse kinematics, plan collision-free arm
+motions, lift pixels to 3D points, and preview a motion on the robot alone. It observes the scene
+through the head camera at 720 720 and a camera on each wrist at 480 480, all RGB-D
+with intrinsics and poses relative to the base, together with the official proprioception and an
+odometry estimate integrated from the base velocity. The step limit of an episode is 1.5 times the
+mean length of the human demonstrations of the task, as in the 2026 evaluation, whereas the 2025
+challenge allowed twice the mean. Task information. The task description contains the official instruction, the goal and
+initial conditions of the task’s BDDL definition, the scene and its rooms, and the limits of an
+episode. Except on boxing books, the agent also receives keyframes of successful official
+demonstrations from the head camera: the first frame, the end of each annotated skill, the final
+frame, and enough frames in between that no gap exceeds 10 s. Exploration and evaluation. Exploration scenes are the 300 training instances of each task,
+and evaluation uses the test instances 301 to 310 ( Table 14 ). An episode is
+limited to 900 s plus 0.5 s per allowed step. Boxing books is evaluated as a fully automated
+program and the other five tasks as agent-in-the-loop programs, with one fresh copy of the agent
+per test instance. On sorting items, clearing food, and clean up desk, each copy also receives the
+reports that a review model, Gemini 3.8 Flash, wrote on the fully automated program’s runs on the
+other nine test instances, built from the final status of each goal condition, the partial score,
+the program’s log, and camera frames, and referring to objects only by their task names. Episodes
+are scored by the Q-score of the challenge: 1 on success and otherwise the fraction of goal
+conditions that become satisfied during the episode, maximized over the alternative groundings of
+the goal and averaged over the ten instances. Table 14: BEHAVIOR-1K tasks and sessions. Step limit at 30 Hz; budget: exploration
+episodes allowed; envs: parallel environments; program: the program evaluated in Table 3 . ∗ Maximum reasoning effort. † Without
+demonstration keyframes or the vision-language model; 32 episodes used. Task Benchmark id Agent Step limit Budget Envs Program Boxing books boxing_books_up_for_storage Codex † 36,341 128 6 fully automated Getting organized getting_organized_for_work Claude Code ∗ 23,506 128 2 agent-in-the-loop Sorting items sorting_household_items Claude Code 23,711 128 8 agent-in-the-loop Clearing food clearing_food_from_table_into_fridge Claude Code 19,602 128 4 agent-in-the-loop Clean up desk clean_up_your_desk Claude Code 32,126 128 4 agent-in-the-loop Loading the car loading_the_car Claude Code ∗ 28,839 128 2 agent-in-the-loop 10.5 HumanoidArena Tasks and interface. We use the seven tasks of HumanoidArena ( Wang et al., 2026b ) that have official test episodes, with a Unitree G1 that has 29 body joints and Dex3 hands
+( Table 15 ). The agent commands the official 40-dimensional whole-body
+reference at 50 Hz, with between 1 and 100 frames per call: the root translation and height,
+which the SONIC tracker ( Luo et al., 2026 ) does not follow, since the robot translates only by
+stepping, the root orientation relative to the initial heading, 29 joint targets, and an open or
+close command for each hand. It may also plan collision-free motions of the arms, optionally with
+the waist, and lift pixels to 3D points in the pelvis frame and in a gravity-aligned frame. It
+observes the scene through the head camera at 640 480 in RGB-D, with the intrinsics and the
+camera pose in the pelvis frame, together with the root orientation, the joint positions and
+velocities, and the state of the hands. An episode ends when the robot falls, by the rule of the
+benchmark. Task information. The agent can read three teleoperated demonstrations of the task
+from the official raw dataset. Each is a complete episode with the 40-dimensional
+references, joint states, root poses, and the head camera’s RGB video and depth. The
+demonstrations are mounted read-only for the exploring agent only; its programs may contain
+motion segments that the agent cut from them ( Section 11.3 ). Exploration and evaluation. We use Claude Opus 5.5 as our agent. Exploration scenes use seeds derived from
+a hash that excludes every official seed. Sessions with a budget above 32 explore two environments
+and may start two subagents. An episode is limited to 600 s plus 1 s per allowed step. The
+program is evaluated on the 60 official test episodes of each task, seeds 0, 1, and 2 with 20
+episodes each, derived as in the official evaluation; every episode runs in a fresh simulator and
+container, four in parallel, and the simulator advances only when the program sends actions.
+Success is binary, and a fall or an error counts as a failure. Table 15: HumanoidArena tasks. Step limit at 50 Hz; budget: largest exploration
+budget in Table 4 . HOI and HSI: human–object and human–scene interaction. Task Type Step limit Success condition Budget Football HOI 2000 the ball passes the goal line between the posts 32 DoubleDesk HOI 2000 the hammer rests inside the basket on the second desk 128 P&PBox HOI 1450 the box rests on the shelf, inside its outline 128 OpenDoor HSI 1800 the latch is released and the door is open by at least 60 ∘ , robot standing 32 SitSofa HSI 2000 the pelvis is over the seat and below 0.66 m 32 Boxing HSI 900 a palm comes within 0.18 m of the target on the bag 32 VisNavi HSI 1800 both ankles are inside the destination, robot standing 32 10.6 DexJoCo Tasks and interface. We use the eleven tasks of DexJoCo ( Wang et al., 2026a ) in its
+rand-obj setting, in which the placement of the objects and the height of the table are
+randomized at every reset ( Table 16 ). Single-arm tasks use one Franka Panda arm
+with a 16-degree-of-freedom Allegro hand, and bimanual tasks use two. The agent commands the
+official policy action of the benchmark: for each arm, an absolute target for the flange
+position and orientation in the world frame, the orientation as a rotation vector, together with
+sixteen hand joint targets, which gives a 22-dimensional row for one arm and a 44-dimensional
+row for two. The official operational-space controller pulls the flange toward its target and
+position actuators drive the hand joints, without a motion planner. Each row advances the
+simulation by 20 ms, and one call to the interface executes between 1 and 150 rows.
+Observations are 640 640 RGB-D images from the official cameras of each task, with depth
+in millimeters and the intrinsics and world pose of every camera, together with the official
+proprioceptive state, the flange pose of each arm and the joint positions of each hand. No
+force, torque, contact, or tactile signal is exposed, and the object poses and table height in
+the simulator’s state never reach the agent. The interface also offers a dry run of a motion on
+the robot alone, without the table and objects, that does not advance the episode, and helpers
+for rotation arithmetic and for lifting a pixel with its depth to a world position. Table 16: DexJoCo tasks, rand-obj setting. All cameras are RGB-D. ∗ Including 30
+steps before control is handed over. Task Benchmark id Arms Cameras Step limit Hammer hammer_nail one front, wrist 1000 Mouse click_mouse one ego_right, wrist 1200 ∗ Bucket pick_bucket one front, wrist 1200 Tongs pinch_tongs one front, wrist 1000 Glasses fold_glasses one front, wrist 1200 Water water_plant one front, wrist 1000 iPad bimanual_unlock_ipad two ego, wrist_left, wrist_right 1200 Hanoi bimanual_hanoi two ego, wrist_left, wrist_right 1500 Assembly bimanual_assembly two ego, wrist_left, wrist_right 1500 Microwave bimanual_microwave_cook two ego, wrist_left, wrist_right 1100 Photo bimanual_photograph two ego, wrist_left, wrist_right 1000 Task information. The agent receives a task description generated from the
+task definition: the official instruction, the robot and its cameras, the step limit and
+wall-clock limit of an episode, the fact that object placement and table height change between
+episodes, and the binary success criterion without partial credit. It contains no detail of the
+success check. The agent also receives three images of the completed task, the final frames of
+three successful human demonstrations from the official dataset, each in a different layout,
+taken from the task’s overview camera. They contain no actions and no states. The three
+demonstrations are the first that replay successfully in the official environment from initial
+layouts that differ from all 150 evaluation layouts. Exploration. A session gives one agent, Claude Code with Claude Opus 5.5 at the xhigh
+effort setting and without subagents, one simulated environment, and a budget of exploration episodes. The agent starts from an empty workspace ( Section 10.1 ). A exploration episode is either interactive, in
+which the agent drives the robot itself through the interface or through its own scripts, or a
+rehearsal, in which its registered program runs alone in a fresh container on a fresh episode
+while the agent is paused; both consume the budget. The agent ends exploration by submitting a
+program that has completed a rehearsal without error, so the budget is an upper bound, and over
+the 55 sessions the agents used 592 of the 682 budgeted episodes ( Table 17 ).
+Exploration layout is the first reset of the official rand-obj environment with seed , the same randomization as in evaluation, whose layouts come from seeds 0 to 2. An episode is
+limited to the official number of steps and to 600 s plus 5 s per allowed step of wall-clock
+time, a limit that no episode reached. The agent and its programs may call a vision-language
+model, Gemini 3.8 Flash, with a budget of $10 per session. Evaluation. Once the agent has exited, its workspace is frozen, and the submitted
+program is evaluated alone on 150 episodes that reproduce the official evaluation of DexJoCo
+layout for layout: seeds 0, 1, and 2, with 50 consecutive resets each. Every episode runs in a
+fresh simulator process and a fresh container for the program, four episodes in parallel, under
+the official step limit and success check, and an error or an early exit of the program counts
+as a failure. The simulator advances only when the program sends actions, so evaluation is
+synchronous and free of inference latency, whereas the official client of the benchmark is
+asynchronous. Table 17: DexJoCo sessions by exploration budget. One session per task. Episodes are
+summed over the eleven sessions; agent time runs from the start of the agent to evaluation and
+is the median over the eleven sessions, with the range in parentheses. Budget Interactive Rehearsal Used / budgeted Submitted early Agent time (h) 2 11 11 22 / 22 0 of 11 0.70 (0.44–1.28) 4 26 18 44 / 44 0 of 11 1.05 (0.51–2.46) 8 57 29 86 / 88 2 of 11 1.34 (0.59–3.02) 16 93 67 160 / 176 5 of 11 1.52 (0.72–2.89) 32 179 101 280 / 352 8 of 11 1.76 (0.98–3.89) 10.7 LIBERO and LIBERO-Pro Tasks and interface. We use the 40 tasks of the Spatial, Object, Goal, and Long suites of
+LIBERO ( Liu et al., 2023 ) in the official environment, numbered from 0 in the official order,
+and the position-perturbed variants of LIBERO-Pro ( Zhou et al., 2025 ) , in which objects
+exchange their initial regions. The agent commands the official action at 20 Hz, increments of
+the end-effector position and rotation, scaled so that 1 corresponds to 5 cm or 0.5 rad, and a
+gripper command, with between 1 and 100 rows per call and no motion planner. It observes the scene
+through the agent-view and wrist cameras at 256 256 in RGB-D, with the intrinsics and the
+pose of each camera, together with the end-effector pose and the finger positions, and it may lift
+pixels to 3D points. The step limit of an episode is 220 on Spatial, 280 on Object, 300 on Goal, and
+520 on Long, after ten initial steps without motion. Task information. The task description contains the official instruction, the robot
+and its cameras, the limits of an episode, and the binary success criterion without the detail of
+its check. The agent also receives three images of the
+completed task, the final agent-view frames of three official human demonstrations that replay
+successfully. Exploration and evaluation. We use Claude Opus 5.5 as our agent in two environments. The budget is
+up to 20 exploration episodes on the official placement distribution, followed by at most 5 optional
+episodes of adaptation on the perturbed distribution, which the agent may use when it judges that
+its program will not transfer ( Section 11.4 ). Exploration layout is a fresh
+reset of the official environment with seed , a sample of the official placement
+distribution and never a stored initial state. An episode is limited to 600 s plus 5 s per allowed
+step. The program is evaluated on the 50 official initial states of each task and on the 50
+position-perturbed states of LIBERO-Pro, each episode in a fresh container, synchronously, and with
+binary success. Adaptation episodes are fresh resets of the perturbed task with seeds from 2000.
